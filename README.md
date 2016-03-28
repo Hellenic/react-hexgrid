@@ -39,6 +39,8 @@ render() {
   return (<HexGrid {...config} />);
 }
 ```
+Will look something like this (custom CSS applied):
+![HexGrid image](/HexGrid.jpg?raw=true "HexGrid")
 
 ## License
 
