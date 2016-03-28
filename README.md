@@ -40,7 +40,7 @@ render() {
 }
 ```
 Will look something like this (custom CSS applied):
-![HexGrid image](/HexGrid.jpg?raw=true "HexGrid")
+![HexGrid image](https://raw.githubusercontent.com/Hellenic/react-hexgrid/master/HexGrid.png "HexGrid")
 
 ## License
 
