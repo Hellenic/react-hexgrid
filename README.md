@@ -25,7 +25,7 @@ npm install react-hexgrid
 And include in your project:
 
 ```javascript
-import HexGrid from 'react-hexgrid';
+import { HexGrid } from 'react-hexgrid';
 ...
 render() {
   let config = {
