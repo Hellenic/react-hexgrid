@@ -33,7 +33,9 @@ render() {
     height: 800,
     layoutSize: {width: 10, height: 10},
     flat: true,
-    origin: {x: 0, y: 0}
+    origin: {x: 0, y: 0},
+    map: 'hexagon',
+    mapProps: [ 2 ]
   };
 
   return (<HexGrid {...config} />);

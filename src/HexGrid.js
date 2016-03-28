@@ -1,5 +1,5 @@
 import React from 'react'
-const { number, object, bool } = React.PropTypes
+const { number, object, bool, string } = React.PropTypes
 import GridShape from './GridShape'
 import Layout from './Layout'
 import GridGenerator from './GridGenerator'
@@ -17,7 +17,8 @@ class HexGrid extends React.Component {
   componentWillMount() {
     let s = this.props.layoutSize;
     let layout = new Layout(s.width, s.height, this.props.flat, this.props.origin);
-    let hexagons = GridGenerator.generateHexagon(2);
+    let generator = GridGenerator.getGenerator(this.props.map);
+    let hexagons = generator.apply(this, this.props.mapProps)
 
     this.setState({
       hexagons: hexagons,
@@ -39,12 +40,15 @@ HexGrid.propTypes = {
   layoutSize: object.isRequired,
   flat: bool,
   origin: object,
+  map: string
 };
 
 HexGrid.defaultProps = {
   width: 800,
   height: 600,
-  flat: true
+  flat: true,
+  map: 'hexagon',
+  mapProps: [2]
 }
 
 export default HexGrid;

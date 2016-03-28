@@ -2,7 +2,14 @@ import Hex from './Hex'
 
 class GridGenerator {
 
-  static generateParallelogram(q1, q2, r1, r2) {
+  static getGenerator(name) {
+    if (GridGenerator.hasOwnProperty(name))
+      return GridGenerator[name];
+
+    return null;
+  }
+
+  static parallelogram(q1, q2, r1, r2) {
     let hexas = [];
     for (let q = q1; q <= q2; q++) {
       for (let r = r1; r <= r2; r++) {
@@ -13,7 +20,7 @@ class GridGenerator {
     return hexas;
   }
 
-  static generateTriangle(mapSize) {
+  static triangle(mapSize) {
     let hexas = [];
     for (let q = 0; q <= mapSize; q++) {
       for (let r = 0; r <= mapSize - q; r++) {
@@ -24,7 +31,7 @@ class GridGenerator {
     return hexas;
   }
 
-  static generateHexagon(mapRadius) {
+  static hexagon(mapRadius) {
     let hexas = [];
     for (let q = -mapRadius; q <= mapRadius; q++) {
       let r1 = Math.max(-mapRadius, -q - mapRadius);
@@ -37,7 +44,7 @@ class GridGenerator {
     return hexas;
   }
 
-  static generateRectangle(mapWidth, mapHeight) {
+  static rectangle(mapWidth, mapHeight) {
     let hexas = [];
     for (let r = 0; r < mapHeight; r++) {
       let offset = Math.floor(r/2); // or r>>1
@@ -49,7 +56,7 @@ class GridGenerator {
     return hexas;
   }
 
-  static generateOrientedRectangle(mapWidth, mapHeight) {
+  static orientedRectangle(mapWidth, mapHeight) {
     let hexas = [];
     for (let q = 0; q < mapWidth; q++) {
       let offset = Math.floor(q/2); // or q>>1
