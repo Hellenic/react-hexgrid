@@ -1,5 +1,6 @@
 import React from 'react'
 const { number, object, bool, string } = React.PropTypes
+import Hex from './Hex'
 import GridShape from './GridShape'
 import Layout from './Layout'
 import GridGenerator from './GridGenerator'

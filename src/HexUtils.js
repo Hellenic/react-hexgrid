@@ -24,12 +24,12 @@ class HexUtils {
     return new Hex(a.q * k, a.r * k, a.s * k);
   }
 
-  static length(hex) {
-    return parseInt((abs(hex.q) + abs(hex.r) + abs(hex.s)) / 2);
+  static lengths(hex) {
+    return parseInt((Math.abs(hex.q) + Math.abs(hex.r) + Math.abs(hex.s)) / 2);
   }
 
   static distance(a, b) {
-    return HexUtils.length(HexUtils.subtract(a, b));
+    return HexUtils.lengths(HexUtils.subtract(a, b));
   }
 
   static direction(direction) {
@@ -37,6 +37,25 @@ class HexUtils {
   }
   static neighbour(hex, direction) {
     return HexUtils.add(hex, HexUtils.direction(direction));
+  }
+
+  static round(hex) {
+    var rq = Math.round(hex.q)
+    var rr = Math.round(hex.r)
+    var rs = Math.round(hex.s)
+
+    var qDiff = Math.abs(rq - hex.q)
+    var rDiff = Math.abs(rr - hex.r)
+    var sDiff = Math.abs(rs - hex.s)
+
+    if (qDiff > rDiff && qDiff > rDiff)
+        rq = -rr-rs
+    else if (rDiff > sDiff)
+        rr = -rq-rs
+    else
+        rs = -rq-rr
+
+    return new Hex(rq, rr, rs);
   }
 
   static hexToPixel(hex, layout) {
@@ -54,6 +73,9 @@ class HexUtils {
     return new Hex(q, r, -q - r);
   }
 
+  static lerp(a, b, t) {
+    return new Hex(a.q + (b.q - a.q) * t, a.r + (b.r - a.r) * t, a.s + (b.s - a.s) * t);
+  }
 }
 
 export default HexUtils;

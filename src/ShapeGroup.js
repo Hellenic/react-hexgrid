@@ -1,5 +1,5 @@
 import React from 'react';
-const { object } = React.PropTypes
+const { object, func } = React.PropTypes
 import HexUtils from './HexUtils';
 
 class ShapeGroup extends React.Component {
@@ -18,12 +18,16 @@ class ShapeGroup extends React.Component {
     return `translate(${pixel.x}, ${pixel.y})`;
   }
 
+  handleMouseEnter(event) {
+    this.props.onMouseEnter(this.props.hex, event);
+  }
+
   render() {
     let hex = this.props.hex;
     let text = Object.keys(hex).map(key => { return hex[key] }).join(',');
 
     return (
-      <g className="shape-group" transform={this.translate()}>
+      <g className="shape-group" transform={this.translate()} onMouseEnter={e => this.handleMouseEnter(e)}>
         <polygon points={this.getPoints(hex)} />
         <text x="0" y="0.3em" textAnchor="middle">{text}</text>
       </g>
@@ -33,6 +37,7 @@ class ShapeGroup extends React.Component {
 ShapeGroup.propTypes = {
   hex: object.isRequired,
   layout: object.isRequired,
+  onMouseEnter: func
 };
 
 export default ShapeGroup;
