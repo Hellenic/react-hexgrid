@@ -1,6 +1,5 @@
 import React from 'react';
 const { object } = React.PropTypes
-import css from './shape.css'
 import HexUtils from './HexUtils';
 
 class ShapeGroup extends React.Component {
@@ -24,9 +23,9 @@ class ShapeGroup extends React.Component {
     let text = Object.keys(hex).map(key => { return hex[key] }).join(',');
 
     return (
-      <g className={css.group} transform={this.translate()}>
-        <polygon className={css.polygon} points={this.getPoints(hex)} />
-        <text className={css.text} x="0" y="0.3em" textAnchor="middle">{text}</text>
+      <g className="shape-group" transform={this.translate()}>
+        <polygon points={this.getPoints(hex)} />
+        <text x="0" y="0.3em" textAnchor="middle">{text}</text>
       </g>
     );
   }

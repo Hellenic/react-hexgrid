@@ -26,7 +26,7 @@ And include in your project:
 
 ```javascript
 import HexGrid from 'react-hexgrid';
-
+...
 render() {
   let config = {
     width: 1400,
@@ -36,7 +36,7 @@ render() {
     origin: {x: 0, y: 0}
   };
 
-  return (<HexaGrid {...config} />);
+  return (<HexGrid {...config} />);
 }
 ```
 

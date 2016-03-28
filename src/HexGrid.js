@@ -4,7 +4,7 @@ import GridShape from './GridShape'
 import Layout from './Layout'
 import GridGenerator from './GridGenerator'
 
-class HexaGrid extends React.Component {
+class HexGrid extends React.Component {
 
   constructor(props) {
     super(props);
@@ -33,7 +33,7 @@ class HexaGrid extends React.Component {
 
 }
 
-HexaGrid.propTypes = {
+HexGrid.propTypes = {
   width: number.isRequired,
   height: number.isRequired,
   layoutSize: object.isRequired,
@@ -41,10 +41,10 @@ HexaGrid.propTypes = {
   origin: object,
 };
 
-HexaGrid.defaultProps = {
+HexGrid.defaultProps = {
   width: 800,
   height: 600,
   flat: true
 }
 
-export default HexaGrid;
+export default HexGrid;
