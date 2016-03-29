@@ -67,7 +67,7 @@ class HexUtils {
 
   static pixelToHex(point, layout) {
     let M = layout.orientation;
-    let pt = new Point((p.x - layout.origin.x) / layout.size.x, (p.y - layout.origin.y) / layout.size.y);
+    let pt = new Point((point.x - layout.origin.x) / layout.size.x, (point.y - layout.origin.y) / layout.size.y);
     let q = M.b0 * pt.x + M.b1 * pt.y;
     let r = M.b2 * pt.x + M.b3 * pt.y;
     return new Hex(q, r, -q - r);

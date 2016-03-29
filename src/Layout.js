@@ -1,4 +1,3 @@
-import HexUtils from './HexUtils';
 import Orientation from './Orientation';
 import Point from './Point';
 

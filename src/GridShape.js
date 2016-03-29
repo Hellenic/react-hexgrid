@@ -17,13 +17,22 @@ class GridShape extends React.Component {
       path: { start: this.state.path.start, end: hex }
     })
   }
+  handleMouseLeave(event) {
+    this.setState({
+      path: { start: this.state.path.start, end: null }
+    })
+  }
 
   render() {
     return (
       <svg className="grid" width={this.props.width} height={this.props.height} viewBox="-50 -50 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
         {
           this.props.hexagons.map((hex, index) => {
-            return (<ShapeGroup key={index} hex={hex} layout={this.props.layout} onMouseEnter={(hex, e) => this.handleMouseEnter(hex, e)} />);
+            return (
+              <ShapeGroup key={index} hex={hex} layout={this.props.layout}
+                onMouseEnter={(hex, e) => this.handleMouseEnter(hex, e)}
+                onMouseLeave={(hex, e) => this.handleMouseLeave(hex, e)} />
+            );
           })
         }
         <Path {...this.state.path} layout={this.props.layout} />
