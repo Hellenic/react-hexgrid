@@ -1,6 +1,7 @@
 import React from 'react'
-const { number, object, bool, string } = React.PropTypes
-import GridShape from './GridShape'
+const { number, object, bool, string, array } = React.PropTypes
+import ShapeGroup from './ShapeGroup'
+import Path from './Path'
 import Layout from './Layout'
 import GridGenerator from './GridGenerator'
 
@@ -10,7 +11,8 @@ class HexGrid extends React.Component {
     super(props);
     this.state = {
       hexagons: [],
-      layout: null
+      layout: null,
+      path: {start: null, end: null}
     };
   }
 
@@ -28,7 +30,16 @@ class HexGrid extends React.Component {
 
   render() {
     return (
-      <GridShape width={this.props.width} height={this.props.height} hexagons={this.state.hexagons} layout={this.state.layout} />
+      <svg className="grid" width={this.props.width} height={this.props.height} viewBox="-50 -50 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        {
+          this.state.hexagons.map((hex, index) => {
+            return (
+              <ShapeGroup key={index} hex={hex} layout={this.state.layout} actions={this.props.actions} />
+            );
+          })
+        }
+        <Path {...this.state.path} layout={this.state.layout} />
+      </svg>
     );
   }
 
@@ -40,7 +51,9 @@ HexGrid.propTypes = {
   layoutSize: object.isRequired,
   flat: bool,
   origin: object,
-  map: string
+  actions: object.isRequired,
+  map: string,
+  mapProps: array
 };
 
 HexGrid.defaultProps = {

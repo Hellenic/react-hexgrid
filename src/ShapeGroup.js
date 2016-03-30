@@ -1,5 +1,5 @@
 import React from 'react';
-const { object, func } = React.PropTypes
+const { object } = React.PropTypes
 import HexUtils from './HexUtils';
 
 class ShapeGroup extends React.Component {
@@ -21,11 +21,16 @@ class ShapeGroup extends React.Component {
   render() {
     let hex = this.props.hex;
     let text = Object.keys(hex).map(key => { return hex[key] }).join(',');
+    let actions = this.props.actions;
 
     return (
-      <g className="shape-group" transform={this.translate()}
-        onMouseEnter={e => this.props.onMouseEnter(this.props.hex, e)}
-        onMouseLeave={e => this.props.onMouseLeave(this.props.hex, e)}
+      <g className="shape-group" transform={this.translate()} draggable="true"
+        onMouseEnter={e => actions.onMouseEnter(this.props.hex)}
+        onMouseLeave={e => actions.onMouseLeave(this.props.hex)}
+        onDragStart={e => actions.onDragStart(this.props.hex)}
+        onDragEnd={e => actions.onDragEnd(this.props.hex)}
+        onDragOver={e => actions.onDragOver(this.props.hex, e)}
+        onDrop={e => actions.onDrop(this.props.hex, e)}
         >
         <polygon points={this.getPoints(hex)} />
         <text x="0" y="0.3em" textAnchor="middle">{text}</text>
@@ -36,7 +41,7 @@ class ShapeGroup extends React.Component {
 ShapeGroup.propTypes = {
   hex: object.isRequired,
   layout: object.isRequired,
-  onMouseEnter: func
+  actions: object.isRequired
 };
 
 export default ShapeGroup;
