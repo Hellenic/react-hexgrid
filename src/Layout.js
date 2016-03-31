@@ -5,9 +5,9 @@ class Layout {
   static LAYOUT_FLAT = new Orientation(3.0 / 2.0, 0.0, Math.sqrt(3.0) / 2.0, Math.sqrt(3.0),2.0 / 3.0, 0.0, -1.0 / 3.0, Math.sqrt(3.0) / 3.0, 0.0);
   static LAYOUT_POINTY = new Orientation(Math.sqrt(3.0), Math.sqrt(3.0) / 2.0, 0.0, 3.0 / 2.0, Math.sqrt(3.0) / 3.0, -1.0 / 3.0, 0.0, 2.0 / 3.0, 0.5);
 
-  constructor(sizeW, sizeH, flat, origin) {
+  constructor(layout, flat, origin) {
     this.orientation = (flat) ? Layout.LAYOUT_FLAT : Layout.LAYOUT_POINTY;
-    this.size = new Point(sizeW, sizeH);
+    this.size = new Point(layout.width, layout.height);
     this.origin = origin || new Point(0, 0);
   }
 
