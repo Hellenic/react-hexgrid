@@ -1,6 +1,6 @@
 import React from 'react'
 const { number, object, bool, string, array } = React.PropTypes
-import ShapeGroup from './ShapeGroup'
+import HexShape from './HexShape'
 import Path from './Path'
 import Layout from './Layout'
 import GridGenerator from './GridGenerator'
@@ -20,7 +20,7 @@ class HexGrid extends React.Component {
         {
           this.props.hexagons.map((hex, index) => {
             return (
-              <ShapeGroup key={index} hex={hex} layout={this.props.layout} actions={this.props.actions} />
+              <HexShape key={index} hex={hex} layout={this.props.layout} actions={this.props.actions} />
             );
           })
         }
