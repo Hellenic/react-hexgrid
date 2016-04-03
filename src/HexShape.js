@@ -22,6 +22,10 @@ class HexShape extends React.Component {
     return `${hex.q},${hex.r},${hex.s}`;
   }
 
+  getStyles(hex) {
+    return (hex.props == {} || typeof(hex.props.image) === "undefined") ? {} : { fill: 'url(#'+ this.getID(hex) +')' };
+  }
+
   renderPattern(hex) {
     if (hex.props == {} || typeof(hex.props.image) === "undefined")
       return null;
@@ -29,8 +33,8 @@ class HexShape extends React.Component {
 
     return (
       <defs>
-        <pattern id={this.getID(hex)} patternUnits="userSpaceOnUse" x="-10" y="-10" width="20" height="20">
-          <image xlinkHref={hex.props.image} x="0" y="0" width="20" height="20" />
+        <pattern id={this.getID(hex)} patternUnits="userSpaceOnUse" x="-15" y="-10" width="30" height="20">
+          <image xlinkHref={hex.props.image} x="0" y="0" width="30" height="20" />
         </pattern>
       </defs>
     );
@@ -40,6 +44,7 @@ class HexShape extends React.Component {
     let hex = this.props.hex;
     let text = (hex.props.text) ? hex.props.text : this.getID(hex);
     let actions = this.props.actions;
+    let styles = this.getStyles(hex);
     return (
       <g className="shape-group" transform={this.translate()} draggable="true"
         onMouseEnter={e => actions.onMouseEnter(this.props.hex)}
@@ -50,7 +55,7 @@ class HexShape extends React.Component {
         onDrop={e => actions.onDrop(this.props.hex, e)}
         >
         {this.renderPattern(hex)}
-        <polygon points={this.getPoints(hex)} style={{ fill: 'url(#'+ this.getID(hex) +')' }} />
+        <polygon points={this.getPoints(hex)} style={styles} />
         <text x="0" y="0.3em" textAnchor="middle">{text}</text>
       </g>
     );
