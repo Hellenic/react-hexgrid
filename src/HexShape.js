@@ -30,7 +30,6 @@ class HexShape extends React.Component {
     if (hex.props == {} || typeof(hex.props.image) === "undefined")
       return null;
 
-
     return (
       <defs>
         <pattern id={this.getID(hex)} patternUnits="userSpaceOnUse" x="-15" y="-10" width="30" height="20">
@@ -47,10 +46,10 @@ class HexShape extends React.Component {
     let styles = this.getStyles(hex);
     return (
       <g className="shape-group" transform={this.translate()} draggable="true"
-        onMouseEnter={e => actions.onMouseEnter(this.props.hex)}
-        onMouseLeave={e => actions.onMouseLeave(this.props.hex)}
-        onDragStart={e => actions.onDragStart(this.props.hex)}
-        onDragEnd={e => actions.onDragEnd(this.props.hex)}
+        onMouseEnter={e => actions.onMouseEnter(this.props.hex, e)}
+        onMouseLeave={e => actions.onMouseLeave(this.props.hex, e)}
+        onDragStart={e => actions.onDragStart(this.props.hex, e)}
+        onDragEnd={e => actions.onDragEnd(this.props.hex, e)}
         onDragOver={e => actions.onDragOver(this.props.hex, e)}
         onDrop={e => actions.onDrop(this.props.hex, e)}
         >
