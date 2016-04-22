@@ -7,14 +7,14 @@ class HexPointers extends React.Component {
   createPointerPolygon(point1, point2) {
     let p1 = point1.split(',');
     let p2 = point2.split(',');
+    let a = { x: parseFloat(p1[0]), y: parseFloat(p1[1]) };
+    let b = { x: parseFloat(p2[0]), y: parseFloat(p2[1]) };
+    let c = { x: (a.x+b.x)/2, y: (a.y+b.y)/2 };
 
-    // Calculate the third point between those two
-    let x = (parseFloat(p1[0]) + parseFloat(p2[0])) / 2;
-    let y = (parseFloat(p1[1]) / 2) + parseFloat(p2[1]);
-    let p3 = [ x, y ];
+    let x = { x: (b.x+c.x)*0.7, y: (b.y+c.y)*0.7 };
 
     // Construct the points to polygon string
-    return [p1, p2, p3].map(p => p.join(',')).join(' ');
+    return [b, c, x].map(p => p.x +','+ p.y).join(' ');
   }
 
   render() {
