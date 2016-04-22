@@ -76,6 +76,10 @@ class HexUtils {
   static lerp(a, b, t) {
     return new Hex(a.q + (b.q - a.q) * t, a.r + (b.r - a.r) * t, a.s + (b.s - a.s) * t);
   }
+
+  static getID(hex) {
+    return `${hex.q},${hex.r},${hex.s}`;
+  }
 }
 
 export default HexUtils;

@@ -1,5 +1,7 @@
 import React from 'react';
 const { object } = React.PropTypes
+import HexPattern from './HexPattern';
+import HexPointers from './HexPointers';
 import HexUtils from './HexUtils';
 
 class HexShape extends React.Component {
@@ -18,32 +20,16 @@ class HexShape extends React.Component {
     return `translate(${pixel.x}, ${pixel.y})`;
   }
 
-  getID(hex) {
-    return `${hex.q},${hex.r},${hex.s}`;
-  }
-
   getStyles(hex) {
-    return (hex.props == {} || typeof(hex.props.image) === "undefined") ? {} : { fill: 'url(#'+ this.getID(hex) +')' };
-  }
-
-  renderPattern(hex) {
-    if (hex.props == {} || typeof(hex.props.image) === "undefined")
-      return null;
-
-    return (
-      <defs>
-        <pattern id={this.getID(hex)} patternUnits="userSpaceOnUse" x="-15" y="-10" width="30" height="20">
-          <image xlinkHref={hex.props.image} x="0" y="0" width="30" height="20" />
-        </pattern>
-      </defs>
-    );
+    return (hex.props == {} || typeof(hex.props.image) === "undefined") ? {} : { fill: 'url(#'+ HexUtils.getID(hex) +')' };
   }
 
   render() {
     let hex = this.props.hex;
-    let text = (hex.props.text) ? hex.props.text : this.getID(hex);
+    let text = (hex.props.text) ? hex.props.text : HexUtils.getID(hex);
     let actions = this.props.actions;
     let styles = this.getStyles(hex);
+    let points = this.getPoints(hex);
     return (
       <g className="shape-group" transform={this.translate()} draggable="true"
         onMouseEnter={e => actions.onMouseEnter(this.props.hex, e)}
@@ -53,8 +39,9 @@ class HexShape extends React.Component {
         onDragOver={e => actions.onDragOver(this.props.hex, e)}
         onDrop={e => actions.onDrop(this.props.hex, e)}
         >
-        {this.renderPattern(hex)}
-        <polygon points={this.getPoints(hex)} style={styles} />
+        <HexPattern hex={hex} />
+        <polygon points={points} style={styles} />
+        <HexPointers hex={hex} points={points} />
         <text x="0" y="0.3em" textAnchor="middle">{text}</text>
       </g>
     );
