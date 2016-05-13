@@ -59,9 +59,13 @@ class HexUtils {
   }
 
   static hexToPixel(hex, layout) {
+    let s = layout.spacing;
     let M = layout.orientation;
     let x = (M.f0 * hex.q + M.f1 * hex.r) * layout.size.x;
     let y = (M.f2 * hex.q + M.f3 * hex.r) * layout.size.y;
+    // Apply spacing
+    x = x * s;
+    y = y * s;
     return new Point(x + layout.origin.x, y + layout.origin.y);
   }
 

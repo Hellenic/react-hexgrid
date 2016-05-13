@@ -32,7 +32,7 @@ class HexGrid extends React.Component {
 }
 
 HexGrid.generate = (config, content) => {
-  let layout = new Layout(config.layout, config.flat, config.origin);
+  let layout = new Layout(config.layout, config.origin);
   let generator = GridGenerator.getGenerator(config.map);
   let hexagons = generator.apply(this, config.mapProps);
 

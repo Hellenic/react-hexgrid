@@ -5,10 +5,11 @@ class Layout {
   static LAYOUT_FLAT = new Orientation(3.0 / 2.0, 0.0, Math.sqrt(3.0) / 2.0, Math.sqrt(3.0),2.0 / 3.0, 0.0, -1.0 / 3.0, Math.sqrt(3.0) / 3.0, 0.0);
   static LAYOUT_POINTY = new Orientation(Math.sqrt(3.0), Math.sqrt(3.0) / 2.0, 0.0, 3.0 / 2.0, Math.sqrt(3.0) / 3.0, -1.0 / 3.0, 0.0, 2.0 / 3.0, 0.5);
 
-  constructor(layout, flat, origin) {
-    this.orientation = (flat) ? Layout.LAYOUT_FLAT : Layout.LAYOUT_POINTY;
+  constructor(layout, origin) {
+    this.orientation = (layout.flat) ? Layout.LAYOUT_FLAT : Layout.LAYOUT_POINTY;
     this.size = new Point(layout.width, layout.height);
     this.origin = origin || new Point(0, 0);
+    this.spacing = layout.spacing || 1;
   }
 
   getPointOffset(corner) {
@@ -18,7 +19,6 @@ class Layout {
 
   getPolygonPoints(hex) {
     let corners = [];
-    // let center = HexUtils.hexToPixel(hex, this);
     let center = new Point(0, 0);
 
     Array.from(new Array(6), (x, i) => {
