@@ -26,32 +26,37 @@ And include in your project:
 
 ```javascript
 import { HexGrid } from 'react-hexgrid';
-...
-class Board extends React.Component {
+import './App.css';
+
+class App extends Component {
   constructor(props) {
     super(props);
-    let grid = HexGrid.generate(config.board);
-    this.props.actions.createBoard(grid);
-  }
-
-  render() {
-    let { grid, actions } = this.props;
-    let config = {
+    let boardConfig = {
       width: 800, height: 800,
       layout: { width: 10, height: 10, flat: true, spacing: 1.1 },
       origin: { x: 0, y: 0 },
       map: 'hexagon',
       mapProps: [ 2 ]
     }
+    let grid = HexGrid.generate(boardConfig);
+    this.state = { grid, config: boardConfig };
+  }
+  render() {
+    let { grid, config } = this.state;
+
     return (
-      <HexGrid actions={actions} width={config.width} height={config.height}
-        hexagons={grid.hexagons} layout={grid.layout} />
-    )
+      <div className="App">
+        <HexGrid width={config.width} height={config.height} hexagons={grid.hexagons} layout={grid.layout} />
+      </div>
+    );
   }
 }
 ```
 Will look something like this (custom CSS applied):
 ![HexGrid image](https://raw.githubusercontent.com/Hellenic/react-hexgrid/master/HexGrid.png "HexGrid")
+
+More examples can be found from examples folder.
+Another project using this library (with actions): https://github.com/Hellenic/Cardeon/tree/master/game
 
 ## License
 
