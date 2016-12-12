@@ -1,5 +1,5 @@
 {
-  "name": "hexgrid-pathfinding",
+  "name": "hexgrid-grid-types",
   "version": "0.1.0",
   "devDependencies": {
     "react-scripts": "0.8.4"

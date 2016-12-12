@@ -19,10 +19,10 @@ With inspiration from
 Install it via npm:
 
 ```shell
-npm install react-hexgrid
+npm install --save react-hexgrid
 ```
 
-And include in your project:
+## Example
 
 ```javascript
 import { HexGrid } from 'react-hexgrid';
@@ -55,8 +55,44 @@ class App extends Component {
 Will look something like this (custom CSS applied):
 ![HexGrid image](https://raw.githubusercontent.com/Hellenic/react-hexgrid/master/HexGrid.png "HexGrid")
 
-More examples can be found from examples folder.
-Another project using this library (with actions): https://github.com/Hellenic/Cardeon/tree/master/game
+## Configurations
+
+```javascript
+{
+    width: 1000, // Width of the viewbox
+    height: 800, // Height of the viewbox
+    layout: { // Settings on how the tiles looks like
+        width: 8, // Width of a single tile
+        height: 8, // Height of a single tile
+        flat: false, // Defines is the tile pointy one or a flat one
+        spacing: 1.1 // Spacing between the tiles
+    },
+    origin: { // Defines the offset for the grid. Depending on the grid type, you might need to adjust this
+        x: 0,
+        y: 0
+    },
+    map: 'hexagon', // Grid type (see GridGenerator.js)
+                    // Possible values: hexagon, triangle, parallelogram, rectangle, orientedRectangle
+    mapProps: [ 3 ] // Properties for the grid type (depends on the grid type)  (see GridGenerator.js)
+                    // * 'hexagon': [ radius: Number ]
+                    // * 'triangle': [ size: Number ]
+                    // * 'parallelogram': [ q1: Number, q2: Number, r1: Number, r1: Number ]
+                    // * 'rectangle': [ width: Number, height: Number ]
+                    // * 'orientedRectangle': [ width: Number, height: Number ]
+}
+```
+
+## Exposed classes
+
+{ HexGrid, Hex, Layout, HexUtils }
+
+## Examples
+
+See examples folder.
+1. [basic-board](https://github.com/Hellenic/react-hexgrid/tree/master/examples/basic-board)- Just simple render of HexGrid
+1. [grid-types](https://github.com/Hellenic/react-hexgrid/tree/master/examples/grid-types) - All the different grid types and their configurations
+1. [tile-events](https://github.com/Hellenic/react-hexgrid/tree/master/examples/tile-events) - HexGrid with action functions passed down. Just logs to console when different events are triggered.
+1. [pathfinding](https://github.com/Hellenic/react-hexgrid/tree/master/examples/pathfinding) - HexGrid with pathfinding from center of the grid to mouse.
 
 ## License
 

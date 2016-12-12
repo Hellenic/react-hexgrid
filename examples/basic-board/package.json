@@ -7,7 +7,7 @@
   "dependencies": {
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "react-hexgrid": "^0.1.5"
+    "react-hexgrid": "0.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
