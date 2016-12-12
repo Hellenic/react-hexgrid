@@ -1,21 +1,18 @@
 {
-  "name": "hexgrid-basic-board",
+  "name": "hexgrid-pathfinding",
   "version": "0.1.0",
   "devDependencies": {
-    "react-scripts": "0.4.1"
+    "react-scripts": "0.8.4"
   },
   "dependencies": {
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "react-hexgrid": "^0.1.5"
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-hexgrid": "file:///home/hellenic/Development/react-hexgrid"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "./node_modules/react-scripts/config/eslint.js"
   }
 }
