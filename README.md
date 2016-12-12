@@ -89,6 +89,7 @@ Will look something like this (custom CSS applied):
 ## Examples
 
 See examples folder.
+
 1. [basic-board](https://github.com/Hellenic/react-hexgrid/tree/master/examples/basic-board)- Just simple render of HexGrid
 1. [grid-types](https://github.com/Hellenic/react-hexgrid/tree/master/examples/grid-types) - All the different grid types and their configurations
 1. [tile-events](https://github.com/Hellenic/react-hexgrid/tree/master/examples/tile-events) - HexGrid with action functions passed down. Just logs to console when different events are triggered.
