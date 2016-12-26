@@ -1,7 +1,5 @@
 # react-hexgrid
 
-![Build Status](https://img.shields.io/travis/Hellenic/react-hexgrid.svg)
-![Coverage](https://img.shields.io/coveralls/Hellenic/react-hexgrid.svg)
 ![Downloads](https://img.shields.io/npm/dm/react-hexgrid.svg)
 ![Downloads](https://img.shields.io/npm/dt/react-hexgrid.svg)
 ![npm version](https://img.shields.io/npm/v/react-hexgrid.svg)
@@ -9,10 +7,16 @@
 ![dev dependencies](https://img.shields.io/david/dev/Hellenic/react-hexgrid.svg)
 ![License](https://img.shields.io/npm/l/react-hexgrid.svg)
 
-Interactive hexagon grids with React bindings
+React component to create interactive hexagons grids. It uses SVG so it works fast and can be styled easily, and it is flexible to customize.
 
 With inspiration from
 [http://www.redblobgames.com/grids/hexagons](http://www.redblobgames.com/grids/hexagons).
+
+## Pre-requisites
+
+You should be familiar with Node + NPM, React and ES6 to use this library.
+Library also depends heavily on HTML5 features which all might not be supported by every browser yet.
+For example [Drag & Drop](http://caniuse.com/#search=drag%20and) is still quite heavily under work.
 
 ## Getting Started
 
@@ -65,7 +69,8 @@ Will look something like this (custom CSS applied):
         width: 8, // Width of a single tile
         height: 8, // Height of a single tile
         flat: false, // Defines is the tile pointy one or a flat one
-        spacing: 1.1 // Spacing between the tiles
+        spacing: 1.1, // Spacing between the tiles
+        name: 'unique-name' // Used to further identify the grid, needed when using multiple instances
     },
     origin: { // Defines the offset for the grid. Depending on the grid type, you might need to adjust this
         x: 0,
@@ -119,6 +124,12 @@ See examples folder.
 1. [tile-events](https://github.com/Hellenic/react-hexgrid/tree/master/examples/tile-events) - HexGrid with action functions passed down. Just logs to console when different events are triggered.
 1. [pathfinding](https://github.com/Hellenic/react-hexgrid/tree/master/examples/pathfinding) - HexGrid with pathfinding from center of the grid to mouse.
 1. [custom-grid](https://github.com/Hellenic/react-hexgrid/tree/master/examples/custom-grid) - Custom generated Hexagon grid and tile content
+
+## Testing changes locally
+You can test changes by importing the library directly from a folder:
+
+1. Do changes to the library
+2. On your test project: `npm install /path/to/your/react-hexgrid/ --save`
 
 ## License
 

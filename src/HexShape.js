@@ -1,7 +1,9 @@
 import React from 'react';
-const { object } = React.PropTypes
+const { object } = React.PropTypes;
 import HexPattern from './HexPattern';
+import HexPolygon from './HexPolygon';
 import HexPointers from './HexPointers';
+import HexText from './HexText';
 import HexUtils from './HexUtils';
 
 class HexShape extends React.Component {
@@ -20,16 +22,25 @@ class HexShape extends React.Component {
     return `translate(${pixel.x}, ${pixel.y})`;
   }
 
-  getStyles(hex) {
-    return (hex.props == {} || typeof(hex.props.image) === "undefined") ? {} : { fill: 'url(#'+ HexUtils.getID(hex) +')' };
+  getActions() {
+    const DEFAULT_ACTIONS = {
+      onMouseEnter: () => {},
+      onMouseLeave: () => {},
+      onDragStart: () => {},
+      onDragEnd: () => {},
+      onDragOver: () => {},
+      onDrop: () => {},
+      onClick: () => {}
+    };
+    return Object.assign({}, DEFAULT_ACTIONS, this.props.actions);
   }
 
   render() {
-    let hex = this.props.hex;
-    let text = (hex.props.text) ? hex.props.text : HexUtils.getID(hex);
-    let actions = this.props.actions;
-    let styles = this.getStyles(hex);
-    let points = this.getPoints(hex);
+    const { hex, layout } = this.props;
+    const actions = this.getActions();
+    const hexId = layout.name + HexUtils.getID(hex);
+    const text = (hex.props.text) ? hex.props.text : HexUtils.getID(hex);
+    const points = this.getPoints(hex);
     return (
       <g className="shape-group" transform={this.translate()} draggable="true"
         onMouseEnter={e => actions.onMouseEnter(this.props.hex, e)}
@@ -38,11 +49,12 @@ class HexShape extends React.Component {
         onDragEnd={e => actions.onDragEnd(this.props.hex, e)}
         onDragOver={e => actions.onDragOver(this.props.hex, e)}
         onDrop={e => actions.onDrop(this.props.hex, e)}
+        onClick={e => actions.onClick(this.props.hex, e)}
         >
-        <HexPattern hex={hex} />
-        <polygon points={points} style={styles} />
+        <HexPattern id={hexId} hex={hex} layout={layout} />
+        <HexPolygon id={hexId} hex={hex} points={points} />
         <HexPointers hex={hex} points={points} />
-        <text x="0" y="0.3em" textAnchor="middle">{text}</text>
+        <HexText text={text} />
       </g>
     );
   }

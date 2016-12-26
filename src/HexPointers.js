@@ -2,6 +2,7 @@ import React from 'react';
 const { object, string } = React.PropTypes
 import HexUtils from './HexUtils';
 
+// This class is heavy WIP, experimental stuff
 class HexPointers extends React.Component {
 
   createPointerPolygon(corner1, corner2) {

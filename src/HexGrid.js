@@ -43,7 +43,10 @@ HexGrid.propTypes = {
 HexGrid.defaultProps = {
   width: 800,
   height: 600,
-  path: { start: null, end: null }
+  path: { start: null, end: null },
+  actions: {},
+  draggable: false,
+  droppable: false
 }
 
 export default HexGrid;
