@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "compile": "babel src/ --out-dir lib",
+    "bundle": "babel src/ --out-file dist/react-hexgrid.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prepublish": "npm run compile",
     "test": "babel-node ./node_modules/.bin/isparta cover _mocha"
@@ -25,5 +26,9 @@
     "isparta": "*",
     "mocha": "*",
     "sinon": "*"
-  }
+  },
+  "files": [
+    "lib/",
+    "dist/"
+  ]
 }

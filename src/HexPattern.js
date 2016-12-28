@@ -3,7 +3,6 @@ const { object, string } = React.PropTypes
 import HexUtils from './HexUtils';
 
 class HexPattern extends React.Component {
-
   render() {
     const { hex, id, layout } = this.props;
     if (hex.props == {} || typeof(hex.props.image) === "undefined") {
