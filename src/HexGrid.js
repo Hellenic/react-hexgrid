@@ -1,10 +1,10 @@
-import React from 'react'
-import Hex from './Hex'
-const { number, object, bool, string, array } = React.PropTypes
-import HexShape from './HexShape'
-import Path from './Path'
-import Layout from './Layout'
-import GridGenerator from './GridGenerator'
+import React from 'react';
+import Hex from './Hex';
+const { number, object, bool, string, array } = React.PropTypes;
+import HexShape from './HexShape';
+import Path from './Path';
+import Layout from './Layout';
+import GridGenerator from './GridGenerator';
 
 class HexGrid extends React.Component {
   render() {

@@ -35,6 +35,7 @@ class HexUtils {
   static direction(direction) {
     return HexUtils.DIRECTIONS[(6 + (direction % 6)) % 6];
   }
+
   static neighbour(hex, direction) {
     return HexUtils.add(hex, HexUtils.direction(direction));
   }

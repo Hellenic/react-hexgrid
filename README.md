@@ -119,11 +119,16 @@ import { HexGrid, Layout, HexUtils, Hex } from 'react-hexgrid';
 
 See examples folder.
 
+### Basics
+
 1. [basic-board](https://github.com/Hellenic/react-hexgrid/tree/master/examples/basic-board)- Just simple render of HexGrid
 1. [grid-types](https://github.com/Hellenic/react-hexgrid/tree/master/examples/grid-types) - All the different grid types and their configurations
 1. [tile-events](https://github.com/Hellenic/react-hexgrid/tree/master/examples/tile-events) - HexGrid with action functions passed down. Just logs to console when different events are triggered.
-1. [pathfinding](https://github.com/Hellenic/react-hexgrid/tree/master/examples/pathfinding) - HexGrid with pathfinding from center of the grid to mouse.
 1. [custom-grid](https://github.com/Hellenic/react-hexgrid/tree/master/examples/custom-grid) - Custom generated Hexagon grid and tile content
+
+## Advanced
+
+1. [pathfinding](https://github.com/Hellenic/react-hexgrid/tree/master/examples/pathfinding) - HexGrid with pathfinding between tiles and highlighting certain hexagons
 
 ## Testing changes locally
 You can test changes by importing the library directly from a folder:

@@ -1,24 +1,50 @@
-.App {
-  text-align: center;
+svg {
+
+}
+svg g {
+  fill: LightSteelBlue;
+  fill-opacity: 0.6;
+}
+svg g:hover {
+  fill: CadetBlue;
+  fill-opacity: 1;
+}
+svg g:hover text {
+  fill-opacity: 1;
+}
+svg g.q {
+  fill: Red;
+  fill-opacity: 0.4;
+}
+svg g.r {
+  fill: Green;
+  fill-opacity: 0.4;
+}
+svg g.s {
+  fill: Blue;
+  fill-opacity: 0.4;
+}
+svg g.active {
+  fill: Coral;
+  fill-opacity: 0.9;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+svg g polygon {
+  stroke: Indigo;
+  stroke-width: 0.2;
+  transition: fill-opacity .5s;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+svg g text {
+  font-size: 0.15em;
+  fill: Indigo;
+  fill-opacity: 0.4;
+  transition: fill-opacity .5s;
 }
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+svg path {
+  fill: none;
+  stroke: Navy;
+  stroke-width: 0.2em;
+  stroke-opacity: 0.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }

@@ -42,7 +42,7 @@ class HexShape extends React.Component {
     const text = (hex.props.text) ? hex.props.text : HexUtils.getID(hex);
     const points = this.getPoints(hex);
     return (
-      <g className="shape-group" transform={this.translate()} draggable="true"
+      <g className={'shape-group ' + (hex.props.className || '')} transform={this.translate()} draggable="true"
         onMouseEnter={e => actions.onMouseEnter(this.props.hex, e)}
         onMouseLeave={e => actions.onMouseLeave(this.props.hex, e)}
         onDragStart={e => actions.onDragStart(this.props.hex, e)}
