@@ -1,0 +1,33 @@
+.game svg {
+
+}
+.game svg g {
+  fill: LightSteelBlue;
+  fill-opacity: 0.6;
+}
+.game svg g:hover {
+  fill-opacity: 1;
+}
+.game svg g:hover text {
+  fill-opacity: 1;
+}
+
+.game svg g polygon {
+  stroke: Indigo;
+  stroke-width: 0.2;
+  transition: fill-opacity .2s;
+}
+.game svg g text {
+  font-size: 0.3em;
+  fill: Indigo;
+  fill-opacity: 0.4;
+  transition: fill-opacity .2s;
+}
+.game svg path {
+  fill: none;
+  stroke: hsl(60, 20%, 70%);
+  stroke-width: 0.4em;
+  stroke-opacity: 0.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

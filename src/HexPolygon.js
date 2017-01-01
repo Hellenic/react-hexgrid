@@ -3,16 +3,11 @@ const { object, string } = React.PropTypes
 import HexUtils from './HexUtils';
 
 class HexPolygon extends React.Component {
-  getStyles(hex, id) {
-    return (hex.props == {} || typeof(hex.props.image) === "undefined") ? {} : { fill: 'url(#'+ id +')' };
-  }
-
   render() {
-    const { hex, id, points } = this.props;
-    const styles = this.getStyles(hex, id);
+    const { id, points } = this.props;
 
     return (
-      <polygon points={points} style={styles} />
+      <polygon points={points} fill={`url(#${id})`}/>
     );
   }
 }

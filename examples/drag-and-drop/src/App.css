@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0em 1em;
+  font-family: sans-serif;
+  background: #f2f3f7;
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -moz-user-drag: element;
+  -webkit-user-drag: element;
+  -khtml-user-drag: element;
+  user-drag: element;
+}
+
+.game {
+  position: absolute;
+  top: 0;
+  left: 1em;
+  border-right: 1px solid grey;
+  width: 49%;
+}
+
+.tiles {
+  position: absolute;
+  top: 0;
+  right: 1em;
+  width: 49%;
+}
