@@ -40,13 +40,13 @@ class HexUtils {
   }
 
   static round(hex) {
-    var rq = Math.round(hex.q)
-    var rr = Math.round(hex.r)
-    var rs = Math.round(hex.s)
+    let rq = Math.round(hex.q)
+    let rr = Math.round(hex.r)
+    let rs = Math.round(hex.s)
 
-    var qDiff = Math.abs(rq - hex.q)
-    var rDiff = Math.abs(rr - hex.r)
-    var sDiff = Math.abs(rs - hex.s)
+    const qDiff = Math.abs(rq - hex.q)
+    const rDiff = Math.abs(rr - hex.r)
+    const sDiff = Math.abs(rs - hex.s)
 
     if (qDiff > rDiff && qDiff > rDiff)
         rq = -rr-rs
@@ -59,8 +59,8 @@ class HexUtils {
   }
 
   static hexToPixel(hex, layout) {
-    let s = layout.spacing;
-    let M = layout.orientation;
+    const s = layout.spacing;
+    const M = layout.orientation;
     let x = (M.f0 * hex.q + M.f1 * hex.r) * layout.size.x;
     let y = (M.f2 * hex.q + M.f3 * hex.r) * layout.size.y;
     // Apply spacing
@@ -70,10 +70,10 @@ class HexUtils {
   }
 
   static pixelToHex(point, layout) {
-    let M = layout.orientation;
-    let pt = new Point((point.x - layout.origin.x) / layout.size.x, (point.y - layout.origin.y) / layout.size.y);
-    let q = M.b0 * pt.x + M.b1 * pt.y;
-    let r = M.b2 * pt.x + M.b3 * pt.y;
+    const M = layout.orientation;
+    const pt = new Point((point.x - layout.origin.x) / layout.size.x, (point.y - layout.origin.y) / layout.size.y);
+    const q = M.b0 * pt.x + M.b1 * pt.y;
+    const r = M.b2 * pt.x + M.b3 * pt.y;
     return new Hex(q, r, -q - r);
   }
 
