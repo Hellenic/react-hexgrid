@@ -8,16 +8,17 @@ import GridGenerator from './GridGenerator';
 
 class HexGrid extends React.Component {
   render() {
+    const { width, height, viewBox, hexagons, layout, actions, path } = this.props
     return (
-      <svg className="grid" width={this.props.width} height={this.props.height} viewBox="-50 -50 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <svg className="grid" width={width} height={height} viewBox={viewBox} version="1.1" xmlns="http://www.w3.org/2000/svg">
         {
-          this.props.hexagons.map((hex, index) => {
+          hexagons.map((hex, index) => {
             return (
-              <HexShape key={index} hex={hex} layout={this.props.layout} actions={this.props.actions} />
+              <HexShape key={index} hex={hex} layout={layout} actions={actions} />
             );
           })
         }
-        <Path {...this.props.path} layout={this.props.layout} />
+        {!!path && <Path {...path} layout={layout} />}
       </svg>
     );
   }
@@ -37,6 +38,7 @@ HexGrid.propTypes = {
   actions: object.isRequired,
   layout: object.isRequired,
   hexagons: array.isRequired,
+  viewBox: string,
   path: object
 };
 
@@ -46,7 +48,8 @@ HexGrid.defaultProps = {
   path: { start: null, end: null },
   actions: {},
   draggable: false,
-  droppable: false
+  droppable: false,
+  viewBox: "-50 -50 100 100"
 }
 
 export default HexGrid;

@@ -1,24 +1,23 @@
 import React from 'react';
-const { object } = React.PropTypes;
+import classNames from 'classnames';
 import HexPattern from './HexPattern';
 import HexPolygon from './HexPolygon';
 import HexPointers from './HexPointers';
 import HexText from './HexText';
 import HexUtils from './HexUtils';
 
+const { object } = React.PropTypes;
+
 class HexShape extends React.Component {
 
   getPoints(hex) {
-    let points = this.props.layout.getPolygonPoints(hex)
-
-    return points.map(point => {
-      return point.x + ',' + point.y;
-    }).join(' ');
+    const points = this.props.layout.getPolygonPoints(hex);
+    return points.map(point => `${point.x},${point.y}`).join(' ');
   }
 
   translate() {
-    let hex = this.props.hex;
-    let pixel = HexUtils.hexToPixel(hex, this.props.layout);
+    const { hex, layout } = this.props;
+    const pixel = HexUtils.hexToPixel(hex, layout);
     return `translate(${pixel.x}, ${pixel.y})`;
   }
 
@@ -41,8 +40,13 @@ class HexShape extends React.Component {
     const hexId = layout.name + HexUtils.getID(hex);
     const text = (hex.props.text) ? hex.props.text : HexUtils.getID(hex);
     const points = this.getPoints(hex);
+    const { className } = hex.props;
+
     return (
-      <g className={'shape-group ' + (hex.props.className || '')} transform={this.translate()} draggable="true"
+      <g
+        className={classNames('shape-group', className)}
+        transform={this.translate()}
+        draggable="true"
         onMouseEnter={e => actions.onMouseEnter(this.props.hex, e)}
         onMouseLeave={e => actions.onMouseLeave(this.props.hex, e)}
         onDragStart={e => actions.onDragStart(this.props.hex, e)}
@@ -50,7 +54,7 @@ class HexShape extends React.Component {
         onDragOver={e => actions.onDragOver(this.props.hex, e)}
         onDrop={e => actions.onDrop(this.props.hex, e)}
         onClick={e => actions.onClick(this.props.hex, e)}
-        >
+      >
         <HexPattern id={hexId} hex={hex} layout={layout} />
         <HexPolygon id={hexId} hex={hex} points={points} />
         <HexPointers hex={hex} points={points} />
