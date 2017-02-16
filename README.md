@@ -130,6 +130,7 @@ See examples folder.
 ## Advanced
 
 1. [pathfinding](https://github.com/Hellenic/react-hexgrid/tree/master/examples/pathfinding) - HexGrid with pathfinding between tiles and highlighting certain hexagons
+1. [drag & drop](https://github.com/Hellenic/react-hexgrid/tree/master/examples/drag-and-drop) - 2 HexGrids with possibility to drag hexagons from grid to another
 
 ## Testing changes locally
 You can test changes by importing the library directly from a folder:
