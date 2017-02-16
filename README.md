@@ -137,6 +137,8 @@ You can test changes by importing the library directly from a folder:
 
 1. Do changes to the library
 2. On your test project: `npm install /path/to/your/react-hexgrid/ --save`
+3. For easy development, you can `npm link react-hexgrid` on your application
+4. And finally `npm run compile` the react-hexgrid to have the changes in your application
 
 ## License
 

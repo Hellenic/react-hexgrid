@@ -40,7 +40,7 @@ class HexShape extends React.Component {
     const hexId = layout.name + HexUtils.getID(hex);
     const text = (hex.props.text) ? hex.props.text : HexUtils.getID(hex);
     const points = this.getPoints(hex);
-    const { className } = hex.props;
+    const { className, useFill } = hex.props;
 
     return (
       <g
@@ -56,7 +56,7 @@ class HexShape extends React.Component {
         onClick={e => actions.onClick(this.props.hex, e)}
       >
         <HexPattern id={hexId} hex={hex} layout={layout} />
-        <HexPolygon id={hexId} hex={hex} points={points} />
+        <HexPolygon id={hexId} hex={hex} points={points} useFill={useFill} />
         <HexPointers hex={hex} points={points} />
         <HexText text={text} />
       </g>

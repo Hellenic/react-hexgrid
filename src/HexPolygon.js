@@ -1,13 +1,13 @@
 import React from 'react';
-const { object, string } = React.PropTypes
+const { object, string, bool } = React.PropTypes
 import HexUtils from './HexUtils';
 
 class HexPolygon extends React.Component {
   render() {
-    const { id, points } = this.props;
-
+    const { id, points, useFill } = this.props;
+    const fill = (useFill) ? `url(#${id})` : null;
     return (
-      <polygon points={points} fill={`url(#${id})`}/>
+      <polygon points={points} fill={fill} />
     );
   }
 }
@@ -15,7 +15,8 @@ class HexPolygon extends React.Component {
 HexPolygon.propTypes = {
   hex: object.isRequired,
   id: string.isRequired,
-  points: string.isRequired
+  points: string.isRequired,
+  useFill: bool
 };
 
 export default HexPolygon;
