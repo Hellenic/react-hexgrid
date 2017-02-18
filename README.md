@@ -7,15 +7,19 @@
 ![dev dependencies](https://img.shields.io/david/dev/Hellenic/react-hexgrid.svg)
 ![License](https://img.shields.io/npm/l/react-hexgrid.svg)
 
-React component to create interactive hexagons grids. It uses SVG so it works fast and can be styled easily, and it is flexible to customize.
+React components to build interactive hexagons grids. It uses SVG which makes it fast, scalable and easy to apply custom styles. You can easily customize the layout of the grid just by configuration.
 
-With inspiration from
+Component-based approach allows you to customize the grid shape to suit your needs or even apply your own components / SVG elements to it. You can use pre-defined generator to create certain shape grid or you may build totally your own grid to the shape you wish, while still keeping it under control and interactive.
+
+You could easily use this library to build (just to name a few) a nice portfolio, image library or even a game!
+
+> With inspiration from
 [http://www.redblobgames.com/grids/hexagons](http://www.redblobgames.com/grids/hexagons).
 
 ## Pre-requisites
 
 You should be familiar with Node + NPM, React and ES6 to use this library.
-Library also depends heavily on HTML5 features which all might not be supported by every browser yet.
+Library also depends heavily on HTML5 features (mostly SVG) which all might not be supported by every browser yet.
 For example [Drag & Drop](http://caniuse.com/#search=drag%20and) is still quite heavily under work.
 
 ## Getting Started
@@ -28,93 +32,51 @@ npm install --save react-hexgrid
 
 ## Example
 
-```javascript
+```html
 import { HexGrid } from 'react-hexgrid';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    let boardConfig = {
-      width: 800, height: 800,
-      layout: { width: 10, height: 10, flat: true, spacing: 1.1 },
-      origin: { x: 0, y: 0 },
-      map: 'hexagon',
-      mapProps: [ 2 ]
-    }
-    let grid = HexGrid.generate(boardConfig);
-    this.state = { grid, config: boardConfig };
-  }
   render() {
-    let { grid, config } = this.state;
-
     return (
       <div className="App">
-        <HexGrid width={config.width} height={config.height} hexagons={grid.hexagons} layout={grid.layout} />
+        <HexGrid width={1200} height={800} viewBox="-50 -50 100 100">
+          {/* Main grid with bit hexagons, all manual */}
+          <Layout size={{ x: 10, y: 10 }} flat={true} spacing={1.1} origin={{ x: 0, y: 0 }}>
+            <Hexagon q={0} r={0} s={0} />
+            {/* Using pattern (defined below) to fill the hexagon */}
+            <Hexagon q={0} r={-1} s={1} fill="pat-1" />
+            <Hexagon q={0} r={1} s={-1} />
+            <Hexagon q={1} r={-1} s={0}>
+              <Text>1, -1, 0</Text>
+            </Hexagon>
+            <Hexagon q={1} r={0} s={-1}>
+              <Text>1, 0, -1</Text>
+            </Hexagon>
+            {/* Pattern and text */}
+            <Hexagon q={-1} r={1} s={0} fill="pat-2">
+              <Text>-1, 1, 0</Text>
+            </Hexagon>
+            <Hexagon q={-1} r={0} s={1} />
+            <Hexagon q={-2} r={0} s={1} />
+            <Path start={new Hex(0, 0, 0)} end={new Hex(-2, 0, 1)} />
+          </Layout>
+        </HexGrid>
       </div>
     );
   }
 }
 ```
 Will look something like this (custom CSS applied):
-![HexGrid image](https://raw.githubusercontent.com/Hellenic/react-hexgrid/master/HexGrid.png "HexGrid")
-
-## Configurations
-
-```javascript
-{
-    width: 1000, // Width of the viewbox
-    height: 800, // Height of the viewbox
-    layout: { // Settings on how the tiles looks like
-        width: 8, // Width of a single tile
-        height: 8, // Height of a single tile
-        flat: false, // Defines is the tile pointy one or a flat one
-        spacing: 1.1, // Spacing between the tiles
-        name: 'unique-name' // Used to further identify the grid, needed when using multiple instances
-    },
-    origin: { // Defines the offset for the grid. Depending on the grid type, you might need to adjust this
-        x: 0,
-        y: 0
-    },
-    map: 'hexagon', // Grid type (see GridGenerator.js)
-                    // Possible values: hexagon, triangle, parallelogram, rectangle, orientedRectangle
-    mapProps: [ 3 ] // Properties for the grid type (depends on the grid type)  (see GridGenerator.js)
-                    // * 'hexagon': [ radius: Number ]
-                    // * 'triangle': [ size: Number ]
-                    // * 'parallelogram': [ q1: Number, q2: Number, r1: Number, r1: Number ]
-                    // * 'rectangle': [ width: Number, height: Number ]
-                    // * 'orientedRectangle': [ width: Number, height: Number ]
-}
-```
+![HexGrid image](https://raw.githubusercontent.com/Hellenic/react-hexgrid/master/react-hexgrid.png "HexGrid")
 
 ## API reference
 ```javascript
-// Available classes
-import { HexGrid, Layout, HexUtils, Hex } from 'react-hexgrid';
-
-// Using HexGrid component
-<HexGrid
-  width={1000} // Width of the viewbox
-  height={800}
-  path={{ start: new Hex(0,0,0), end: new Hex(3, -3, 0) }} // Path drawn from between the two points (WIP)
-  actions={} // Action callbacks. See example for all available actions.
-  hexagons={[]} // Hexagons, e.g. generated by HexGrid.generate or manually created list
-  layout={layoutConfig} /> // Layout configuration, see configurations above. Affects how tiles get rendered.
-  viewBox='-50 -50 100 100' // this is the default but you can override it if you wish.
+// Available components
+import { GridGenerator, HexGrid, HexUtils, Layout, Path, Pattern, Hexagon, Text, Hex } from 'react-hexgrid';
 ```
 
-* [HexGrid.js](https://github.com/Hellenic/react-hexgrid/tree/master/src/HexGrid.js), Main React component
-  * HexGrid.generate(config)
-    * Generates the hexagons. See configuration above.
-* [Layout.js](https://github.com/Hellenic/react-hexgrid/tree/master/src/Layout.js), controls the look and feel
-  * constructor(layout, origin)
-    * layout : Object { width: Number, height: Number, flat: Boolean, spacing: Number })
-    * origin : Object [optional] { x: Number, y: Number }
-* [HexUtils.js](https://github.com/Hellenic/react-hexgrid/tree/master/src/HexUtils.js), Static methods for calculating distance, checking neighboring tiles, etc.
-* [Hex.js](https://github.com/Hellenic/react-hexgrid/tree/master/src/Hex.js)
-  * contructor(q, r, s, props = {})
-    * q, r, s : Number, coordinates
-    * props : Object [optional] { text: String, image: String, className: String } The `className` can be used to style individual hexagons via CSS.
+TODO
 
 ## Examples
 
@@ -122,15 +84,7 @@ See examples folder.
 
 ### Basics
 
-1. [basic-board](https://github.com/Hellenic/react-hexgrid/tree/master/examples/basic-board)- Just simple render of HexGrid
-1. [grid-types](https://github.com/Hellenic/react-hexgrid/tree/master/examples/grid-types) - All the different grid types and their configurations
-1. [tile-events](https://github.com/Hellenic/react-hexgrid/tree/master/examples/tile-events) - HexGrid with action functions passed down. Just logs to console when different events are triggered.
-1. [custom-grid](https://github.com/Hellenic/react-hexgrid/tree/master/examples/custom-grid) - Custom generated Hexagon grid and tile content
-
-## Advanced
-
-1. [pathfinding](https://github.com/Hellenic/react-hexgrid/tree/master/examples/pathfinding) - HexGrid with pathfinding between tiles and highlighting certain hexagons
-1. [drag & drop](https://github.com/Hellenic/react-hexgrid/tree/master/examples/drag-and-drop) - 2 HexGrids with possibility to drag hexagons from grid to another
+1. [react-hexgrid](https://github.com/Hellenic/react-hexgrid/tree/master/examples/hexgrid-v1) - Basic usage of react-hexgrid
 
 ## Testing changes locally
 You can test changes by importing the library directly from a folder:
