@@ -19,8 +19,7 @@ class Tiles extends Component {
         props: {
           id: `Cat #${index}`,
           text: `Cat #${index}`,
-          image: `http://lorempixel.com/400/400/cats/${index%10}/`,
-          useFill: true
+          image: `http://lorempixel.com/400/400/cats/${index%10}/`
         }
       });
     })
