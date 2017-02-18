@@ -2,7 +2,9 @@ body {
   margin: 0;
   padding: 1em;
   font-family: sans-serif;
-  background: #f0f0f0;
+  background: #133b43;
+  color: white;
+  text-align: center;
 }
 
 [draggable] {
@@ -14,44 +16,4 @@ body {
   -webkit-user-drag: element;
   -khtml-user-drag: element;
   user-drag: element;
-}
-
-@keyframes spin { 100% { transform: rotate(360deg); } }
-
-svg {
-
-}
-svg g {
-  fill: #3F51B5;
-  fill-opacity: 0.4;
-}
-svg g:hover {
-  fill-opacity: 1;
-}
-svg g:hover text {
-  fill-opacity: 1;
-  fill: midnightblue;
-}
-svg g:hover polygon {
-  animation: spin 4s linear infinite;
-}
-
-svg g polygon {
-  stroke: steelblue;
-  stroke-width: 0.2;
-  transition: fill-opacity .2s;
-}
-svg g text {
-  font-size: 0.3em;
-  fill: #000;
-  fill-opacity: 0.4;
-  transition: fill-opacity .2s;
-}
-svg path {
-  fill: none;
-  stroke: hsl(60, 20%, 70%);
-  stroke-width: 0.4em;
-  stroke-opacity: 0.3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }

@@ -1,49 +1,49 @@
 import React, { Component } from 'react';
-import { HexGrid, Layout, Hex } from 'react-hexgrid';
+import { GridGenerator, HexGrid, Layout, Path, Hexagon, Text, Pattern, Hex } from 'react-hexgrid';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      hexagons: [],
-      layout: {}
-    };
-  }
-
-  generateHexagons(mapWidth, mapHeight) {
-    let hexas = [];
-    for (let q = 0; q < mapWidth; q++) {
-      let offset = Math.floor(q/2); // or q>>1
-      for (let r = -offset; r < mapHeight - offset; r++) {
-        // Generate some random stuff for hexagons
-        const text = Math.random().toString(36).substring(7, 10);
-        const image = `http://lorempixel.com/g/100/100/cats/${Math.round(Math.random()*q) % 10}`;
-        // And Hexagon itself
-        const newHexagon = new Hex(q, r, -q-r, { text, image });
-        hexas.push(newHexagon);
-      }
-    }
-
-    // Some random filter to make grid look un-even
-    return hexas.filter(hexa => !!Math.round(Math.random()));
-  }
-
-  componentWillMount() {
-    const hexagons = this.generateHexagons(8, 6);
-    const layout = new Layout({ width: 8, height: 8, flat: true, spacing: 1.02 }, { x: -50, y: -40 });
-
-    this.setState({ hexagons, layout });
-  }
-
   render() {
-    let { hexagons, layout } = this.state;
+    const hexagonSize = { x: 10, y: 10 };
+    const moreHexas = GridGenerator.parallelogram(-2, 2, -2, 2);
     return (
       <div className="App">
-        <h2>Custom generated hexagons</h2>
-        <p>Generating custom maps of hexagons instead of using premade ones with HexGrid.generate().</p>
-        <p>Generation is random, refresh the page to see it change. Also some awesome CSS for hover effects.</p>
-        <HexGrid width={1000} height={800} hexagons={hexagons} layout={layout} />
+        <h2>React Hexgrid v1</h2>
+        <p>Constructing Hexgrid with component-based approach with custom SVG elements.</p>
+        <HexGrid width={1200} height={800} viewBox="-50 -50 100 100">
+          {/* Main grid with bit hexagons, all manual */}
+          <Layout size={hexagonSize} flat={true} spacing={1.1} origin={{ x: 0, y: 0 }}>
+            <Hexagon q={0} r={0} s={0} />
+            {/* Using pattern (defined below) to fill the hexagon */}
+            <Hexagon q={0} r={-1} s={1} fill="pat-1" />
+            <Hexagon q={0} r={1} s={-1} />
+            <Hexagon q={1} r={-1} s={0}>
+              <Text>1, -1, 0</Text>
+            </Hexagon>
+            <Hexagon q={1} r={0} s={-1}>
+              <Text>1, 0, -1</Text>
+            </Hexagon>
+            {/* Pattern and text */}
+            <Hexagon q={-1} r={1} s={0} fill="pat-2">
+              <Text>-1, 1, 0</Text>
+            </Hexagon>
+            <Hexagon q={-1} r={0} s={1} />
+            <Hexagon q={-2} r={0} s={1} />
+            <Path start={new Hex(0, 0, 0)} end={new Hex(-2, 0, 1)} />
+          </Layout>
+          {/* Additional small grid, hexagons generated with generator */}
+          <Layout size={{ x: 2, y: 2 }} origin={{ x: 50, y: -30 }}>
+            { moreHexas.map((hex, i) => <Hexagon key={i} q={hex.q} r={hex.r} s={hex.s} />) }
+          </Layout>
+          {/* You can define multiple patterns and switch between them with "fill" prop on Hexagon */}
+          <Pattern id="pat-1" link="http://lorempixel.com/400/400/cats/1/" size={hexagonSize} />
+          <Pattern id="pat-2" link="http://lorempixel.com/400/400/cats/2/" size={hexagonSize} />
+          <g>
+            <circle cx="50" cy="0" r="10" />
+            <circle cx="50" cy="10" r="8" />
+            <circle cx="45" cy="20" r="6" />
+          </g>
+        </HexGrid>
       </div>
     );
   }
