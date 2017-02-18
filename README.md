@@ -68,7 +68,7 @@ class App extends Component {
 }
 ```
 Will look something like this (custom CSS applied):
-![HexGrid image](https://raw.githubusercontent.com/Hellenic/react-hexgrid/master/react-hexgrid.png "HexGrid")
+![HexGrid image](https://raw.githubusercontent.com/Hellenic/react-hexgrid/v1/react-hexgrid.png "HexGrid")
 
 ## API reference
 ```javascript
