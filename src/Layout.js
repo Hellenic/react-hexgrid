@@ -42,7 +42,7 @@ class Layout extends Component {
   }
 
   render() {
-    const { children, flat, ...rest } = this.props;
+    const { children, flat, className, ...rest } = this.props;
     const orientation = (flat) ? Layout.LAYOUT_FLAT : Layout.LAYOUT_POINTY;
     const cornerCoords = this.calculateCoordinates(orientation);
     const points = cornerCoords.map(point => `${point.x},${point.y}`).join(' ');
@@ -56,7 +56,7 @@ class Layout extends Component {
       return React.cloneElement(child, childProps);
     });
     return (
-      <g>
+      <g className={className}>
         {childrenWithProps}
       </g>
     );

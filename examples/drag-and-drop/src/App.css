@@ -2,7 +2,9 @@ body {
   margin: 0;
   padding: 0em 1em;
   font-family: sans-serif;
-  background: #f2f3f7;
+  background: #133b43;
+  color: white;
+  text-align: center;
 }
 
 [draggable] {

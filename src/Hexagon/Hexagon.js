@@ -13,6 +13,12 @@ class Hexagon extends Component {
     className: PropTypes.string,
     layout: PropTypes.object,
     onMouseEnter: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+    onClick: PropTypes.func,
+    onDragStart: PropTypes.func,
+    onDragEnd: PropTypes.func,
+    onDragOver: PropTypes.func,
+    onDrop: PropTypes.func,
     children: PropTypes.node
   };
 
@@ -21,11 +27,7 @@ class Hexagon extends Component {
     const { q, r, s, layout } = props;
     const hex = new Hex(q, r, s);
     const pixel = HexUtils.hexToPixel(hex, layout);
-
-    this.state = {
-      hex,
-      transform: `translate(${pixel.x}, ${pixel.y})`
-    };
+    this.state = { hex, pixel };
   }
 
   // TODO Refactor to reduce duplicate
@@ -33,45 +35,70 @@ class Hexagon extends Component {
     const { q, r, s, layout } = nextProps;
     const hex = new Hex(q, r, s);
     const pixel = HexUtils.hexToPixel(hex, layout);
-
-    this.setState({
-      hex,
-      transform: `translate(${pixel.x}, ${pixel.y})`
-    });
+    this.setState({ hex, pixel });
   }
-
-  getActions() {
-    const DEFAULT_ACTIONS = {
-      onMouseEnter: () => {},
-      onMouseLeave: () => {},
-      onDragStart: () => {},
-      onDragEnd: () => {},
-      onDragOver: () => {},
-      onDrop: () => {},
-      onClick: () => {}
-    };
-    // TODO This object will have other props now as well
-    return Object.assign({}, DEFAULT_ACTIONS, this.props);
+  onMouseEnter(e) {
+    if (this.props.onMouseEnter) {
+      this.props.onMouseEnter(e, this);
+    }
   }
-
+  onMouseLeave(e) {
+    if (this.props.onMouseLeave) {
+      this.props.onMouseLeave(e, this);
+    }
+  }
+  onClick(e) {
+    if (this.props.onClick) {
+      this.props.onClick(e, this);
+    }
+  }
+  onDragStart(e) {
+    if (this.props.onDragStart) {
+      const targetProps = {
+        ...this.state,
+        fill: this.props.fill,
+        className: this.props.className
+      }
+      e.dataTransfer.setData('hexagon', JSON.stringify(targetProps));
+      this.props.onDragStart(e, this);
+    }
+  }
+  onDragEnd(e) {
+    if (this.props.onDragEnd) {
+      e.preventDefault();
+      const success = (e.dataTransfer.dropEffect !== 'none');
+      this.props.onDragEnd(e, this, success);
+    }
+  }
+  onDragOver(e) {
+    if (this.props.onDragOver) {
+      e.preventDefault();
+      this.props.onDragOver(e, this);
+    }
+  }
+  onDrop(e) {
+    if (this.props.onDrop) {
+      e.preventDefault();
+      const target = JSON.parse(e.dataTransfer.getData('hexagon'));
+      this.props.onDrop(e, this, target);
+    }
+  }
   render() {
     const { points, fill, className } = this.props;
-    const { hex, transform } = this.state;
-    const actions = this.getActions();
+    const { hex, pixel } = this.state;
     const fillId = (fill) ? `url(#${fill})` : null;
-    // TODO Would be better not to bind the events at all, if the event prop is not defined
     return (
       <g
         className={classNames('shape-group', className)}
-        transform={transform}
-        onMouseEnter={e => actions.onMouseEnter(e, hex)}
-        onMouseEnter={e => actions.onMouseEnter(e, hex)}
-        onMouseLeave={e => actions.onMouseLeave(e, hex)}
-        onDragStart={e => actions.onDragStart(e, hex)}
-        onDragEnd={e => actions.onDragEnd(e, hex)}
-        onDragOver={e => actions.onDragOver(e, hex)}
-        onDrop={e => actions.onDrop(e, hex)}
-        onClick={e => actions.onClick(e, hex)}
+        transform={`translate(${pixel.x}, ${pixel.y})`}
+        draggable="true"
+        onMouseEnter={e => this.onMouseEnter(e)}
+        onMouseLeave={e => this.onMouseLeave(e)}
+        onClick={e => this.onClick(e)}
+        onDragStart={e => this.onDragStart(e)}
+        onDragEnd={e => this.onDragEnd(e)}
+        onDragOver={e => this.onDragOver(e)}
+        onDrop={e => this.onDrop(e)}
       >
         <polygon points={points} fill={fillId} />
         {this.props.children}
