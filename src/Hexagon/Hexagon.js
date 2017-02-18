@@ -28,6 +28,18 @@ class Hexagon extends Component {
     };
   }
 
+  // TODO Refactor to reduce duplicate
+  componentWillReceiveProps(nextProps) {
+    const { q, r, s, layout } = nextProps;
+    const hex = new Hex(q, r, s);
+    const pixel = HexUtils.hexToPixel(hex, layout);
+
+    this.setState({
+      hex,
+      transform: `translate(${pixel.x}, ${pixel.y})`
+    });
+  }
+
   getActions() {
     const DEFAULT_ACTIONS = {
       onMouseEnter: () => {},
@@ -42,7 +54,6 @@ class Hexagon extends Component {
     return Object.assign({}, DEFAULT_ACTIONS, this.props);
   }
 
-  // TODO ComponentWillReceiveProps to update state
   render() {
     const { points, fill, className } = this.props;
     const { hex, transform } = this.state;
