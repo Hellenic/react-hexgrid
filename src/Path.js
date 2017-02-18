@@ -8,6 +8,7 @@ class Path extends Component {
     layout: PropTypes.object
   };
 
+  // TODO Refactor
   getPoints() {
     const { start, end, layout } = this.props;
     if (!start || !end) {

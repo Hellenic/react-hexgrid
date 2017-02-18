@@ -1,9 +1,12 @@
 import HexGrid from './HexGrid';
-import Hex from './models/Hex';
-import Hexagon from './Hexagon';
-import Text from './Text';
-import Path from './Path';
 import HexUtils from './HexUtils';
 import Layout from './Layout';
+import Path from './Path';
+import Pattern from './Pattern';
 
-export { HexGrid, Hex, Hexagon, Text, Path, Layout, HexUtils };
+import Hexagon from './Hexagon/Hexagon';
+import Text from './Hexagon/Text';
+
+import Hex from './models/Hex';
+
+export { HexGrid, HexUtils, Layout, Path, Pattern, Hexagon, Text, Hex };

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import Hex from './models/Hex';
-import HexUtils from './HexUtils';
+import Hex from '../models/Hex';
+import HexUtils from '../HexUtils';
 
 class Hexagon extends Component {
   static propTypes = {
@@ -9,6 +9,7 @@ class Hexagon extends Component {
     r: PropTypes.number.isRequired,
     s: PropTypes.number.isRequired,
     points: PropTypes.string,
+    fill: PropTypes.string,
     layout: PropTypes.object,
     children: PropTypes.node
   };
@@ -21,10 +22,11 @@ class Hexagon extends Component {
   }
 
   render() {
-    const { points } = this.props;
+    const { points, fill } = this.props;
+    const fillId = (fill) ? `url(#${fill})` : null;
     return (
       <g className="shape-group" transform={this.translate()}>
-        <polygon points={points} />
+        <polygon points={points} fill={fillId} />
         {this.props.children}
       </g>
     );

@@ -26,6 +26,7 @@ class Layout extends Component {
     return new Point(size.x * Math.cos(angle), size.y * Math.sin(angle));
   }
 
+  // TODO Refactor
   calculateCoordinates(orientation) {
     const corners = [];
     const center = new Point(0, 0);

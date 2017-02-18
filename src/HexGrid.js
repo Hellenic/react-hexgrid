@@ -15,8 +15,7 @@ class HexGrid extends Component {
   }
 
   render() {
-    // TODO actions, path
-    const { width, height, viewBox, hexagons, layout } = this.props
+    const { width, height, viewBox } = this.props
     return (
       <svg className="grid" width={width} height={height} viewBox={viewBox} version="1.1" xmlns="http://www.w3.org/2000/svg">
         {this.props.children}
