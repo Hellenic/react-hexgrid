@@ -6,6 +6,7 @@ class HexPolygon extends React.Component {
   render() {
     const { id, points, useFill } = this.props;
     const fill = (useFill) ? `url(#${id})` : null;
+
     return (
       <polygon points={points} fill={fill} />
     );

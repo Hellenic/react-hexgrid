@@ -1,5 +1,5 @@
-import Hex from './Hex';
-import Point from './Point';
+import Hex from './models/Hex';
+import Point from './models/Point';
 
 class HexUtils {
 
@@ -39,7 +39,6 @@ class HexUtils {
   static neighbour(hex, direction) {
     return HexUtils.add(hex, HexUtils.direction(direction));
   }
-
   static round(hex) {
     let rq = Math.round(hex.q)
     let rr = Math.round(hex.r)

@@ -1,7 +1,7 @@
 {
   "name": "react-hexgrid",
   "description": "Interactive hexagon grids with React bindings",
-  "version": "0.1.11",
+  "version": "1.0.0-rc1",
   "main": "lib/index.js",
   "author": "Hellenic",
   "repository": "Hellenic/react-hexgrid",
@@ -14,7 +14,7 @@
     "test": "babel-node ./node_modules/.bin/isparta cover _mocha"
   },
   "peerDependencies": {
-    "react": "^0.14.7 || ^15.0.1"
+    "react": "^15.0.1"
   },
   "devDependencies": {
     "babel-cli": "*",

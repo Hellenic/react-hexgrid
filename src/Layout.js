@@ -1,47 +1,64 @@
-import Point from './Point';
+import React, { Component, PropTypes } from 'react';
+import Orientation from './models/Orientation';
+import Point from './models/Point';
 
-class Orientation {
-  constructor(f0, f1, f2, f3, b0, b1, b2, b3, startAngle) {
-    this.f0 = f0;
-    this.f1 = f1;
-    this.f2 = f2;
-    this.f3 = f3;
-    this.b0 = b0;
-    this.b1 = b1;
-    this.b2 = b2;
-    this.b3 = b3;
-    this.startAngle = startAngle;
-  }
-}
-
-class Layout {
+class Layout extends Component {
   static LAYOUT_FLAT = new Orientation(3.0 / 2.0, 0.0, Math.sqrt(3.0) / 2.0, Math.sqrt(3.0),2.0 / 3.0, 0.0, -1.0 / 3.0, Math.sqrt(3.0) / 3.0, 0.0);
   static LAYOUT_POINTY = new Orientation(Math.sqrt(3.0), Math.sqrt(3.0) / 2.0, 0.0, 3.0 / 2.0, Math.sqrt(3.0) / 3.0, -1.0 / 3.0, 0.0, 2.0 / 3.0, 0.5);
 
-  constructor(layout, origin) {
-    this.name = layout.name || '';
-    this.orientation = (layout.flat) ? Layout.LAYOUT_FLAT : Layout.LAYOUT_POINTY;
-    this.size = new Point(layout.width, layout.height);
-    this.origin = origin || new Point(0, 0);
-    this.spacing = layout.spacing || 1;
+  static propTypes = {
+    size: PropTypes.object,
+    flat: PropTypes.bool,
+    spacing: PropTypes.number,
+    origin: PropTypes.object,
+    children: PropTypes.node.isRequired
+  };
+
+  static defaultProps = {
+    size: new Point(10, 10),
+    flat: true,
+    spacing: 1.0,
+    origin: new Point(0, 0)
   }
 
-  getPointOffset(corner) {
-    let angle = 2.0 * Math.PI * (corner + this.orientation.startAngle) / 6;
-    return new Point(this.size.x * Math.cos(angle), this.size.y * Math.sin(angle));
+  getPointOffset(corner, orientation, size) {
+    let angle = 2.0 * Math.PI * (corner + orientation.startAngle) / 6;
+    return new Point(size.x * Math.cos(angle), size.y * Math.sin(angle));
   }
 
-  getPolygonPoints(hex) {
-    let corners = [];
-    let center = new Point(0, 0);
+  calculateCoordinates(orientation) {
+    const corners = [];
+    const center = new Point(0, 0);
+    const { size } = this.props;
 
     Array.from(new Array(6), (x, i) => {
-      let offset = this.getPointOffset(i);
-      let point = new Point(center.x + offset.x, center.y + offset.y);
+      const offset = this.getPointOffset(i, orientation, size);
+      const point = new Point(center.x + offset.x, center.y + offset.y);
       corners.push(point);
     });
 
     return corners;
+  }
+
+  render() {
+    const { children, flat, ...rest } = this.props;
+    const orientation = (flat) ? Layout.LAYOUT_FLAT : Layout.LAYOUT_POINTY;
+    const cornerCoords = this.calculateCoordinates(orientation);
+    const points = cornerCoords.map(point => `${point.x},${point.y}`).join(' ');
+    const childLayout = Object.assign({}, rest, { orientation });
+    const childProps = {
+      layout: childLayout,
+      points
+    };
+
+    const childrenWithProps = React.Children.map(children, child => {
+      return React.cloneElement(child, childProps);
+    });
+    return (
+      <g>
+        {childrenWithProps}
+      </g>
+    );
   }
 }
 
