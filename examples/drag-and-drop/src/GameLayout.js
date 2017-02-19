@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GridGenerator, Layout, Hexagon, Text, Pattern, HexUtils } from 'react-hexgrid';
+import { GridGenerator, Layout, Hex, Hexagon, Text, Pattern, HexUtils } from 'react-hexgrid';
 import './GameLayout.css';
 
 class GameLayout extends Component {
@@ -10,19 +10,21 @@ class GameLayout extends Component {
   }
 
   onDrop(event, source, target) {
-    console.log('onDrop!', event, source, target);
-    // const { hexagons } = this.state;
-    // const hexas = hexagons.map(hex => {
-    //   if (HexUtils.equals(source.state.hex, hex)) {
-    //     hex.props = Object.assign({}, target);
-    //   }
-    //   return hex;
-    // });
-    // this.setState({ hexagons: hexas });
+    const { hexagons } = this.state;
+    const hexas = hexagons.map(hex => {
+      if (HexUtils.equals(source.state.hex, hex)) {
+        hex.props = Object.assign({}, target);
+      }
+      return hex;
+    });
+    this.setState({ hexagons: hexas });
   }
 
+  // Decide here if you want to allow drop to this node
   onDragOver(event, source) {
-    // Could do something on onDragOver as well, if you wish
+    if (!HexUtils.equals(source.state.hex, new Hex(1, -2, 1))) {
+      event.preventDefault(); // Call preventDefault if you want to allow drop
+    }
   }
 
   render() {

@@ -72,7 +72,6 @@ class Hexagon extends Component {
   }
   onDragOver(e) {
     if (this.props.onDragOver) {
-      e.preventDefault();
       this.props.onDragOver(e, this);
     }
   }

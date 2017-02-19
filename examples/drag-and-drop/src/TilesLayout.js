@@ -18,6 +18,7 @@ class TilesLayout extends Component {
     // Could do something on onDragStart as well, if you wish
   }
 
+  // onDragEnd you can do some logic, e.g. to clean up hexagon if drop was success
   onDragEnd(event, source, success) {
     const { hexagons } = this.state;
     const targetHex = source.state.hex;

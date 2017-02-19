@@ -12,10 +12,10 @@ class App extends Component {
     };
   }
 
-  onClick(event, hex) {
+  onClick(event, source) {
     const { path } = this.state;
     if (path.start == null) {
-      path.start = hex;
+      path.start = source.state.hex;
     }
     else {
       path.start = null;
@@ -24,9 +24,10 @@ class App extends Component {
     this.setState({ path });
   }
 
-  onMouseEnter(event, targetHex) {
+  onMouseEnter(event, source) {
     // Set the path's end on hover
     const { path, hexagons } = this.state;
+    const targetHex = source.state.hex;
     path.end = targetHex;
 
     // Color some hexagons
