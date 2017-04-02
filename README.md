@@ -35,7 +35,7 @@ npm install --save react-hexgrid
 ## Example
 
 ```html
-import { HexGrid } from 'react-hexgrid';
+import { HexGrid, Layout, Hexagon, Text, Pattern } from 'react-hexgrid';
 import './App.css';
 
 class App extends Component {
@@ -63,6 +63,8 @@ class App extends Component {
             <Hexagon q={-2} r={0} s={1} />
             <Path start={new Hex(0, 0, 0)} end={new Hex(-2, 0, 1)} />
           </Layout>
+          <Pattern id="pat-1" link="http://cat-picture" />
+          <Pattern id="pat-2" link="http://cat-picture2" />
         </HexGrid>
       </div>
     );

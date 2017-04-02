@@ -20,6 +20,9 @@ class TilesLayout extends Component {
 
   // onDragEnd you can do some logic, e.g. to clean up hexagon if drop was success
   onDragEnd(event, source, success) {
+    if (!success) {
+      return;
+    }
     const { hexagons } = this.state;
     const targetHex = source.state.hex;
     // TODO Drop the whole hex from array, currently somethings wrong with the patterns
@@ -46,8 +49,9 @@ class TilesLayout extends Component {
               r={hex.r}
               s={hex.s}
               fill={(hex.image) ? HexUtils.getID(hex) : null}
-              onDragStart={(e, h) => this.onDragStart(e, h) }
-              onDragEnd={(e, h, s) => this.onDragEnd(e, h, s) }
+              data={hex}
+              onDragStart={(e, h) => this.onDragStart(e, h)}
+              onDragEnd={(e, h, s) => this.onDragEnd(e, h, s)}
             >
               <Text>{hex.text}</Text>
               { !!hex.image && <Pattern id={HexUtils.getID(hex)} link={hex.image} /> }

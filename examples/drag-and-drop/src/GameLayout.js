@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { GridGenerator, Layout, Hex, Hexagon, Text, Pattern, HexUtils } from 'react-hexgrid';
 import './GameLayout.css';
 
+// TODO Mark those that allow drop and those that not
 class GameLayout extends Component {
   constructor(props) {
     super(props);
@@ -9,11 +10,11 @@ class GameLayout extends Component {
     this.state = { hexagons };
   }
 
-  onDrop(event, source, target) {
+  onDrop(event, source, targetProps) {
     const { hexagons } = this.state;
     const hexas = hexagons.map(hex => {
       if (HexUtils.equals(source.state.hex, hex)) {
-        hex.props = Object.assign({}, target);
+        hex.props = Object.assign({}, targetProps.data);
       }
       return hex;
     });
@@ -22,6 +23,7 @@ class GameLayout extends Component {
 
   // Decide here if you want to allow drop to this node
   onDragOver(event, source) {
+    // Don't allow dropping for (1, -2, 1)
     if (!HexUtils.equals(source.state.hex, new Hex(1, -2, 1))) {
       event.preventDefault(); // Call preventDefault if you want to allow drop
     }
@@ -42,7 +44,7 @@ class GameLayout extends Component {
               onDrop={(e, h, t) => this.onDrop(e, h, t) }
               onDragOver={(e, h) => this.onDragOver(e, h) }
             >
-              <Text>{hex.props.text}</Text>
+              <Text>{hex.props.text || HexUtils.getID(hex)}</Text>
               { !!hex.props.image && <Pattern id={HexUtils.getID(hex)} link={hex.props.image} /> }
             </Hexagon>
           ))
