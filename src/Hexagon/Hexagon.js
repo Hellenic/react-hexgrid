@@ -11,6 +11,7 @@ class Hexagon extends Component {
     points: PropTypes.string,
     fill: PropTypes.string,
     className: PropTypes.string,
+    data: PropTypes.object,
     layout: PropTypes.object,
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
@@ -56,9 +57,10 @@ class Hexagon extends Component {
     if (this.props.onDragStart) {
       const targetProps = {
         ...this.state,
+        data: this.props.data,
         fill: this.props.fill,
         className: this.props.className
-      }
+      };
       e.dataTransfer.setData('hexagon', JSON.stringify(targetProps));
       this.props.onDragStart(e, this);
     }
