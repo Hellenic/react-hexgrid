@@ -7,6 +7,11 @@ body {
   text-align: center;
 }
 
+p {
+  max-width: 80%;
+  margin: 10px auto;
+}
+
 [draggable] {
   -moz-user-select: none;
   -khtml-user-select: none;

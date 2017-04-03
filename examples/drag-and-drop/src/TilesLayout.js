@@ -5,6 +5,7 @@ import './TilesLayout.css';
 class TilesLayout extends Component {
   constructor(props) {
     super(props);
+    // Initialize hexagons with some text and image
     const hexagons = GridGenerator.parallelogram(-1, 1, -1, 2).map((hexagon, index) => {
       return Object.assign({}, hexagon, {
         text: `Cat #${index}`,
@@ -24,11 +25,10 @@ class TilesLayout extends Component {
       return;
     }
     const { hexagons } = this.state;
-    const targetHex = source.state.hex;
     // TODO Drop the whole hex from array, currently somethings wrong with the patterns
     // const hexas = hexagons.filter(hex => !HexUtils.equals(targetHex, hex));
     const hexas = hexagons.map(hex => {
-      if (HexUtils.equals(targetHex, hex)) {
+      if (HexUtils.equals(source.state.hex, hex)) {
         hex.text = null;
         hex.image = null;
       }

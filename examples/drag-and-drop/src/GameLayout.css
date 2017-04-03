@@ -40,3 +40,10 @@ svg .game path {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+svg .game g.blocked {
+    fill: #465880;
+}
+svg .game g.blocked:hover {
+    fill: #53699a;
+}
