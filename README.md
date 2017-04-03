@@ -88,7 +88,14 @@ See examples folder.
 
 ### Basics
 
-1. [react-hexgrid](https://github.com/Hellenic/react-hexgrid/tree/master/examples/hexgrid-v1) - Basic usage of react-hexgrid
+1. [basic-board](https://github.com/Hellenic/react-hexgrid/tree/v1/examples/basic-board) - Basic usage of react-hexgrid
+2. [custom-grid](https://github.com/Hellenic/react-hexgrid/tree/v1/examples/custom-grid) - Simple custom grid
+3. [templates](https://github.com/Hellenic/react-hexgrid/tree/v1/examples/templates) - Ready-made grid templates
+
+### Advanced
+
+1. [pathfinding](https://github.com/Hellenic/react-hexgrid/tree/v1/examples/pathfinding) - Pathfinding
+2. [drag & drop](https://github.com/Hellenic/react-hexgrid/tree/v1/examples/drag-and-drop) - Drag & drop with two grids
 
 ## Testing changes locally
 You can test changes by importing the library directly from a folder:
