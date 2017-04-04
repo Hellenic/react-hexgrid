@@ -7,8 +7,6 @@
 ![dev dependencies](https://img.shields.io/david/dev/Hellenic/react-hexgrid.svg)
 ![License](https://img.shields.io/npm/l/react-hexgrid.svg)
 
-> Branch v1 - Work in progress!
-
 React components to build interactive hexagons grids. It uses SVG which makes it fast, scalable and easy to apply custom styles. You can easily customize the layout of the grid just by configuration.
 
 Component-based approach allows you to customize the grid shape to suit your needs or even apply your own components / SVG elements to it. You can use pre-defined generator to create certain shape grid or you may build totally your own grid to the shape you wish, while still keeping it under control and interactive.
@@ -43,7 +41,7 @@ class App extends Component {
     return (
       <div className="App">
         <HexGrid width={1200} height={800} viewBox="-50 -50 100 100">
-          {/* Main grid with bit hexagons, all manual */}
+          {/* Grid with manually inserted hexagons */}
           <Layout size={{ x: 10, y: 10 }} flat={true} spacing={1.1} origin={{ x: 0, y: 0 }}>
             <Hexagon q={0} r={0} s={0} />
             {/* Using pattern (defined below) to fill the hexagon */}
@@ -72,15 +70,25 @@ class App extends Component {
 }
 ```
 Will look something like this (custom CSS applied):
-![HexGrid image](https://raw.githubusercontent.com/Hellenic/react-hexgrid/v1/react-hexgrid.png "HexGrid")
+![HexGrid image](https://raw.githubusercontent.com/Hellenic/react-hexgrid/master/react-hexgrid.png "HexGrid")
 
 ## API reference
 ```javascript
 // Available components
-import { GridGenerator, HexGrid, HexUtils, Layout, Path, Pattern, Hexagon, Text, Hex } from 'react-hexgrid';
+import {
+  GridGenerator,
+  HexGrid,
+  HexUtils,
+  Layou,
+  Path,
+  Pattern,
+  Hexagon,
+  Text,
+  Hex
+} from 'react-hexgrid';
 ```
 
-TODO
+> Work in progress
 
 ## Examples
 
@@ -88,14 +96,14 @@ See examples folder.
 
 ### Basics
 
-1. [basic-board](https://github.com/Hellenic/react-hexgrid/tree/v1/examples/basic-board) - Basic usage of react-hexgrid
-2. [custom-grid](https://github.com/Hellenic/react-hexgrid/tree/v1/examples/custom-grid) - Simple custom grid
-3. [templates](https://github.com/Hellenic/react-hexgrid/tree/v1/examples/templates) - Ready-made grid templates
+1. [basic-board](https://github.com/Hellenic/react-hexgrid/tree/master/examples/basic-board) - Basic usage of react-hexgrid
+2. [custom-grid](https://github.com/Hellenic/react-hexgrid/tree/master/examples/custom-grid) - Simple custom grid
+3. [templates](https://github.com/Hellenic/react-hexgrid/tree/master/examples/templates) - Ready-made grid templates
 
 ### Advanced
 
-1. [pathfinding](https://github.com/Hellenic/react-hexgrid/tree/v1/examples/pathfinding) - Pathfinding
-2. [drag & drop](https://github.com/Hellenic/react-hexgrid/tree/v1/examples/drag-and-drop) - Drag & drop with two grids
+1. [pathfinding](https://github.com/Hellenic/react-hexgrid/tree/master/examples/pathfinding) - Pathfinding
+2. [drag & drop](https://github.com/Hellenic/react-hexgrid/tree/master/examples/drag-and-drop) - Drag & drop with two grids
 
 ## Testing changes locally
 You can test changes by importing the library directly from a folder:
