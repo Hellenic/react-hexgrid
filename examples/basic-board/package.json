@@ -1,6 +1,7 @@
 {
   "name": "hexgrid-basic-board",
   "version": "0.1.0",
+  "homepage": "http://karkk.ai/nen/react-hexgrid/examples/basic-board/",
   "devDependencies": {
     "react-scripts": "0.4.1"
   },

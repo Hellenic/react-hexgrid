@@ -1,5 +1,6 @@
 {
   "name": "hexgrid-grid-types",
+  "homepage": "http://karkk.ai/nen/react-hexgrid/examples/templates/",
   "version": "0.1.0",
   "devDependencies": {
     "react-scripts": "0.8.4"

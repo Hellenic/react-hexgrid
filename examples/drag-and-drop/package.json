@@ -1,7 +1,7 @@
 {
-  "name": "drag-and-drop",
+  "name": "hexgrid-drag-and-drop",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "http://karkk.ai/nen/react-hexgrid/examples/drag-and-drop/",
   "devDependencies": {
     "react-scripts": "0.8.4"
   },
