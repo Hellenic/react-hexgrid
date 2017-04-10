@@ -14,6 +14,7 @@ class Hexagon extends Component {
     data: PropTypes.object,
     layout: PropTypes.object,
     onMouseEnter: PropTypes.func,
+    onMouseOver: PropTypes.func,
     onMouseLeave: PropTypes.func,
     onClick: PropTypes.func,
     onDragStart: PropTypes.func,
@@ -41,6 +42,11 @@ class Hexagon extends Component {
   onMouseEnter(e) {
     if (this.props.onMouseEnter) {
       this.props.onMouseEnter(e, this);
+    }
+  }
+  onMouseOver(e) {
+    if (this.props.onMouseOver) {
+      this.props.onMouseOver(e, this);
     }
   }
   onMouseLeave(e) {
@@ -90,10 +96,11 @@ class Hexagon extends Component {
     const fillId = (fill) ? `url(#${fill})` : null;
     return (
       <g
-        className={classNames('shape-group', className)}
+        className={classNames('hexagon-group', className)}
         transform={`translate(${pixel.x}, ${pixel.y})`}
         draggable="true"
         onMouseEnter={e => this.onMouseEnter(e)}
+        onMouseOver={e => this.onMouseOver(e)}
         onMouseLeave={e => this.onMouseLeave(e)}
         onClick={e => this.onClick(e)}
         onDragStart={e => this.onDragStart(e)}
@@ -101,8 +108,10 @@ class Hexagon extends Component {
         onDragOver={e => this.onDragOver(e)}
         onDrop={e => this.onDrop(e)}
       >
-        <polygon points={points} fill={fillId} />
-        {this.props.children}
+        <g className="hexagon">
+          <polygon points={points} fill={fillId} />
+          {this.props.children}
+        </g>
       </g>
     );
   }
