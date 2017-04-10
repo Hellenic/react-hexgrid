@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 1em;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -moz-user-drag: element;
+  -webkit-user-drag: element;
+  -khtml-user-drag: element;
+  user-drag: element;
+}

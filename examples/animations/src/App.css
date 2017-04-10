@@ -1,0 +1,14 @@
+body {
+  background: #e4e7ec;
+  color: #263959;
+}
+svg {
+
+}
+svg g {
+  fill: #6d819c;
+}
+svg g polygon {
+  stroke: #263959;
+  stroke-width: 0.2;
+}
