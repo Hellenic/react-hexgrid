@@ -27,9 +27,6 @@ svg g.hexagon-group:nth-child(12) .hexagon {
   animation-play-state: running;
 }
 
-svg g.hexagon-group:nth-child(28) .hexagon {
-  fill: #55967e;
-}
 svg g.hexagon-group:nth-child(32) .hexagon {
   fill: #55967e;
 }
