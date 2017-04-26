@@ -1,4 +1,4 @@
-svg g.hexagon-group:nth-child(1) .hexagon {
+svg > g > g.hexagon-group:nth-child(1) .hexagon {
   fill: #55967e;
   transform-origin: center;
   animation-name: stretch;
@@ -32,6 +32,14 @@ svg g.hexagon-group:nth-child(32) .hexagon {
 }
 svg g.hexagon-group:nth-child(35) .hexagon {
   fill: #55967e;
+}
+
+.fade-appear {
+  opacity: 0.01;
+}
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
 }
 
 @keyframes nudge {
