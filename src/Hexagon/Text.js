@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
+// TODO Text is a separate component so that it could wrap the given text inside the surrounding hexagon
 class Text extends Component {
   static propTypes = {
     children: PropTypes.string
