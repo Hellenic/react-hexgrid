@@ -8,11 +8,9 @@ class Hexagon extends Component {
     q: PropTypes.number.isRequired,
     r: PropTypes.number.isRequired,
     s: PropTypes.number.isRequired,
-    points: PropTypes.string,
     fill: PropTypes.string,
     className: PropTypes.string,
     data: PropTypes.object,
-    layout: PropTypes.object,
     onMouseEnter: PropTypes.func,
     onMouseOver: PropTypes.func,
     onMouseLeave: PropTypes.func,
@@ -24,9 +22,15 @@ class Hexagon extends Component {
     children: PropTypes.node
   };
 
-  constructor(props) {
-    super(props);
-    const { q, r, s, layout } = props;
+  static contextTypes = {
+    layout: PropTypes.object, // TODO Shape
+    points: PropTypes.string
+  };
+
+  constructor(props, context) {
+    super(props, context);
+    const { q, r, s } = props;
+    const { layout } = context;
     const hex = new Hex(q, r, s);
     const pixel = HexUtils.hexToPixel(hex, layout);
     this.state = { hex, pixel };
@@ -91,7 +95,8 @@ class Hexagon extends Component {
     }
   }
   render() {
-    const { points, fill, className } = this.props;
+    const { fill, className } = this.props;
+    const { points } = this.context;
     const { hex, pixel } = this.state;
     const fillId = (fill) ? `url(#${fill})` : null;
     return (

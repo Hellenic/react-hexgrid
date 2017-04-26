@@ -7,11 +7,12 @@ class Layout extends Component {
   static LAYOUT_POINTY = new Orientation(Math.sqrt(3.0), Math.sqrt(3.0) / 2.0, 0.0, 3.0 / 2.0, Math.sqrt(3.0) / 3.0, -1.0 / 3.0, 0.0, 2.0 / 3.0, 0.5);
 
   static propTypes = {
-    size: PropTypes.object,
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
     flat: PropTypes.bool,
-    spacing: PropTypes.number,
     origin: PropTypes.object,
-    children: PropTypes.node.isRequired
+    size: PropTypes.object,
+    spacing: PropTypes.number
   };
 
   static defaultProps = {
@@ -19,6 +20,24 @@ class Layout extends Component {
     flat: true,
     spacing: 1.0,
     origin: new Point(0, 0)
+  }
+
+  static childContextTypes = {
+    layout: PropTypes.object, // TODO Shape
+    points: PropTypes.string
+  };
+
+  getChildContext() {
+    const { children, flat, className, ...rest } = this.props;
+    const orientation = (flat) ? Layout.LAYOUT_FLAT : Layout.LAYOUT_POINTY;
+    const cornerCoords = this.calculateCoordinates(orientation);
+    const points = cornerCoords.map(point => `${point.x},${point.y}`).join(' ');
+    const childLayout = Object.assign({}, rest, { orientation });
+
+    return {
+      layout: childLayout,
+      points
+    };
   }
 
   getPointOffset(corner, orientation, size) {
@@ -42,22 +61,10 @@ class Layout extends Component {
   }
 
   render() {
-    const { children, flat, className, ...rest } = this.props;
-    const orientation = (flat) ? Layout.LAYOUT_FLAT : Layout.LAYOUT_POINTY;
-    const cornerCoords = this.calculateCoordinates(orientation);
-    const points = cornerCoords.map(point => `${point.x},${point.y}`).join(' ');
-    const childLayout = Object.assign({}, rest, { orientation });
-    const childProps = {
-      layout: childLayout,
-      points
-    };
-
-    const childrenWithProps = React.Children.map(children, child => {
-      return React.cloneElement(child, childProps);
-    });
+    const { children, className } = this.props;
     return (
       <g className={className}>
-        {childrenWithProps}
+        {children}
       </g>
     );
   }
