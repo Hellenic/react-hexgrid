@@ -75,7 +75,8 @@ class HexUtils {
     const pt = new Point((point.x - layout.origin.x) / layout.size.x, (point.y - layout.origin.y) / layout.size.y);
     const q = M.b0 * pt.x + M.b1 * pt.y;
     const r = M.b2 * pt.x + M.b3 * pt.y;
-    return new Hex(q, r, -q - r);
+    const hex = new Hex(q, r, -q - r);
+    return HexUtils.round(hex);
   }
 
   static lerp(a, b, t) {

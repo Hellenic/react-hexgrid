@@ -78,7 +78,7 @@ test('HexUtils.hexToPixel should work', () => {
 
 test('HexUtils.pixelToHex should work', () => {
   const hex = HexUtils.pixelToHex({ x: 0, y: -207.846 }, layout);
-  expect(hex).toEqual({ q: 0, r: -11.999994404998695, s: 11.999994404998695 });
+  expect(hex).toEqual({ q: 0, r: -12, s: 12 });
 });
 
 test('HexUtils.lerp should work', () => {
