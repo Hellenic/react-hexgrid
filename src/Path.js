@@ -20,7 +20,7 @@ class Path extends Component {
     let intersects = [];
     let step = 1.0 / Math.max(distance, 1);
     for (let i=0; i<=distance; i++) {
-      intersects.push(HexUtils.round(HexUtils.lerp(start, end, step * i)));
+      intersects.push(HexUtils.round(HexUtils.hexLerp(start, end, step * i)));
     }
 
     // Construct Path points out of all the intersecting hexes (e.g. M 0,0 L 10,20, L 30,20)
