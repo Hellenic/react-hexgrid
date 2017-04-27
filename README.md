@@ -104,6 +104,7 @@ See examples folder.
 
 1. [pathfinding](https://github.com/Hellenic/react-hexgrid/tree/master/examples/pathfinding) - Pathfinding
 2. [drag & drop](https://github.com/Hellenic/react-hexgrid/tree/master/examples/drag-and-drop) - Drag & drop with two grids
+2. [animations (WIP)](https://github.com/Hellenic/react-hexgrid/tree/master/examples/animations) - Animations & effects
 
 ## Testing changes locally
 You can test changes by importing the library directly from a folder:

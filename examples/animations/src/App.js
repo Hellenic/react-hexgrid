@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
 import { HexGrid, Layout, Hexagon, GridGenerator } from 'react-hexgrid';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import './App.css';
 import './Animations.css';
 import './Filters.css';
 
 class App extends Component {
-  // Some sick animations to hexagons
   render() {
     const hexagons = GridGenerator.rectangle(6, 6);
     return (
       <div className="App">
         <h1>SVG animations with react-hexgrid</h1>
-        <small>Work in progress...</small>
         <HexGrid width={1200} height={900}>
           <Layout size={{ x: 6, y: 6 }} origin={{ x: -15, y: -40 }} spacing={1.15}>
             { hexagons.map((hex, i) => <Hexagon key={i} {...hex} />) }
+            <CSSTransitionGroup
+              component="g"
+              transitionName="fade"
+              transitionAppear={true}
+              transitionAppearTimeout={500}
+              transitionEnter={false}
+              transitionLeave={false}>
+              <Hexagon q={4} r={-2} s={-3} />
+            </CSSTransitionGroup>
           </Layout>
           <defs>
             <filter id="shadowed-goo">
