@@ -39,6 +39,7 @@ class HexUtils {
   static neighbour(hex, direction) {
     return HexUtils.add(hex, HexUtils.direction(direction));
   }
+
   static round(hex) {
     let rq = Math.round(hex.q)
     let rr = Math.round(hex.r)
@@ -48,7 +49,7 @@ class HexUtils {
     const rDiff = Math.abs(rr - hex.r)
     const sDiff = Math.abs(rs - hex.s)
 
-    if (qDiff > rDiff && qDiff > rDiff)
+    if (qDiff > rDiff && qDiff > sDiff)
         rq = -rr-rs
     else if (rDiff > sDiff)
         rr = -rq-rs
@@ -78,7 +79,11 @@ class HexUtils {
   }
 
   static lerp(a, b, t) {
-    return new Hex(a.q + (b.q - a.q) * t, a.r + (b.r - a.r) * t, a.s + (b.s - a.s) * t);
+    return a + ((b - a) * t);
+  }
+
+  static hexLerp(a, b, t) {
+    return new Hex(HexUtils.lerp(a.q, b.q, t), HexUtils.lerp(a.r, b.r, t), HexUtils.lerp(a.s, b.s, t));
   }
 
   static getID(hex) {
