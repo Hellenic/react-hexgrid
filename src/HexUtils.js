@@ -40,6 +40,15 @@ class HexUtils {
     return HexUtils.add(hex, HexUtils.direction(direction));
   }
 
+  static neighbours(hex) {
+    const array = [];
+    for (let i = 0; i < HexUtils.DIRECTIONS.length; i += 1) {
+      array.push(HexUtils.neighbour(hex, i));
+    }
+
+    return array;
+  }
+
   static round(hex) {
     let rq = Math.round(hex.q)
     let rr = Math.round(hex.r)

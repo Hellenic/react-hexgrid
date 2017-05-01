@@ -1,4 +1,4 @@
-import Hex from './Hex'
+import Hex from './models/Hex';
 
 class GridGenerator {
 
