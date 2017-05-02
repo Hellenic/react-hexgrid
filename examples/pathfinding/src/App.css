@@ -20,19 +20,19 @@ svg g:hover {
 svg g:hover text {
   fill-opacity: 1;
 }
-svg g.q {
+svg g.q .hexagon {
   fill: Red;
   fill-opacity: 0.4;
 }
-svg g.r {
+svg g.r .hexagon {
   fill: Green;
   fill-opacity: 0.4;
 }
-svg g.s {
+svg g.s .hexagon {
   fill: Blue;
   fill-opacity: 0.4;
 }
-svg g.active {
+svg g.active  .hexagon {
   fill: Coral;
   fill-opacity: 0.9;
 }
