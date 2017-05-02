@@ -59,6 +59,17 @@ test('HexUtils.neighbour should work', () => {
   expect(HexUtils.neighbour(hex1, 1)).toEqual({ q: 1, r: -1, s: 0 });
 });
 
+test('HexUtils.neighbours should work', () => {
+  expect(HexUtils.neighbours(hex1)).toEqual([
+    { q: 1, r: 0, s: -1 },
+    { q: 1, r: -1, s: 0 },
+    { q: 0, r: -1, s: 1 },
+    { q: -1, r: 0, s: 1 },
+    { q: -1, r: 1, s: 0 },
+    { q: 0, r: 1, s: -1 },
+  ]);
+});
+
 test('HexUtils.round should work when qDiff > rDiff && qDiff > sDiff', () => {
   expect(HexUtils.round({ q: 1.5, r: 0.3, s: 0.1 })).toEqual({ q: -0, r: 0, s: 0 });
 });
