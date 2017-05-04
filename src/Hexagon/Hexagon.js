@@ -38,7 +38,8 @@ class Hexagon extends Component {
 
   // TODO Refactor to reduce duplicate
   componentWillReceiveProps(nextProps) {
-    const { q, r, s, layout } = nextProps;
+    const { q, r, s } = nextProps;
+    const { layout } = this.context;
     const hex = new Hex(q, r, s);
     const pixel = HexUtils.hexToPixel(hex, layout);
     this.setState({ hex, pixel });

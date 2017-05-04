@@ -32,6 +32,7 @@ class App extends Component {
 
     // Color some hexagons
     const coloredHexas = hexagons.map(hex => {
+      hex.props = hex.props || {};
       // Highlight tiles that are next to the target (1 distance away)
       hex.props.className = (HexUtils.distance(targetHex, hex) < 2) ? 'active' : '';
 
@@ -62,7 +63,7 @@ class App extends Component {
                   q={hex.q}
                   r={hex.r}
                   s={hex.s}
-                  className={hex.props.className}
+                  className={hex.props ? hex.props.className : null}
                   onMouseEnter={(e, h) => this.onMouseEnter(e, h)}
                   onClick={(e, h) => this.onClick(e, h)}
                 >

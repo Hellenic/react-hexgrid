@@ -7,10 +7,14 @@ class Path extends Component {
     end: PropTypes.object,
     layout: PropTypes.object
   };
+  static contextTypes = {
+    layout: PropTypes.object // TODO Shape
+  };
 
   // TODO Refactor
   getPoints() {
-    const { start, end, layout } = this.props;
+    const { start, end } = this.props;
+    const { layout } = this.context;
     if (!start || !end) {
       return '';
     }
