@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout should render correctly with custom props 1`] = `
+<g
+  className="test2"
+>
+  <div>
+    child
+  </div>
+</g>
+`;
+
+exports[`Layout should render correctly with default props 1`] = `
+<g
+  className="test1"
+>
+  <div>
+    child
+  </div>
+</g>
+`;

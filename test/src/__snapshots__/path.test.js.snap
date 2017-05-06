@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Path should render correctly 1`] = `
+<g
+  className="test1"
+>
+  <path
+    d="M 17.147302994931888,9.9 L 0,0 "
+  />
+</g>
+`;
+
+exports[`Path should render correctly without an end hex 1`] = `
+<g
+  className="test2"
+>
+  <path
+    d=""
+  />
+</g>
+`;
