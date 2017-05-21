@@ -31,6 +31,8 @@ Install it via npm:
 npm install --save react-hexgrid
 ```
 
+More documentation in the [Wiki](https://github.com/Hellenic/react-hexgrid/wiki).
+
 ## Example
 
 ```html
@@ -72,24 +74,6 @@ class App extends Component {
 ```
 Will look something like this (custom CSS applied):
 ![HexGrid image](https://raw.githubusercontent.com/Hellenic/react-hexgrid/master/react-hexgrid.png "HexGrid")
-
-## API reference
-```javascript
-// Available components
-import {
-  GridGenerator,
-  HexGrid,
-  HexUtils,
-  Layou,
-  Path,
-  Pattern,
-  Hexagon,
-  Text,
-  Hex
-} from 'react-hexgrid';
-```
-
-> Work in progress
 
 ## Examples
 
