@@ -1,11 +1,11 @@
 # react-hexgrid
 
 [![build status](https://img.shields.io/travis/Hellenic/react-hexgrid/master.svg?style=flat-square)](https://travis-ci.org/Hellenic/react-hexgrid)
-![Downloads](https://img.shields.io/npm/dm/react-hexgrid.svg)
 ![Downloads](https://img.shields.io/npm/dt/react-hexgrid.svg)
 ![npm version](https://img.shields.io/npm/v/react-hexgrid.svg)
-![dependencies](https://img.shields.io/david/Hellenic/react-hexgrid.svg)
-![dev dependencies](https://img.shields.io/david/dev/Hellenic/react-hexgrid.svg)
+[![dependencies Status](https://david-dm.org/Hellenic/react-hexgrid/status.svg)](https://david-dm.org/Hellenic/react-hexgrid)
+[![devDependencies Status](https://david-dm.org/Hellenic/react-hexgrid/dev-status.svg)](https://david-dm.org/Hellenic/react-hexgrid?type=dev)
+[![Live demo](https://img.shields.io/badge/live-demo-brightgreen.svg?style=flat-square)](http://karkk.ai//nen/react-hexgrid/examples/)
 ![License](https://img.shields.io/npm/l/react-hexgrid.svg)
 
 React components to build interactive hexagons grids. It uses SVG which makes it fast, scalable and easy to apply custom styles. You can easily customize the layout of the grid just by configuration.
@@ -105,7 +105,7 @@ See examples folder.
 
 1. [pathfinding](https://github.com/Hellenic/react-hexgrid/tree/master/examples/pathfinding) - Pathfinding
 2. [drag & drop](https://github.com/Hellenic/react-hexgrid/tree/master/examples/drag-and-drop) - Drag & drop with two grids
-2. [animations (WIP)](https://github.com/Hellenic/react-hexgrid/tree/master/examples/animations) - Animations & effects
+2. [animations](https://github.com/Hellenic/react-hexgrid/tree/master/examples/animations) - Animations & effects
 
 ## Testing changes locally
 You can test changes by importing the library directly from a folder:
