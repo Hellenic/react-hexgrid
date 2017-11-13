@@ -10,6 +10,7 @@ class Hexagon extends Component {
     r: PropTypes.number.isRequired,
     s: PropTypes.number.isRequired,
     fill: PropTypes.string,
+    cellStyle: PropTypes.string,
     className: PropTypes.string,
     data: PropTypes.object,
     onMouseEnter: PropTypes.func,
@@ -97,7 +98,7 @@ class Hexagon extends Component {
     }
   }
   render() {
-    const { fill, className } = this.props;
+    const { fill, cellStyle, className } = this.props;
     const { points } = this.context;
     const { hex, pixel } = this.state;
     const fillId = (fill) ? `url(#${fill})` : null;
@@ -116,7 +117,7 @@ class Hexagon extends Component {
         onDrop={e => this.onDrop(e)}
       >
         <g className="hexagon">
-          <polygon points={points} fill={fillId} />
+          <polygon points={points} fill={fillId} style={cellStyle} />
           {this.props.children}
         </g>
       </g>
