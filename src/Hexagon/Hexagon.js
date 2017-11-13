@@ -10,7 +10,10 @@ class Hexagon extends Component {
     r: PropTypes.number.isRequired,
     s: PropTypes.number.isRequired,
     fill: PropTypes.string,
-    cellStyle: PropTypes.string,
+    cellStyle: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object
+    ]),
     className: PropTypes.string,
     data: PropTypes.object,
     onMouseEnter: PropTypes.func,
