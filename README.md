@@ -36,7 +36,7 @@ More documentation in the [Wiki](https://github.com/Hellenic/react-hexgrid/wiki)
 ## Example
 
 ```html
-import { HexGrid, Layout, Hexagon, Text, Pattern } from 'react-hexgrid';
+import { HexGrid, Layout, Hexagon, Text, Pattern, Path, Hex } from 'react-hexgrid';
 import './App.css';
 
 class App extends Component {
