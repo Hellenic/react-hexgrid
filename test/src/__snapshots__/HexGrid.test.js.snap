@@ -1,5 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`HexGrid should accept percentage in width and height 1`] = `
+<svg
+  className="grid"
+  height="50%"
+  version="1.1"
+  viewBox="-50 -50 100 100"
+  width="100%"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <div>
+    child
+  </div>
+</svg>
+`;
+
 exports[`HexGrid should render correctly with custom props 1`] = `
 <svg
   className="grid"

@@ -3,8 +3,14 @@ import PropTypes from 'prop-types';
 
 class HexGrid extends Component {
   static propTypes = {
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
+    width: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.number.isRequired,
+    ]),
+    height: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.number.isRequired,
+    ]),
     viewBox: PropTypes.string,
     children: PropTypes.node.isRequired
   };
