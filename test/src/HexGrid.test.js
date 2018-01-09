@@ -24,3 +24,15 @@ test('HexGrid should render correctly with custom props', () => {
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+test('HexGrid should accept percentage in width and height', () => {
+  const tree = renderer.create(
+    <HexGrid
+      width={'100%'}
+      height={'50%'}
+    >
+      <div>child</div>
+    </HexGrid>,
+  ).toJSON();
+  expect(tree).toMatchSnapshot();
+});
