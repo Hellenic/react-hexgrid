@@ -15,20 +15,20 @@ class GridGenerator {
     let hex = HexUtils.add(center, HexUtils.multiply(HexUtils.direction(4), mapRadius));
     for (let i = 0; i < 6; i++) {
       for (let j = 0; j < mapRadius; j++) {
-        hexas.push(hex)
-        hex = HexUtils.neighbour(hex, i)
+        hexas.push(hex);
+        hex = HexUtils.neighbour(hex, i);
       }
     }
-    return hexas
+    return hexas;
   }
 
   static spiral(center, mapRadius){
-    let results = [center]
+    let results = [center];
     for (let k = 1; k <= mapRadius; k++) {
-      const temp = this.ring(center, k)
-      results = results.concat(temp)
+      const temp = this.ring(center, k);
+      results = results.concat(temp);
     }
-    return results
+    return results;
   }
 
   static parallelogram(q1, q2, r1, r2) {
