@@ -40,8 +40,10 @@ class App extends Component {
         <HexGrid width={config.width} height={config.height}>
           <Layout size={size} flat={layout.flat} spacing={layout.spacing} origin={config.origin}>
             {
+              // note: key must be unique between re-renders.
+              // using config.mapProps+i makes a new key when the goal template chnages.
               hexagons.map((hex, i) => (
-                <Hexagon key={i} q={hex.q} r={hex.r} s={hex.s}>
+                <Hexagon key={config.mapProps + i} q={hex.q} r={hex.r} s={hex.s}>
                   <Text>{HexUtils.getID(hex)}</Text>
                 </Hexagon>
               ))
