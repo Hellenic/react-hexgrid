@@ -5,8 +5,14 @@ import PropTypes from 'prop-types';
 class Text extends Component {
   static propTypes = {
     children: PropTypes.string,
-    x: PropTypes.number,
-    y: PropTypes.number,
+    x: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
+    y: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
     className: PropTypes.string
   };
 
