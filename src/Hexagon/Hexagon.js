@@ -10,6 +10,7 @@ class Hexagon extends Component {
     q: PropTypes.number.isRequired,
     r: PropTypes.number.isRequired,
     s: PropTypes.number.isRequired,
+    layout: PropTypes.objectOf(PropTypes.any).isRequired,
     fill: PropTypes.string,
     cellStyle: PropTypes.oneOfType([
       PropTypes.string,
@@ -29,9 +30,8 @@ class Hexagon extends Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log(nextProps);
-    console.log(prevState);
     const { q, r, s, layout } = nextProps;
+    console.log(layout);
     const hex = new Hex(q, r, s);
     const pixel = HexUtils.hexToPixel(hex, layout);
 

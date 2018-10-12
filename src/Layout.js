@@ -59,10 +59,10 @@ class Layout extends Component {
   }
 }
 
-export const ThemeContext = React.createContext({
+export const LayoutContext = React.createContext({
   layout: LAYOUT_FLAT,
   points: ""
 })
-export const { Provider: LayoutProvider, Consumer: LayoutConsumer } = ThemeContext;
+export const { Provider: LayoutProvider, Consumer: LayoutConsumer } = LayoutContext;
 
 export default Layout;
