@@ -31,16 +31,17 @@ class Hexagon extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const { q, r, s, layout } = nextProps;
-    console.log(layout);
     const hex = new Hex(q, r, s);
     const pixel = HexUtils.hexToPixel(hex, layout);
 
-    if (!prevState.hex && !prevState.pixel) {
+    if (
+      (!prevState.hex && !prevState.pixel)
+      || !((HexUtils.equals(prevState.hex, hex))
+        || (prevState.pixel.x === pixel.x && prevState.pixel.y === pixel.y))
+    ) {
       return { hex, pixel };
-    } else if (HexUtils.equals(prevState.hex, nextProps.hex) && prevState.pixel.x === pixel.x && prevState.pixel.y === pixel.y) {
-      return null;
     }
-    return { hex, pixel };
+    return null;
   }
 
   state = { hex: {}, pixel: {} };
