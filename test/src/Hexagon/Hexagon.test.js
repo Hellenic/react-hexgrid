@@ -56,30 +56,30 @@ test('Hexagon should work', () => {
       </Hexagon>
     </Layout>,
   );
-  expect(wrapper.find('.test1').length).toBe(1);
+  expect(wrapper.find('g.test1').length).toBe(1);
 
-  wrapper.find('.test1').simulate('mouseEnter');
+  wrapper.find('g.test1').simulate('mouseEnter');
   expect(playDoh).toBe('mouseEnter');
 
-  wrapper.find('.test1').simulate('mouseOver');
+  wrapper.find('g.test1').simulate('mouseOver');
   expect(playDoh).toBe('mouseOver');
 
-  wrapper.find('.test1').simulate('mouseLeave');
+  wrapper.find('g.test1').simulate('mouseLeave');
   expect(playDoh).toBe('mouseLeave');
 
-  wrapper.find('.test1').simulate('click');
+  wrapper.find('g.test1').simulate('click');
   expect(playDoh).toBe('click');
 
-  wrapper.find('.test1').simulate('dragStart', { dataTransfer: { setData: () => {} } });
+  wrapper.find('g.test1').simulate('dragStart', { dataTransfer: { setData: () => {} } });
   expect(playDoh).toBe('dragStart');
 
-  wrapper.find('.test1').simulate('dragEnd', { dataTransfer: { setData: () => {} } });
+  wrapper.find('g.test1').simulate('dragEnd', { dataTransfer: { setData: () => {} } });
   expect(playDoh).toBe('dragEnd');
 
-  wrapper.find('.test1').simulate('dragOver');
+  wrapper.find('g.test1').simulate('dragOver');
   expect(playDoh).toBe('dragOver');
 
-  wrapper.find('.test1').simulate('drop', { dataTransfer: { getData: data => JSON.stringify({ data }) } });
+  wrapper.find('g.test1').simulate('drop', { dataTransfer: { getData: data => JSON.stringify({ data }) } });
   expect(playDoh).toBe('drop');
 });
 
@@ -103,29 +103,30 @@ test('Hexagon should work', () => {
       </Hexagon>
     </Layout>,
   );
-  expect(wrapper2.find('.test2').length).toBe(1);
+  console.log(wrapper2.find('g.test2').length);
+  expect(wrapper2.find('g.test2').length).toBe(1);
 
-  wrapper2.find('.test2').simulate('mouseEnter');
+  wrapper2.find('g.test2').simulate('mouseEnter');
   expect(playDoh).toBe(undefined);
 
-  wrapper2.find('.test2').simulate('mouseOver');
+  wrapper2.find('g.test2').simulate('mouseOver');
   expect(playDoh).toBe(undefined);
 
-  wrapper2.find('.test2').simulate('mouseLeave');
+  wrapper2.find('g.test2').simulate('mouseLeave');
   expect(playDoh).toBe(undefined);
 
-  wrapper2.find('.test2').simulate('click');
+  wrapper2.find('g.test2').simulate('click');
   expect(playDoh).toBe(undefined);
 
-  wrapper2.find('.test2').simulate('dragStart');
+  wrapper2.find('g.test2').simulate('dragStart');
   expect(playDoh).toBe(undefined);
 
-  wrapper2.find('.test2').simulate('dragEnd');
+  wrapper2.find('g.test2').simulate('dragEnd');
   expect(playDoh).toBe(undefined);
 
-  wrapper2.find('.test2').simulate('dragOver');
+  wrapper2.find('g.test2').simulate('dragOver');
   expect(playDoh).toBe(undefined);
 
-  wrapper2.find('.test2').simulate('drop');
+  wrapper2.find('g.test2').simulate('drop');
   expect(playDoh).toBe(undefined);
 });
