@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Hex from '../models/Hex';
 import HexUtils from '../HexUtils';
-import { LayoutConsumer } from '../Layout';
+import { LayoutConsumer, LAYOUT_FLAT } from '../Layout';
 
 class Hexagon extends Component {
   static propTypes = {
@@ -41,9 +41,7 @@ class Hexagon extends Component {
     return { hex, pixel };
   }
 
-  constructor(props) {
-    super(props);
-  }
+  state = {layout: LAYOUT_FLAT, points: ""};
 
   onMouseEnter(e) {
     if (this.props.onMouseEnter) {
