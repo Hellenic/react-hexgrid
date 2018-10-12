@@ -3,15 +3,10 @@ import PropTypes from 'prop-types';
 import Orientation from './models/Orientation';
 import Point from './models/Point';
 
-export const ThemeContext = React.createContext({
-  layout: Layout.LAYOUT_FLAT,
-  points: ""
-})
-export const { Provider: LayoutProvider, Consumer: LayoutConsumer } = ThemeContext;
+export const LAYOUT_FLAT = new Orientation(3.0 / 2.0, 0.0, Math.sqrt(3.0) / 2.0, Math.sqrt(3.0),2.0 / 3.0, 0.0, -1.0 / 3.0, Math.sqrt(3.0) / 3.0, 0.0);
+export const LAYOUT_POINTY = new Orientation(Math.sqrt(3.0), Math.sqrt(3.0) / 2.0, 0.0, 3.0 / 2.0, Math.sqrt(3.0) / 3.0, -1.0 / 3.0, 0.0, 2.0 / 3.0, 0.5);
 
 class Layout extends Component {
-  static LAYOUT_FLAT = new Orientation(3.0 / 2.0, 0.0, Math.sqrt(3.0) / 2.0, Math.sqrt(3.0),2.0 / 3.0, 0.0, -1.0 / 3.0, Math.sqrt(3.0) / 3.0, 0.0);
-  static LAYOUT_POINTY = new Orientation(Math.sqrt(3.0), Math.sqrt(3.0) / 2.0, 0.0, 3.0 / 2.0, Math.sqrt(3.0) / 3.0, -1.0 / 3.0, 0.0, 2.0 / 3.0, 0.5);
 
   static propTypes = {
     children: PropTypes.node.isRequired,
@@ -51,7 +46,7 @@ class Layout extends Component {
 
   render() {
     const { children, flat, className, ...rest } = this.props;
-    const orientation = (flat) ? Layout.LAYOUT_FLAT : Layout.LAYOUT_POINTY;
+    const orientation = (flat) ? LAYOUT_FLAT : LAYOUT_POINTY;
     const cornerCoords = this.calculateCoordinates(orientation);
     const points = cornerCoords.map(point => `${point.x},${point.y}`).join(' ');
     const layout = {...rest, ...orientation};
@@ -64,5 +59,11 @@ class Layout extends Component {
     );
   }
 }
+
+export const ThemeContext = React.createContext({
+  layout: LAYOUT_FLAT,
+  points: ""
+})
+export const { Provider: LayoutProvider, Consumer: LayoutConsumer } = ThemeContext;
 
 export default Layout;
