@@ -14,8 +14,8 @@
     "test": "jest --coverage"
   },
   "peerDependencies": {
-    "react": "^15.0.1",
-    "prop-types": "^15.0.1"
+    "prop-types": "^15.0.1",
+    "react": "^16.5.2"
   },
   "devDependencies": {
     "babel-cli": "*",
@@ -24,10 +24,10 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
     "enzyme": "^2.8.2",
-    "jest": "^20.0.3",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.5.4"
+    "jest": "^23.6.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-test-renderer": "^16.5.2"
   },
   "dependencies": {
     "classnames": "^2.2.5"
