@@ -11,6 +11,7 @@ class Hexagon extends Component {
     r: PropTypes.number.isRequired,
     s: PropTypes.number.isRequired,
     layout: PropTypes.objectOf(PropTypes.any).isRequired,
+    points: PropTypes.string.isRequired,
     fill: PropTypes.string,
     cellStyle: PropTypes.oneOfType([
       PropTypes.string,
@@ -98,8 +99,7 @@ class Hexagon extends Component {
     }
   }
   render() {
-    const { fill, cellStyle, className } = this.props;
-    const { points } = this.context;
+    const { fill, cellStyle, className, points } = this.props;
     const { hex, pixel } = this.state;
     const fillId = (fill) ? `url(#${fill})` : null;
     return (
@@ -125,4 +125,4 @@ class Hexagon extends Component {
   }
 }
 
-export default props => <LayoutConsumer>{({layout}) => <Hexagon layout={layout} {...props} />}</LayoutConsumer>;
+export default props => <LayoutConsumer>{({layout, points}) => <Hexagon layout={layout} points={points} {...props} />}</LayoutConsumer>;
