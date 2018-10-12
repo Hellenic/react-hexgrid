@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Hex from '../models/Hex';
 import HexUtils from '../HexUtils';
-import { LayoutConsumer } from './Layout';
+import { LayoutConsumer } from '../Layout';
 
 class Hexagon extends Component {
   static propTypes = {
