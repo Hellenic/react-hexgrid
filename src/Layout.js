@@ -48,7 +48,7 @@ class Layout extends Component {
     const orientation = (flat) ? LAYOUT_FLAT : LAYOUT_POINTY;
     const cornerCoords = this.calculateCoordinates(orientation);
     const points = cornerCoords.map(point => `${point.x},${point.y}`).join(' ');
-    const layout = {...rest, ...orientation};
+    const layout = {...rest, orientation};
     return (
       <LayoutProvider value={{ layout, points }}>
         <g className={className}>
