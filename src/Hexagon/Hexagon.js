@@ -41,7 +41,7 @@ class Hexagon extends Component {
     return { hex, pixel };
   }
 
-  state = {layout: LAYOUT_FLAT, points: ""};
+  state = { hex: {}, pixel: {} };
 
   onMouseEnter(e) {
     if (this.props.onMouseEnter) {
