@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import HexUtils from './HexUtils';
+import { LayoutConsumer } from './Layout';
 
 class Path extends Component {
   static propTypes = {
@@ -8,14 +9,10 @@ class Path extends Component {
     end: PropTypes.object,
     layout: PropTypes.object
   };
-  static contextTypes = {
-    layout: PropTypes.object // TODO Shape
-  };
 
   // TODO Refactor
   getPoints() {
-    const { start, end } = this.props;
-    const { layout } = this.context;
+    const { layout, start, end } = this.props;
     if (!start || !end) {
       return '';
     }
@@ -45,4 +42,4 @@ class Path extends Component {
   }
 }
 
-export default Path;
+export default props => <LayoutConsumer >{({layout}) => <Path layout={layout} {...props} />}</LayoutConsumer>;

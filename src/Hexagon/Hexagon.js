@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Hex from '../models/Hex';
 import HexUtils from '../HexUtils';
+import { LayoutConsumer } from './Layout';
 
 class Hexagon extends Component {
   static propTypes = {
@@ -27,28 +28,23 @@ class Hexagon extends Component {
     children: PropTypes.node
   };
 
-  static contextTypes = {
-    layout: PropTypes.object, // TODO Shape
-    points: PropTypes.string
-  };
-
-  constructor(props, context) {
-    super(props, context);
-    const { q, r, s } = props;
-    const { layout } = context;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { q, r, s, layout } = nextProps;
     const hex = new Hex(q, r, s);
     const pixel = HexUtils.hexToPixel(hex, layout);
-    this.state = { hex, pixel };
+
+    if (!prevState.hex && !prevState.pixel) {
+      return { hex, pixel };
+    } else if (HexUtils.equals(prevState.hex, nextProps.hex) && prevState.pixel.x === pixel.x && prevState.pixel.y === pixel.y) {
+      return null;
+    }
+    return { hex, pixel };
   }
 
-  // TODO Refactor to reduce duplicate
-  componentWillReceiveProps(nextProps) {
-    const { q, r, s } = nextProps;
-    const { layout } = this.context;
-    const hex = new Hex(q, r, s);
-    const pixel = HexUtils.hexToPixel(hex, layout);
-    this.setState({ hex, pixel });
+  constructor(props) {
+    super(props);
   }
+
   onMouseEnter(e) {
     if (this.props.onMouseEnter) {
       this.props.onMouseEnter(e, this);
@@ -128,4 +124,4 @@ class Hexagon extends Component {
   }
 }
 
-export default Hexagon;
+export default props => <LayoutConsumer>{({layout}) => <Hexagon layout={layout} {...props} />}</LayoutConsumer>;
