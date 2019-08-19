@@ -1,7 +1,7 @@
 {
-  "name": "react-hexgrid",
+  "name": "@json2d/react-hexgrid",
   "description": "Interactive hexagon grids with React bindings",
-  "version": "1.0.3",
+  "version": "1.0.3-filler",
   "main": "lib/index.js",
   "author": "Hellenic",
   "repository": "Hellenic/react-hexgrid",
@@ -30,7 +30,8 @@
     "react-test-renderer": "^15.5.4"
   },
   "dependencies": {
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "is-url": "^1.2.4"
   },
   "files": [
     "lib/",
