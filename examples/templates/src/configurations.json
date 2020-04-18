@@ -38,5 +38,21 @@
     "origin": { "x": -45, "y": -15 },
     "map": "orientedRectangle",
     "mapProps": [ 7, 7 ]
+  },
+  "ring": {
+    "width": 1000,
+    "height": 800,
+    "layout": { "width": 6, "height": 6, "flat": false, "spacing": 1.1 },
+    "origin": { "x": 0, "y": 0 },
+    "map": "ring",
+    "mapProps": [ {"q":0,"r":0,"s":0}, 3 ]
+  },
+  "spiral": {
+    "width": 1000,
+    "height": 800,
+    "layout": { "width": 6, "height": 6, "flat": false, "spacing": 1.1 },
+    "origin": { "x": 0, "y": 0 },
+    "map": "spiral",
+    "mapProps": [ {"q":0,"r":0,"s":0}, 3 ]
   }
 }

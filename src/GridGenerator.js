@@ -25,7 +25,7 @@ class GridGenerator {
   static spiral(center, mapRadius){
     let results = [center];
     for (let k = 1; k <= mapRadius; k++) {
-      const temp = this.ring(center, k);
+      const temp = GridGenerator.ring(center, k);
       results = results.concat(temp);
     }
     return results;
