@@ -28,13 +28,12 @@ class App extends Component {
       <div className="App">
         <h2>Select grid type and configuration from dropdown.</h2>
         <div>
-        <strong>Template: </strong><select onChange={(ev) => this.changeType(ev)}>
-          <option name="hexagon">hexagon</option>
-          <option name="triangle">triangle</option>
-          <option name="parallelogram">parallelogram</option>
-          <option name="rectangle">rectangle</option>
-          <option name="orientedRectangle">orientedRectangle</option>
-        </select>
+          <strong>Template: </strong>
+          <select onChange={(ev) => this.changeType(ev)}>
+            {Object.keys(configs).map((type) => (
+              <option name={type}>{type}</option>
+            ))}
+          </select>
         </div>
         <hr />
         <HexGrid width={config.width} height={config.height}>
