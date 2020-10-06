@@ -1,7 +1,7 @@
 {
   "name": "hexgrid-drag-and-drop",
   "version": "0.1.0",
-  "homepage": "http://karkk.ai/nen/react-hexgrid/examples/drag-and-drop/",
+  "homepage": "https://hellenic.github.io/react-hexgrid/examples/drag-and-drop/",
   "devDependencies": {
     "react-scripts": "0.8.4"
   },

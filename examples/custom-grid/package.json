@@ -1,7 +1,7 @@
 {
   "name": "hexgrid-custom-grid",
   "version": "0.1.0",
-  "homepage": "http://karkk.ai/nen/react-hexgrid/examples/custom-grid/",
+  "homepage": "https://hellenic.github.io/react-hexgrid/examples/custom-grid/",
   "devDependencies": {
     "react-scripts": "0.9.0"
   },

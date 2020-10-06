@@ -5,7 +5,7 @@
 ![npm version](https://img.shields.io/npm/v/react-hexgrid.svg)
 [![dependencies Status](https://david-dm.org/Hellenic/react-hexgrid/status.svg)](https://david-dm.org/Hellenic/react-hexgrid)
 [![devDependencies Status](https://david-dm.org/Hellenic/react-hexgrid/dev-status.svg)](https://david-dm.org/Hellenic/react-hexgrid?type=dev)
-[![Live demo](https://img.shields.io/badge/live-demo-brightgreen.svg?style=flat-square)](http://karkk.ai//nen/react-hexgrid/examples/)
+[![Live demo](https://img.shields.io/badge/live-demo-brightgreen.svg?style=flat-square)](https://hellenic.github.io/react-hexgrid/examples/)
 ![License](https://img.shields.io/npm/l/react-hexgrid.svg)
 
 React components to build interactive hexagons grids. It uses SVG which makes it fast, scalable and easy to apply custom styles. You can easily customize the layout of the grid just by configuration.
@@ -15,7 +15,7 @@ Component-based approach allows you to customize the grid shape to suit your nee
 You could easily use this library to build (just to name a few) a nice portfolio, image library or even a game!
 
 > With inspiration from
-[http://www.redblobgames.com/grids/hexagons](http://www.redblobgames.com/grids/hexagons).
+> [http://www.redblobgames.com/grids/hexagons](http://www.redblobgames.com/grids/hexagons).
 
 ## Pre-requisites
 
@@ -72,6 +72,7 @@ class App extends Component {
   }
 }
 ```
+
 Will look something like this (custom CSS applied):
 ![HexGrid image](https://raw.githubusercontent.com/Hellenic/react-hexgrid/master/react-hexgrid.png "HexGrid")
 
@@ -89,9 +90,10 @@ See examples folder.
 
 1. [pathfinding](https://github.com/Hellenic/react-hexgrid/tree/master/examples/pathfinding) - Pathfinding
 2. [drag & drop](https://github.com/Hellenic/react-hexgrid/tree/master/examples/drag-and-drop) - Drag & drop with two grids
-2. [animations](https://github.com/Hellenic/react-hexgrid/tree/master/examples/animations) - Animations & effects
+3. [animations](https://github.com/Hellenic/react-hexgrid/tree/master/examples/animations) - Animations & effects
 
 ## Testing changes locally
+
 You can test changes by importing the library directly from a folder:
 
 1. Do changes to the library
