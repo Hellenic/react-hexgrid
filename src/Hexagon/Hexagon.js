@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Hex from '../models/Hex';
 import HexUtils from '../HexUtils';
+import { LayoutConsumer } from '../Layout';
 
 class Hexagon extends Component {
   static propTypes = {
     q: PropTypes.number.isRequired,
     r: PropTypes.number.isRequired,
     s: PropTypes.number.isRequired,
+    layout: PropTypes.objectOf(PropTypes.any).isRequired,
+    points: PropTypes.string.isRequired,
     fill: PropTypes.string,
     cellStyle: PropTypes.oneOfType([
       PropTypes.string,
@@ -27,28 +30,23 @@ class Hexagon extends Component {
     children: PropTypes.node
   };
 
-  static contextTypes = {
-    layout: PropTypes.object, // TODO Shape
-    points: PropTypes.string
-  };
-
-  constructor(props, context) {
-    super(props, context);
-    const { q, r, s } = props;
-    const { layout } = context;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { q, r, s, layout } = nextProps;
     const hex = new Hex(q, r, s);
     const pixel = HexUtils.hexToPixel(hex, layout);
-    this.state = { hex, pixel };
+
+    if (
+      (!prevState.hex && !prevState.pixel)
+      || !((HexUtils.equals(prevState.hex, hex))
+        || (prevState.pixel.x === pixel.x && prevState.pixel.y === pixel.y))
+    ) {
+      return { hex, pixel };
+    }
+    return null;
   }
 
-  // TODO Refactor to reduce duplicate
-  componentWillReceiveProps(nextProps) {
-    const { q, r, s } = nextProps;
-    const { layout } = this.context;
-    const hex = new Hex(q, r, s);
-    const pixel = HexUtils.hexToPixel(hex, layout);
-    this.setState({ hex, pixel });
-  }
+  state = { hex: {}, pixel: {} };
+
   onMouseEnter(e) {
     if (this.props.onMouseEnter) {
       this.props.onMouseEnter(e, this);
@@ -101,8 +99,7 @@ class Hexagon extends Component {
     }
   }
   render() {
-    const { fill, cellStyle, className } = this.props;
-    const { points } = this.context;
+    const { fill, cellStyle, className, points } = this.props;
     const { hex, pixel } = this.state;
     const fillId = (fill) ? `url(#${fill})` : null;
     return (
@@ -128,4 +125,4 @@ class Hexagon extends Component {
   }
 }
 
-export default Hexagon;
+export default props => <LayoutConsumer>{({layout, points}) => <Hexagon layout={layout} points={points} {...props} />}</LayoutConsumer>;
