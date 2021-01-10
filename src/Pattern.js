@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import HexUtils from './HexUtils';
 import Point from './models/Point';
 
 class Pattern extends Component {
@@ -18,8 +17,8 @@ class Pattern extends Component {
 
     return (
       <defs>
-        <pattern id={id} patternUnits="objectBoundingBox" x={0} y={0} width={size.x} height={size.y}>
-          <image xlinkHref={link} x={0} y={0} width={size.x*2} height={size.y*2} />
+        <pattern id={id} patternUnits="objectBoundingBox" x={0} y={0} width="100%" height="100%">
+          <image xlinkHref={link} x={0} y={0} width={size.x} height={size.y} />
         </pattern>
       </defs>
     );
