@@ -17,6 +17,8 @@ You could easily use this library to build (just to name a few) a nice portfolio
 > With inspiration from
 > [http://www.redblobgames.com/grids/hexagons](http://www.redblobgames.com/grids/hexagons).
 
+> 🖊️ Codepen to play around with: https://codepen.io/hellenic/project/editor/AYMbMM#
+
 ## Pre-requisites
 
 You should be familiar with Node + NPM, React and ES6 to use this library.
