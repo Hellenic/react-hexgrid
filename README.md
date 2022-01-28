@@ -1,5 +1,7 @@
 # react-hexgrid
 
+> Note, I am not maintaining this library but happy to invite collaborators. Let me know!
+
 [![build status](https://img.shields.io/travis/Hellenic/react-hexgrid/master.svg?style=flat-square)](https://travis-ci.org/Hellenic/react-hexgrid)
 ![Downloads](https://img.shields.io/npm/dt/react-hexgrid.svg)
 ![npm version](https://img.shields.io/npm/v/react-hexgrid.svg)
