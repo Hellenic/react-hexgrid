@@ -2,11 +2,9 @@
 
 > Note, I am not maintaining this library but happy to invite collaborators. Let me know!
 
-[![build status](https://img.shields.io/travis/Hellenic/react-hexgrid/master.svg?style=flat-square)](https://travis-ci.org/Hellenic/react-hexgrid)
 ![Downloads](https://img.shields.io/npm/dt/react-hexgrid.svg)
 ![npm version](https://img.shields.io/npm/v/react-hexgrid.svg)
-[![dependencies Status](https://david-dm.org/Hellenic/react-hexgrid/status.svg)](https://david-dm.org/Hellenic/react-hexgrid)
-[![devDependencies Status](https://david-dm.org/Hellenic/react-hexgrid/dev-status.svg)](https://david-dm.org/Hellenic/react-hexgrid?type=dev)
+![dependencies Status](https://img.shields.io/librariesio/github/hellenic/react-hexgrid)
 [![Live demo](https://img.shields.io/badge/live-demo-brightgreen.svg?style=flat-square)](https://hellenic.github.io/react-hexgrid/examples/)
 ![License](https://img.shields.io/npm/l/react-hexgrid.svg)
 
@@ -20,6 +18,10 @@ You could easily use this library to build (just to name a few) a nice portfolio
 > [http://www.redblobgames.com/grids/hexagons](http://www.redblobgames.com/grids/hexagons).
 
 > 🖊️ Codepen to play around with: https://codepen.io/hellenic/project/editor/AYMbMM#
+
+## Maintainers wanted
+
+I am not maintaining this library but happy to invite new collaborators. Drop me an email and let's chat!
 
 ## Pre-requisites
 
