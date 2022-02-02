@@ -16,6 +16,7 @@ class Hexagon extends Component {
     ]),
     className: PropTypes.string,
     data: PropTypes.object,
+    onMouseDown: PropTypes.func,
     onMouseEnter: PropTypes.func,
     onMouseOver: PropTypes.func,
     onMouseLeave: PropTypes.func,
@@ -48,6 +49,11 @@ class Hexagon extends Component {
     const hex = new Hex(q, r, s);
     const pixel = HexUtils.hexToPixel(hex, layout);
     this.setState({ hex, pixel });
+  }
+  onMouseDown(e) {
+    if (this.props.onMouseDown) {
+      this.props.onMouseDown(e, this);
+    }
   }
   onMouseEnter(e) {
     if (this.props.onMouseEnter) {
@@ -96,8 +102,9 @@ class Hexagon extends Component {
   onDrop(e) {
     if (this.props.onDrop) {
       e.preventDefault();
-      const target = JSON.parse(e.dataTransfer.getData('hexagon'));
-      this.props.onDrop(e, this, target);
+      //const target = JSON.parse(e.dataTransfer.getData('hexagon'));
+      //this.props.onDrop(e, this, target);
+      this.props.onDrop(e, this, null);
     }
   }
   render() {
@@ -110,6 +117,7 @@ class Hexagon extends Component {
         className={classNames('hexagon-group', className)}
         transform={`translate(${pixel.x}, ${pixel.y})`}
         draggable="true"
+        onMouseDown={e => this.onMouseDown(e)}
         onMouseEnter={e => this.onMouseEnter(e)}
         onMouseOver={e => this.onMouseOver(e)}
         onMouseLeave={e => this.onMouseLeave(e)}
