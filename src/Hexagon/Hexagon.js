@@ -1,131 +1,163 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Hex from '../models/Hex';
-import HexUtils from '../HexUtils';
+import * as React from "react"
+import classNames from "classnames"
+import Hex from "../models/Hex"
+import HexUtils from "../HexUtils"
+import { useLayoutContext } from "../Layout"
 
-class Hexagon extends Component {
-  static propTypes = {
-    q: PropTypes.number.isRequired,
-    r: PropTypes.number.isRequired,
-    s: PropTypes.number.isRequired,
-    fill: PropTypes.string,
-    cellStyle: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object
-    ]),
-    className: PropTypes.string,
-    data: PropTypes.object,
-    onMouseEnter: PropTypes.func,
-    onMouseOver: PropTypes.func,
-    onMouseLeave: PropTypes.func,
-    onClick: PropTypes.func,
-    onDragStart: PropTypes.func,
-    onDragEnd: PropTypes.func,
-    onDragOver: PropTypes.func,
-    onDrop: PropTypes.func,
-    children: PropTypes.node
-  };
+type H = { data?: any; state: { hex: Hex }; props?: { fill?: string } }
 
-  static contextTypes = {
-    layout: PropTypes.object, // TODO Shape
-    points: PropTypes.string
-  };
+type HexagonDragEventHandler<T = Element, AdditionalData = any> = (
+  event: React.DragEvent<T>,
+  h: H,
+  additionalData?: AdditionalData,
+) => void
 
-  constructor(props, context) {
-    super(props, context);
-    const { q, r, s } = props;
-    const { layout } = context;
-    const hex = new Hex(q, r, s);
-    const pixel = HexUtils.hexToPixel(hex, layout);
-    this.state = { hex, pixel };
-  }
+type HexagonDragDropEventHandler<T = Element, AdditionalData = any> = (
+  event: React.DragEvent<T>,
+  h: H,
+  additionalData: AdditionalData,
+) => void
 
-  // TODO Refactor to reduce duplicate
-  componentWillReceiveProps(nextProps) {
-    const { q, r, s } = nextProps;
-    const { layout } = this.context;
-    const hex = new Hex(q, r, s);
-    const pixel = HexUtils.hexToPixel(hex, layout);
-    this.setState({ hex, pixel });
-  }
-  onMouseEnter(e) {
-    if (this.props.onMouseEnter) {
-      this.props.onMouseEnter(e, this);
-    }
-  }
-  onMouseOver(e) {
-    if (this.props.onMouseOver) {
-      this.props.onMouseOver(e, this);
-    }
-  }
-  onMouseLeave(e) {
-    if (this.props.onMouseLeave) {
-      this.props.onMouseLeave(e, this);
-    }
-  }
-  onClick(e) {
-    if (this.props.onClick) {
-      this.props.onClick(e, this);
-    }
-  }
-  onDragStart(e) {
-    if (this.props.onDragStart) {
-      const targetProps = {
-        ...this.state,
-        data: this.props.data,
-        fill: this.props.fill,
-        className: this.props.className
-      };
-      e.dataTransfer.setData('hexagon', JSON.stringify(targetProps));
-      this.props.onDragStart(e, this);
-    }
-  }
-  onDragEnd(e) {
-    if (this.props.onDragEnd) {
-      e.preventDefault();
-      const success = (e.dataTransfer.dropEffect !== 'none');
-      this.props.onDragEnd(e, this, success);
-    }
-  }
-  onDragOver(e) {
-    if (this.props.onDragOver) {
-      this.props.onDragOver(e, this);
-    }
-  }
-  onDrop(e) {
-    if (this.props.onDrop) {
-      e.preventDefault();
-      const target = JSON.parse(e.dataTransfer.getData('hexagon'));
-      this.props.onDrop(e, this, target);
-    }
-  }
-  render() {
-    const { fill, cellStyle, className } = this.props;
-    const { points } = this.context;
-    const { hex, pixel } = this.state;
-    const fillId = (fill) ? `url(#${fill})` : null;
-    return (
-      <g
-        className={classNames('hexagon-group', className)}
-        transform={`translate(${pixel.x}, ${pixel.y})`}
-        draggable="true"
-        onMouseEnter={e => this.onMouseEnter(e)}
-        onMouseOver={e => this.onMouseOver(e)}
-        onMouseLeave={e => this.onMouseLeave(e)}
-        onClick={e => this.onClick(e)}
-        onDragStart={e => this.onDragStart(e)}
-        onDragEnd={e => this.onDragEnd(e)}
-        onDragOver={e => this.onDragOver(e)}
-        onDrop={e => this.onDrop(e)}
-      >
-        <g className="hexagon">
-          <polygon points={points} fill={fillId} style={cellStyle} />
-          {this.props.children}
-        </g>
-      </g>
-    );
-  }
+type HexagonMouseEventHandler<T = SVGGElement> = (
+  event: React.MouseEvent<T, globalThis.MouseEvent>,
+  h: H,
+) => void
+
+export type HexagonProps = {
+  q: number
+  r: number
+  s: number
+  fill?: string
+  className?: string
+  cellStyle?: string | any
+  data?: any
+  // onMouseEnter?: HexagonDragEventHandler
+  // onMouseOver?: () => void
+  // onMouseLeave?: () => void
+  // onClick?: () => void
+  onDragStart?: HexagonDragEventHandler
+  onDragEnd?: HexagonDragEventHandler
+  onDrop?: HexagonDragDropEventHandler<any, TargetProps>
+  onDragOver?: HexagonDragEventHandler
+  onMouseEnter?: HexagonMouseEventHandler
+  onClick?: HexagonMouseEventHandler
+  children?: React.ReactNode | React.ReactNode[] | string // React.ReactElement | React.ReactElement[] | string
 }
 
-export default Hexagon;
+type TargetProps = {
+  hex: Hex
+  data?: any
+  fill?: string
+  className?: string
+}
+
+export function Hexagon({
+  q,
+  r,
+  s,
+  fill,
+  cellStyle,
+  className,
+  children,
+  onDragStart,
+  onDragEnd,
+  onDrop,
+  onDragOver,
+  onMouseEnter,
+  onClick,
+  data,
+  fillOpacity,
+  ...rest
+}: HexagonProps &
+  Omit<
+    React.SVGProps<SVGGElement>,
+    | "transform"
+    | "onDragStart"
+    | "onDragEnd"
+    | "onDrop"
+    | "onDragOver"
+    | "onMouseEnter"
+    | "onClick"
+  >) {
+  const { layout, points } = useLayoutContext()
+
+  const { hex, pixel } = React.useMemo(() => {
+    const hex = new Hex(q, r, s)
+    // console.log({ hex, layout })
+    const pixel = HexUtils.hexToPixel(hex, layout)
+    return {
+      hex,
+      pixel,
+    }
+  }, [q, r, s, layout])
+
+  // for backwards comapatbility
+  const state = { hex }
+
+  const fillId = fill ? `url(#${fill})` : null
+  return (
+    <g
+      className={classNames("hexagon-group", className)}
+      transform={`translate(${pixel.x}, ${pixel.y})`}
+      {...rest}
+      draggable={"true"}
+      onDragStart={(e) => {
+        if (onDragStart) {
+          const targetProps: TargetProps = {
+            hex: hex,
+            // state: { hex, pixel },
+            // ...{ hex, pixel },
+            // ...this.state,
+            data: data,
+            fill: fill,
+            className: className,
+          }
+          e.dataTransfer.setData("hexagon", JSON.stringify(targetProps))
+          onDragStart(e, { data, state })
+        }
+      }}
+      onDragEnd={(e) => {
+        if (onDragEnd) {
+          e.preventDefault()
+          const success = e.dataTransfer.dropEffect !== "none"
+          onDragEnd(e, { state }, success)
+        }
+      }}
+      onDrop={(e) => {
+        if (onDrop) {
+          e.preventDefault()
+          const target = JSON.parse(e.dataTransfer.getData("hexagon"))
+          onDrop(e, { data, state }, target)
+        }
+      }}
+      onDragOver={(e) => {
+        if (onDragOver) {
+          onDragOver(e, { data, state })
+        }
+      }}
+      onMouseEnter={(e) => {
+        if (onMouseEnter) {
+          onMouseEnter(e, { data, state })
+        }
+      }}
+      // onMouseOver={(e) => this.onMouseOver(e)}
+      // onMouseLeave={(e) => this.onMouseLeave(e)}
+      onClick={(e) => {
+        if (onClick) {
+          onClick(e, { data, state })
+        }
+      }}
+      // onDragStart={(e) => this.onDragStart(e)}
+      // onDragEnd={(e) => this.onDragEnd(e)}
+      // onDragOver={(e) => this.onDragOver(e)}
+      // onDrop={(e) => this.onDrop(e)}
+    >
+      <g className="hexagon">
+        <polygon points={points} fill={fillId} style={cellStyle} />
+        {children}
+      </g>
+    </g>
+  )
+}
+
+export default Hexagon
