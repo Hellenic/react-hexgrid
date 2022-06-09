@@ -13,25 +13,6 @@ export function HexGrid({
   viewBox = "-50 -50 100 100",
   children,
 }: HexGridProps) {
-  // static propTypes = {
-  //   width: PropTypes.oneOfType([
-  //     PropTypes.string.isRequired,
-  //     PropTypes.number.isRequired,
-  //   ]),
-  //   height: PropTypes.oneOfType([
-  //     PropTypes.string.isRequired,
-  //     PropTypes.number.isRequired,
-  //   ]),
-  //   viewBox: PropTypes.string,
-  //   children: PropTypes.node.isRequired
-  // };
-
-  // static defaultProps = {
-  //   width: 800,
-  //   height: 600,
-  //   viewBox: "-50 -50 100 100"
-  // }
-
   return (
     <svg
       className="grid"

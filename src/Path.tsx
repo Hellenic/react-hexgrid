@@ -8,15 +8,6 @@ export type PathProps = {
   end: any
 }
 export function Path(props: PathProps) {
-  // static propTypes = {
-  //   start: PropTypes.object,
-  //   end: PropTypes.object,
-  //   layout: PropTypes.object
-  // };
-  // static contextTypes = {
-  //   layout: PropTypes.object // TODO Shape
-  // };
-
   const { layout } = useLayoutContext()
   // TODO Refactor
   function getPoints() {

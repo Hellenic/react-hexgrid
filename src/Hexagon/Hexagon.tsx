@@ -31,17 +31,13 @@ export type HexagonProps = {
   className?: string
   cellStyle?: string | any
   data?: any
-  // onMouseEnter?: HexagonDragEventHandler
-  // onMouseOver?: () => void
-  // onMouseLeave?: () => void
-  // onClick?: () => void
   onDragStart?: HexagonDragEventHandler
   onDragEnd?: HexagonDragEventHandler
   onDrop?: HexagonDragDropEventHandler<any, TargetProps>
   onDragOver?: HexagonDragEventHandler
   onMouseEnter?: HexagonMouseEventHandler
   onClick?: HexagonMouseEventHandler
-  children?: React.ReactNode | React.ReactNode[] | string // React.ReactElement | React.ReactElement[] | string
+  children?: React.ReactNode | React.ReactNode[]
 }
 
 type TargetProps = {

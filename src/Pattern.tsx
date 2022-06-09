@@ -12,17 +12,6 @@ export type PatternProps = {
 const defaultSize = new Point(10, 10)
 
 export function Pattern({ id, link, size = defaultSize }: PatternProps) {
-  // static propTypes = {
-  //   id: PropTypes.string.isRequired,
-  //   link: PropTypes.string.isRequired,
-  //   size: PropTypes.object
-  // };
-  // static defaultProps = {
-  //   size: new Point(10, 10)
-  // };
-
-  // const { id, link, size } = this.props;
-
   return (
     <defs>
       <pattern

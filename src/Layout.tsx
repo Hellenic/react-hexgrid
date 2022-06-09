@@ -97,19 +97,6 @@ export function Layout({
   className,
   ...rest
 }: LayoutProps) {
-  // static childContextTypes = {
-  //   layout: PropTypes.object, // TODO Shape
-  //   points: PropTypes.string
-  // };
-
-  // getChildContext() {
-
-  //   return {
-  //     layout: childLayout,
-  //     points
-  //   };
-  // }
-
   const orientation = flat ? LAYOUT_FLAT : LAYOUT_POINTY
   const cornerCoords = calculateCoordinates(orientation, size)
   const points = cornerCoords.map((point) => `${point.x},${point.y}`).join(" ")
