@@ -1,0 +1,7 @@
+svg {
+  filter: url("#goo");
+  /*filter: url("#shadowed-goo");*/
+}
+svg g.hexagon-group:nth-child(28) polygon {
+  stroke-width: 3;
+}
