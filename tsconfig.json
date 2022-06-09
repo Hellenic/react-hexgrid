@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationDir": "lib",
+    "emitDeclarationOnly": false,
+    "rootDir": "src",
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": false,
+    "noFallthroughCasesInSwitch": false,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": false,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "ESNext",
+    "target": "ESNext",
+    "outDir": "./lib"
+  },
+  "include": ["src"]
+}
