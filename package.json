@@ -7,27 +7,32 @@
   "repository": "Hellenic/react-hexgrid",
   "license": "MIT",
   "scripts": {
-    "compile": "babel src/ --out-dir lib",
-    "bundle": "babel src/ --out-file dist/react-hexgrid.js",
-    "prepublish": "npm run compile",
+    "tsc": "tsc",
     "test:watch": "jest --watch --coverage",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "peerDependencies": {
-    "react": "^15.0.1",
-    "prop-types": "^15.0.1"
+    "react": "^16.8.0"
   },
   "devDependencies": {
     "babel-cli": "*",
-    "babel-plugin-transform-es2015-modules-umd": "^6.18.0",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-preset-stage-1": "^6.5.0",
-    "enzyme": "^2.8.2",
+    "@babel/core": "^7.18.2",
+    "enzyme": "^3.11.0",
     "jest": "^20.0.3",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.5.4"
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-test-renderer": "^16.8.0",
+    "@storybook/addon-actions": "^6.5.5",
+    "@storybook/addon-essentials": "^6.5.5",
+    "@storybook/addon-interactions": "^6.5.5",
+    "@storybook/addon-links": "^6.5.5",
+    "@storybook/builder-webpack5": "^6.5.5",
+    "@storybook/manager-webpack5": "^6.5.5",
+    "@storybook/react": "^6.5.5",
+    "@storybook/testing-library": "^0.0.11",
+    "react-transition-group": "^1.1.2"
   },
   "dependencies": {
     "classnames": "^2.2.5"
