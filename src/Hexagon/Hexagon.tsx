@@ -37,6 +37,7 @@ export type HexagonProps = {
   onDragOver?: HexagonDragEventHandler
   onMouseEnter?: HexagonMouseEventHandler
   onClick?: HexagonMouseEventHandler
+  onMouseOver?: HexagonMouseEventHandler
   children?: React.ReactNode | React.ReactNode[]
 }
 
@@ -60,6 +61,7 @@ export function Hexagon({
   onDrop,
   onDragOver,
   onMouseEnter,
+  onMouseOver,
   onClick,
   data,
   fillOpacity,
@@ -74,6 +76,7 @@ export function Hexagon({
     | "onDragOver"
     | "onMouseEnter"
     | "onClick"
+    | "onMouseOver"
   >) {
   const { layout, points } = useLayoutContext()
 
@@ -90,13 +93,14 @@ export function Hexagon({
   // for backwards comapatbility
   const state = { hex }
 
-  const fillId = fill ? `url(#${fill})` : null
+  const fillId = fill ? `url(#${fill})` : undefined
+  const draggable = { draggable: true } as any
   return (
     <g
       className={classNames("hexagon-group", className)}
       transform={`translate(${pixel.x}, ${pixel.y})`}
-      {...rest}
-      draggable={"true"}
+      // {...rest}
+      {...draggable}
       onDragStart={(e) => {
         if (onDragStart) {
           const targetProps: TargetProps = {
@@ -143,6 +147,12 @@ export function Hexagon({
           onClick(e, { data, state })
         }
       }}
+      onMouseOver={(e) => {
+        if (onMouseOver) {
+          onMouseOver(e, { data, state })
+        }
+      }}
+
       // onDragStart={(e) => this.onDragStart(e)}
       // onDragEnd={(e) => this.onDragEnd(e)}
       // onDragOver={(e) => this.onDragOver(e)}
