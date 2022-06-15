@@ -1,24 +1,24 @@
 import * as React from "react"
 import classNames from "classnames"
-import Hex from "../models/Hex"
+import { Hex } from "../models/Hex"
 import HexUtils from "../HexUtils"
 import { useLayoutContext } from "../Layout"
 
 type H = { data?: any; state: { hex: Hex }; props?: { fill?: string } }
 
-type HexagonDragEventHandler<T = Element, AdditionalData = any> = (
+export type HexagonDragEventHandler<T = Element, AdditionalData = any> = (
   event: React.DragEvent<T>,
   h: H,
   additionalData?: AdditionalData,
 ) => void
 
-type HexagonDragDropEventHandler<T = Element, AdditionalData = any> = (
+export type HexagonDragDropEventHandler<T = Element, AdditionalData = any> = (
   event: React.DragEvent<T>,
   h: H,
   additionalData: AdditionalData,
 ) => void
 
-type HexagonMouseEventHandler<T = SVGGElement> = (
+export type HexagonMouseEventHandler<T = SVGGElement> = (
   event: React.MouseEvent<T, globalThis.MouseEvent>,
   h: H,
 ) => void
@@ -29,7 +29,7 @@ export type HexagonProps = {
   s: number
   fill?: string
   className?: string
-  cellStyle?: string | any
+  cellStyle?: React.CSSProperties | undefined
   data?: any
   onDragStart?: HexagonDragEventHandler
   onDragEnd?: HexagonDragEventHandler

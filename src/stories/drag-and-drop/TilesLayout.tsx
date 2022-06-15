@@ -1,5 +1,13 @@
 import * as React from "react"
-import { GridGenerator, Layout, Hexagon, Text, Pattern, HexUtils } from "../.."
+import {
+  GridGenerator,
+  Layout,
+  Hexagon,
+  Text,
+  Pattern,
+  HexUtils,
+  Hex,
+} from "../.."
 import "./TilesLayout.css"
 
 export type TilesLayoutProps = {}
@@ -8,7 +16,7 @@ const initialHexagons = GridGenerator.parallelogram(-1, 1, -1, 2).map(
     return Object.assign({}, hexagon, {
       text: `Cat #${index}`,
       image: `https://picsum.photos/id/${index % 10}/100`,
-    })
+    } as Hex)
   },
 )
 export function TilesLayout(props: TilesLayoutProps) {
@@ -44,15 +52,15 @@ export function TilesLayout(props: TilesLayoutProps) {
             // const hexas = hexagons.filter(hex => !HexUtils.equals(targetHex, hex));
             const hexas = hexagons.map((hex) => {
               if (HexUtils.equals(source.state.hex, hex)) {
-                hex.text = null
-                hex.image = null
+                hex.text = undefined
+                hex.image = undefined
               }
               return hex
             })
             setHexagons(hexas)
           }}
         >
-          <Text>{hex.text}</Text>
+          <Text>{hex.text || ""}</Text>
           {!!hex.image && <Pattern id={HexUtils.getID(hex)} link={hex.image} />}
         </Hexagon>
       ))}

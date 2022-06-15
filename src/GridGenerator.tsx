@@ -1,7 +1,7 @@
 import { Hex } from "./models/Hex"
 import { HexUtils } from "./HexUtils"
 
-class GridGenerator {
+export class GridGenerator {
   static getGenerator(name) {
     if (GridGenerator.hasOwnProperty(name)) return GridGenerator[name]
 
@@ -9,7 +9,7 @@ class GridGenerator {
   }
 
   static ring(center, mapRadius) {
-    let hexas = []
+    let hexas: Hex[] = []
     let hex = HexUtils.add(
       center,
       HexUtils.multiply(HexUtils.direction(4), mapRadius),
@@ -33,7 +33,7 @@ class GridGenerator {
   }
 
   static parallelogram(q1, q2, r1, r2) {
-    let hexas = []
+    let hexas: Hex[] = []
     for (let q = q1; q <= q2; q++) {
       for (let r = r1; r <= r2; r++) {
         hexas.push(new Hex(q, r, -q - r))
@@ -44,7 +44,7 @@ class GridGenerator {
   }
 
   static triangle(mapSize) {
-    let hexas = []
+    let hexas: Hex[] = []
     for (let q = 0; q <= mapSize; q++) {
       for (let r = 0; r <= mapSize - q; r++) {
         hexas.push(new Hex(q, r, -q - r))
@@ -80,7 +80,7 @@ class GridGenerator {
   }
 
   static orientedRectangle(mapWidth, mapHeight) {
-    let hexas = []
+    let hexas: Hex[] = []
     for (let q = 0; q < mapWidth; q++) {
       let offset = Math.floor(q / 2) // or q>>1
       for (let r = -offset; r < mapHeight - offset; r++) {

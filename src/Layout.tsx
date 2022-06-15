@@ -63,7 +63,7 @@ function getPointOffset(corner, orientation: Orientation, size: Size) {
 
 // TODO Refactor
 function calculateCoordinates(orientation: Orientation, size: Size) {
-  const corners = []
+  const corners: Point[] = []
   const center = new Point(0, 0)
 
   Array.from(new Array(6), (x, i) => {
@@ -85,6 +85,7 @@ export type LayoutProps = {
   flat?: boolean
   origin?: any
   size?: Size
+  space?: number
   spacing?: number
 }
 

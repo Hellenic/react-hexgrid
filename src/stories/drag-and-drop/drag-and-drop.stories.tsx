@@ -1,6 +1,6 @@
 import React from "react"
 import { ComponentStory, ComponentMeta } from "@storybook/react"
-import { HexGrid, Layout, Hexagon, GridGenerator } from "../.."
+import { HexGrid, Hexagon } from "../.."
 import { GameLayout } from "./GameLayout"
 import { TilesLayout } from "./TilesLayout"
 

@@ -10,7 +10,7 @@ import {
   Pattern,
   Hex,
 } from "../.."
-// import "./custom-grid.css"
+import "./custom-grid.css"
 
 export default {
   title: "Example/CustomGrid",

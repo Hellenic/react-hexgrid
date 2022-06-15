@@ -1,6 +1,4 @@
 import React, { Component } from "react"
-import PropTypes from "prop-types"
-import HexUtils from "./HexUtils"
 import Point from "./models/Point"
 import { Size } from "./Layout"
 

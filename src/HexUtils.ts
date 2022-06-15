@@ -45,7 +45,7 @@ export class HexUtils {
   }
 
   static neighbours(hex) {
-    const array = []
+    const array: Hex[] = []
     for (let i = 0; i < HexUtils.DIRECTIONS.length; i += 1) {
       array.push(HexUtils.neighbour(hex, i))
     }

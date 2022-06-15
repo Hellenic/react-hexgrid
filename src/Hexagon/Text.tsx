@@ -1,12 +1,12 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
+import * as React from "react"
 
 export type TextProps = {
-  children: string
+  children: string | React.ReactNode | React.ReactNode[]
   x?: string | number
   y?: string | number
   className?: string
 }
+
 // TODO Text is a separate component so that it could wrap the given text inside the surrounding hexagon
 export function Text(props: TextProps) {
   const { children, x, y, className } = props

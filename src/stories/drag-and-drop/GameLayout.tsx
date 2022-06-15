@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import * as React from "react"
 import { GridGenerator, Layout, Hexagon, Text, Pattern, HexUtils } from "../.."
 import "./GameLayout.css"
 
@@ -24,9 +24,9 @@ export function GameLayout(props: GameLayoutProps) {
           q={hex.q}
           r={hex.r}
           s={hex.s}
-          className={hex.blocked ? "blocked" : null}
+          className={hex.blocked ? "blocked" : undefined}
           // className={"blocked"}
-          fill={hex.image ? HexUtils.getID(hex) : null}
+          fill={hex.image ? HexUtils.getID(hex) : undefined}
           data={hex}
           onDragStart={(event, source) => {
             // If this tile is empty, let's disallow drag
@@ -45,12 +45,12 @@ export function GameLayout(props: GameLayoutProps) {
             // When hexagon is successfully dropped, empty it's text and image
             const hexas = hexagons.map((hex) => {
               if (HexUtils.equals(source.state.hex, hex)) {
-                hex.text = null
-                hex.image = null
+                hex.text = undefined
+                hex.image = undefined
               }
               return hex
             })
-            this.setState({ hexagons: hexas })
+            setHexagons(hexas)
           }}
           // onDrop you can read information of the hexagon that initiated the drag
 

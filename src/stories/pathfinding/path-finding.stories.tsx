@@ -12,6 +12,7 @@ import {
 // import { GameLayout } from "./GameLayout"
 // import { TilesLayout } from "./TilesLayout"
 import "./App.css"
+import Hex from "../../models/Hex"
 
 export default {
   title: "Example/PathFinding",
@@ -21,7 +22,10 @@ export default {
 const initialHexagons = GridGenerator.hexagon(4)
 const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
   const [hexagons, setHexagons] = React.useState(initialHexagons)
-  const [path, setPath] = React.useState({ start: null, end: null })
+  const [path, setPath] = React.useState<{
+    start: null | Hex
+    end: null | Hex
+  }>({ start: null, end: null })
 
   return (
     <div className="App">
@@ -45,7 +49,7 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
                 q={hex.q}
                 r={hex.r}
                 s={hex.s}
-                className={hex.props ? hex.props.className : null}
+                className={hex.props ? hex.props.className : undefined}
                 onMouseEnter={(event, source) => {
                   // Set the path's end on hover
                   // const { path, hexagons } = this.state;

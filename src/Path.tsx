@@ -1,7 +1,7 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
-import HexUtils from "./HexUtils"
+import * as React from "react"
+import { HexUtils } from "./HexUtils"
 import { useLayoutContext } from "./Layout"
+import { Hex } from "./models/Hex"
 
 export type PathProps = {
   start: any
@@ -18,7 +18,7 @@ export function Path(props: PathProps) {
 
     // Get all the intersecting hexes between start and end points
     let distance = HexUtils.distance(start, end)
-    let intersects = []
+    let intersects: Hex[] = []
     let step = 1.0 / Math.max(distance, 1)
     for (let i = 0; i <= distance; i++) {
       intersects.push(HexUtils.round(HexUtils.hexLerp(start, end, step * i)))

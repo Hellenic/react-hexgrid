@@ -4,8 +4,8 @@ export class Hex {
   public s: number
 
   public blocked?: boolean
-  public text?: string
-  public image?: string
+  public text?: string | undefined
+  public image?: string | undefined
   public props?: { fill?: string; className?: string }
   public state?: any
   public pattern?: string

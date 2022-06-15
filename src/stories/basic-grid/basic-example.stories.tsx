@@ -1,7 +1,7 @@
 import React from "react"
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 import { HexGrid, Layout, Hexagon, GridGenerator } from "../.."
-// import "./basic-example.css"
+import "./basic-example.css"
 
 export default {
   title: "Example/Basic",

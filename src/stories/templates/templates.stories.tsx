@@ -10,7 +10,7 @@ import {
   HexUtils,
   Hex,
 } from "../.."
-import configs from "./configurations.json"
+import { configurations } from "./configurations"
 import "./App.css"
 
 export default {
@@ -18,7 +18,7 @@ export default {
   component: Hexagon,
 } as ComponentMeta<typeof Hexagon>
 
-const initialConfig = configs["hexagon"]
+const initialConfig = configurations["hexagon"]
 const generator = GridGenerator.getGenerator(initialConfig.map)
 const initialHexagons: Hex[] = generator.apply(this, initialConfig.mapProps)
 
@@ -36,14 +36,14 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
         <select
           onChange={(event) => {
             const name = event.currentTarget.value
-            const config = configs[name]
+            const config = configurations[name]
             const generator = GridGenerator.getGenerator(config.map)
             const hexagons = generator.apply(this, config.mapProps)
             setConfig(config)
             setHexagons(hexagons)
           }}
         >
-          {Object.keys(configs).map((type) => (
+          {Object.keys(configurations).map((type) => (
             <option value={type}>{type}</option>
           ))}
         </select>
