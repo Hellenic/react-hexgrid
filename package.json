@@ -1,13 +1,14 @@
 {
   "name": "react-hexgrid",
   "description": "Interactive hexagon grids with React bindings",
-  "version": "1.0.4",
+  "version": "2.0.0-beta.0",
   "main": "lib/index.js",
   "author": "Hellenic",
   "repository": "Hellenic/react-hexgrid",
   "license": "MIT",
   "scripts": {
     "tsc": "tsc",
+    "tsc:watch": "tsc --watch",
     "test:watch": "jest --watch --coverage",
     "test": "jest --coverage",
     "storybook": "start-storybook -p 6006",
