@@ -36,6 +36,7 @@
     "react-transition-group": "^1.1.2"
   },
   "dependencies": {
+    "@changesets/cli": "^2.23.0",
     "classnames": "^2.2.5"
   },
   "files": [
