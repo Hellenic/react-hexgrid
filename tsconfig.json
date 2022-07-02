@@ -24,7 +24,9 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "target": "ESNext",
-    "outDir": "./lib"
+    "outDir": "./lib",
+
+    "jsxImportSource": "@emotion/react"
   },
   "include": ["src"]
 }
