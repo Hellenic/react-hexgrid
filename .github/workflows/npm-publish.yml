@@ -3,9 +3,7 @@
 
 name: Publish package
 
-on:
-  release:
-    types: [created]
+on: [workflow_dispatch]
 
 jobs:
   build:
