@@ -6,14 +6,13 @@ exports[`Hexagon should render correctly with default props 1`] = `
 >
   <g
     className="hexagon-group"
-    draggable="true"
+    draggable={true}
     onClick={[Function]}
     onDragEnd={[Function]}
     onDragOver={[Function]}
     onDragStart={[Function]}
     onDrop={[Function]}
     onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
     onMouseOver={[Function]}
     transform="translate(0, 0)"
   >
@@ -21,9 +20,7 @@ exports[`Hexagon should render correctly with default props 1`] = `
       className="hexagon"
     >
       <polygon
-        fill={null}
         points="5.196152422706632,2.9999999999999996 3.6739403974420594e-16,6 -5.196152422706632,2.9999999999999996 -5.196152422706633,-2.9999999999999982 -1.102182119232618e-15,-6 5.19615242270663,-3.0000000000000027"
-        style={undefined}
       />
       <div>
         child
