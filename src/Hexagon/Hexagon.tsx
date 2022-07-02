@@ -102,7 +102,7 @@ export function Hexagon({
     <g
       className={classNames("hexagon-group", className)}
       transform={`translate(${pixel.x}, ${pixel.y})`}
-      // {...rest}
+      {...rest}
       {...draggable}
       onDragStart={(e) => {
         if (onDragStart) {
