@@ -36,6 +36,7 @@ export type HexagonProps = {
   onDrop?: HexagonDragDropEventHandler<any, TargetProps>
   onDragOver?: HexagonDragEventHandler
   onMouseEnter?: HexagonMouseEventHandler
+  onMouseLeave?: HexagonMouseEventHandler
   onClick?: HexagonMouseEventHandler
   onMouseOver?: HexagonMouseEventHandler
   children?: React.ReactNode | React.ReactNode[]
@@ -61,6 +62,7 @@ export function Hexagon({
   onDrop,
   onDragOver,
   onMouseEnter,
+  onMouseLeave,
   onMouseOver,
   onClick,
   data,
@@ -77,6 +79,7 @@ export function Hexagon({
     | "onMouseEnter"
     | "onClick"
     | "onMouseOver"
+    | "onMouseLeave"
   >) {
   const { layout, points } = useLayoutContext()
 
@@ -141,7 +144,6 @@ export function Hexagon({
         }
       }}
       // onMouseOver={(e) => this.onMouseOver(e)}
-      // onMouseLeave={(e) => this.onMouseLeave(e)}
       onClick={(e) => {
         if (onClick) {
           onClick(e, { data, state })
@@ -150,6 +152,11 @@ export function Hexagon({
       onMouseOver={(e) => {
         if (onMouseOver) {
           onMouseOver(e, { data, state })
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (onMouseLeave) {
+          onMouseLeave(e, { data, state })
         }
       }}
 
