@@ -5,7 +5,7 @@ import { Hex } from "./models/Hex"
 
 export type PathProps = {
   start: any
-  end: any
+  end?: any
 }
 export function Path(props: PathProps) {
   const { layout } = useLayoutContext()
