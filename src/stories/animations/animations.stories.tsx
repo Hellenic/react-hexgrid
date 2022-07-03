@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 import { HexGrid, Layout, Hexagon, GridGenerator } from "../.."
 import * as React from "react"
-import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup"
+import { CSSTransitionGroup } from "react-transition-group"
 import "./App.css"
 import "./Animations.css"
 import "./Filters.css"
