@@ -1,17 +1,29 @@
 {
   "name": "pattern-swap",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-hexgrid": "^1.0.3",
-    "react-scripts": "1.1.4"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hexgrid": "^2.0.0-beta.2",
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

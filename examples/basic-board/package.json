@@ -1,14 +1,12 @@
 {
   "name": "hexgrid-basic-board",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "homepage": "https://hellenic.github.io/react-hexgrid/examples/basic-board/",
-  "devDependencies": {
-    "react-scripts": "0.4.1"
-  },
   "dependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-hexgrid": "^1.0.0-rc1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hexgrid": "^2.0.0-beta.2",
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -16,7 +14,16 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": "./node_modules/react-scripts/config/eslint.js"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
