@@ -14,8 +14,8 @@ Component-based approach allows you to customize the grid shape to suit your nee
 
 You could easily use this library to build a nice portfolio, image library or even a game (just to name a few)!
 
-And remember, hexagons are the bestagons: https://www.youtube.com/watch?v=thOifuHs6eY
-[![IMAGE ALT TEXT HERE](https://www.youtube.com/watch?v=thOifuHs6eY/0.jpg)](https://www.youtube.com/watch?v=thOifuHs6eY)
+And remember, hexagons are the bestagons:
+[![youtube video about hexagons](http://i3.ytimg.com/vi/thOifuHs6eY/hqdefault.jpg)](https://www.youtube.com/watch?v=thOifuHs6eY)
 
 > With inspiration from
 > [http://www.redblobgames.com/grids/hexagons](http://www.redblobgames.com/grids/hexagons).
