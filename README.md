@@ -10,18 +10,28 @@
 
 React components to build interactive hexagons grids. It uses SVG which makes it fast, scalable and easy to apply custom styles. You can easily customize the layout of the grid just by configuration.
 
-Component-based approach allows you to customize the grid shape to suit your needs or even apply your own components / SVG elements to it. You can use pre-defined generator to create certain shape grid or you may build totally your own grid to the shape you wish, while still keeping it under control and interactive.
+Component-based approach allows you to customize the grid shape to suit your needs or even apply your own components / SVG elements to it. You can use pre-defined generator to create certain grid shapes or you may build your own grid tas you wish, while still keeping it under control and interactive.
 
-You could easily use this library to build (just to name a few) a nice portfolio, image library or even a game!
+You could easily use this library to build a nice portfolio, image library or even a game (just to name a few)!
+
+And remember, hexagons are the bestagons: https://www.youtube.com/watch?v=thOifuHs6eY
+[![IMAGE ALT TEXT HERE](https://www.youtube.com/watch?v=thOifuHs6eY/0.jpg)](https://www.youtube.com/watch?v=thOifuHs6eY)
 
 > With inspiration from
 > [http://www.redblobgames.com/grids/hexagons](http://www.redblobgames.com/grids/hexagons).
 
 > 🖊️ Codepen to play around with: https://codepen.io/hellenic/project/editor/AYMbMM#
 
-## Maintainers wanted
+## v2 around the corner
 
-I am not maintaining this library but happy to invite new collaborators. Drop me an email and let's chat!
+The new version should not contain any breaking changes. There is typescript support, some storybook examples for easy development and testing. The new version uses the newer react context api under the hood.
+Though there should not be any breaking changes, there could be issues. Feel free to checkout the current beta release and give feedback.
+
+Install via:
+
+```
+npm install react-hexgrid@beta
+```
 
 ## Pre-requisites
 
@@ -82,9 +92,9 @@ class App extends Component {
 Will look something like this (custom CSS applied):
 ![HexGrid image](https://raw.githubusercontent.com/Hellenic/react-hexgrid/master/react-hexgrid.png "HexGrid")
 
-## Examples
+## Examples / Storybook
 
-See examples folder.
+To run storybook run `npm run storybook`. Other examples are available in the examples (standalone versions based on create react app).
 
 ### Basics
 
@@ -100,12 +110,7 @@ See examples folder.
 
 ## Testing changes locally
 
-You can test changes by importing the library directly from a folder:
-
-1. Do changes to the library
-2. On your test project: `npm install /path/to/your/react-hexgrid/ --save`
-3. For easy development, you can `npm link react-hexgrid` on your application
-4. And finally `npm run compile` the react-hexgrid to have the changes in your application
+You can test changes locally by running storybook. You can also use something like npm 7 workspaces to link this library on your local file system side by side with your application.
 
 ## License
 
