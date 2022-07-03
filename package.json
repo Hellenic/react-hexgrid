@@ -43,6 +43,7 @@
     "@storybook/testing-library": "^0.0.13",
     "react-transition-group": "^4.4.2",
     "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
     "cheerio": "1.0.0-rc.3"
   },
   "dependencies": {
