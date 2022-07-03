@@ -1,4 +1,4 @@
-import { LayoutContextProps, LayoutDimension } from "./Layout"
+import { LayoutDimension } from "./Layout"
 import { Hex } from "./models/Hex"
 import { Point } from "./models/Point"
 

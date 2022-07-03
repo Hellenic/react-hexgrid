@@ -108,8 +108,6 @@ export function Layout({
     spacing,
   })
 
-  // console.log({ childLayout })
-
   return (
     <Context.Provider
       value={{

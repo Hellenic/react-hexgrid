@@ -1,8 +1,9 @@
 import * as React from "react"
 import classNames from "classnames"
 import { Hex } from "../models/Hex"
-import HexUtils from "../HexUtils"
+import { HexUtils } from "../HexUtils"
 import { useLayoutContext } from "../Layout"
+import { Point } from "../models/Point"
 
 type H = { data?: any; state: { hex: Hex }; props?: { fill?: string } }
 
@@ -31,19 +32,20 @@ export type HexagonProps = {
   className?: string
   cellStyle?: React.CSSProperties | undefined
   data?: any
-  onDragStart?: HexagonDragEventHandler
-  onDragEnd?: HexagonDragEventHandler
-  onDrop?: HexagonDragDropEventHandler<any, TargetProps>
-  onDragOver?: HexagonDragEventHandler
   onMouseEnter?: HexagonMouseEventHandler
   onMouseLeave?: HexagonMouseEventHandler
   onClick?: HexagonMouseEventHandler
+  onDragStart?: HexagonDragEventHandler
+  onDragEnd?: HexagonDragEventHandler
+  onDragOver?: HexagonDragEventHandler
+  onDrop?: HexagonDragDropEventHandler<any, TargetProps>
   onMouseOver?: HexagonMouseEventHandler
   children?: React.ReactNode | React.ReactNode[]
 }
 
 type TargetProps = {
   hex: Hex
+  pixel: Point
   data?: any
   fill?: string
   className?: string
@@ -85,7 +87,6 @@ export function Hexagon({
 
   const { hex, pixel } = React.useMemo(() => {
     const hex = new Hex(q, r, s)
-    // console.log({ hex, layout })
     const pixel = HexUtils.hexToPixel(hex, layout)
     return {
       hex,
@@ -108,9 +109,7 @@ export function Hexagon({
         if (onDragStart) {
           const targetProps: TargetProps = {
             hex: hex,
-            // state: { hex, pixel },
-            // ...{ hex, pixel },
-            // ...this.state,
+            pixel,
             data: data,
             fill: fill,
             className: className,
@@ -143,7 +142,6 @@ export function Hexagon({
           onMouseEnter(e, { data, state })
         }
       }}
-      // onMouseOver={(e) => this.onMouseOver(e)}
       onClick={(e) => {
         if (onClick) {
           onClick(e, { data, state })
@@ -159,11 +157,6 @@ export function Hexagon({
           onMouseLeave(e, { data, state })
         }
       }}
-
-      // onDragStart={(e) => this.onDragStart(e)}
-      // onDragEnd={(e) => this.onDragEnd(e)}
-      // onDragOver={(e) => this.onDragOver(e)}
-      // onDrop={(e) => this.onDrop(e)}
     >
       <g className="hexagon">
         <polygon points={points} fill={fillId} style={cellStyle} />

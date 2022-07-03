@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import Point from "./models/Point"
 import { Size } from "./Layout"
 
