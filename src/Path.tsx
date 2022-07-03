@@ -6,12 +6,12 @@ import { Hex } from "./models/Hex"
 export type PathProps = {
   start: any
   end?: any
-}
-export function Path(props: PathProps) {
+} & Omit<React.SVGProps<SVGPathElement>, "start" | "end">
+
+export function Path({ start, end, ...props }: PathProps) {
   const { layout } = useLayoutContext()
   // TODO Refactor
   function getPoints() {
-    const { start, end } = props
     if (!start || !end) {
       return ""
     }
@@ -36,7 +36,7 @@ export function Path(props: PathProps) {
     return points
   }
 
-  return <path d={getPoints()}></path>
+  return <path {...props} d={getPoints()}></path>
 }
 
 export default Path

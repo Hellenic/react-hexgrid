@@ -1,17 +1,16 @@
 import React, { Component } from "react"
 
-export type HexGridProps = {
-  width?: string | number
-  height?: string | number
-  viewBox?: string
-  children: React.ReactElement | React.ReactElement[]
-}
+type Props = {} & React.SVGProps<SVGSVGElement>
+
+/**
+ * Renders an svg element
+ */
 export function HexGrid({
   width = 800,
   height = 600,
   viewBox = "-50 -50 100 100",
-  children,
-}: HexGridProps) {
+  ...props
+}: Props) {
   return (
     <svg
       className="grid"
@@ -20,9 +19,8 @@ export function HexGrid({
       viewBox={viewBox}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-    >
-      {children}
-    </svg>
+      {...props}
+    />
   )
 }
 export default HexGrid

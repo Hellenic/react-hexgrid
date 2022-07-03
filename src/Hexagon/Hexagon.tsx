@@ -51,38 +51,42 @@ type TargetProps = {
   className?: string
 }
 
-export function Hexagon({
-  q,
-  r,
-  s,
-  fill,
-  cellStyle,
-  className,
-  children,
-  onDragStart,
-  onDragEnd,
-  onDrop,
-  onDragOver,
-  onMouseEnter,
-  onMouseLeave,
-  onMouseOver,
-  onClick,
-  data,
-  fillOpacity,
-  ...rest
-}: HexagonProps &
-  Omit<
-    React.SVGProps<SVGGElement>,
-    | "transform"
-    | "onDragStart"
-    | "onDragEnd"
-    | "onDrop"
-    | "onDragOver"
-    | "onMouseEnter"
-    | "onClick"
-    | "onMouseOver"
-    | "onMouseLeave"
-  >) {
+export function Hexagon(
+  props: HexagonProps &
+    Omit<
+      React.SVGProps<SVGGElement>,
+      | "transform"
+      | "onDragStart"
+      | "onDragEnd"
+      | "onDrop"
+      | "onDragOver"
+      | "onMouseEnter"
+      | "onClick"
+      | "onMouseOver"
+      | "onMouseLeave"
+    >,
+) {
+  const {
+    q,
+    r,
+    s,
+    fill,
+    cellStyle,
+    className,
+    children,
+    onDragStart,
+    onDragEnd,
+    onDrop,
+    onDragOver,
+    onMouseEnter,
+    onMouseLeave,
+    onMouseOver,
+    onClick,
+    data,
+    fillOpacity,
+    ...rest
+  } = props
+
   const { layout, points } = useLayoutContext()
 
   const { hex, pixel } = React.useMemo(() => {

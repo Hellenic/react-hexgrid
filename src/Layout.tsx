@@ -89,6 +89,7 @@ export type LayoutProps = {
   spacing?: number
 }
 
+// Provides LayoutContext for all descendands and renders child elements inside a <g> (Group) element
 export function Layout({
   size = defaultSize,
   flat = true,
