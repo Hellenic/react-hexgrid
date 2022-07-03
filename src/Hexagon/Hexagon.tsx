@@ -5,7 +5,7 @@ import { HexUtils } from "../HexUtils"
 import { useLayoutContext } from "../Layout"
 import { Point } from "../models/Point"
 
-type H = { data?: any; state: { hex: Hex }; props?: { fill?: string } }
+type H = { data?: any; state: { hex: Hex }; props: HexagonProps }
 
 export type HexagonDragEventHandler<T = Element, AdditionalData = any> = (
   event: React.DragEvent<T>,
@@ -119,46 +119,46 @@ export function Hexagon(
             className: className,
           }
           e.dataTransfer.setData("hexagon", JSON.stringify(targetProps))
-          onDragStart(e, { data, state })
+          onDragStart(e, { data, state, props })
         }
       }}
       onDragEnd={(e) => {
         if (onDragEnd) {
           e.preventDefault()
           const success = e.dataTransfer.dropEffect !== "none"
-          onDragEnd(e, { state }, success)
+          onDragEnd(e, { state, props }, success)
         }
       }}
       onDrop={(e) => {
         if (onDrop) {
           e.preventDefault()
           const target = JSON.parse(e.dataTransfer.getData("hexagon"))
-          onDrop(e, { data, state }, target)
+          onDrop(e, { data, state, props }, target)
         }
       }}
       onDragOver={(e) => {
         if (onDragOver) {
-          onDragOver(e, { data, state })
+          onDragOver(e, { data, state, props })
         }
       }}
       onMouseEnter={(e) => {
         if (onMouseEnter) {
-          onMouseEnter(e, { data, state })
+          onMouseEnter(e, { data, state, props })
         }
       }}
       onClick={(e) => {
         if (onClick) {
-          onClick(e, { data, state })
+          onClick(e, { data, state, props })
         }
       }}
       onMouseOver={(e) => {
         if (onMouseOver) {
-          onMouseOver(e, { data, state })
+          onMouseOver(e, { data, state, props })
         }
       }}
       onMouseLeave={(e) => {
         if (onMouseLeave) {
-          onMouseLeave(e, { data, state })
+          onMouseLeave(e, { data, state, props })
         }
       }}
     >
