@@ -43,7 +43,7 @@ More documentation in the [Wiki](https://github.com/Hellenic/react-hexgrid/wiki)
 ## Coordinate system
 
 This hexagonal grid uses a cubic coordinate system with three coordinates q, r and s.
-![cubic Coordinates](https://raw.githubusercontent.com/Hellenic/react-hexgrid/add-typescript-and-storybook/coordinates.png "Coordinates")
+![cubic Coordinates](https://raw.githubusercontent.com/Hellenic/react-hexgrid/add-typescript-and-storybook/coordinates.png "Coordinates"). If you want to read about some hexagon mathematics and different coordinate systems maybe have a look at https://www.redblobgames.com/grids/hexagons/
 
 ## Example
 
