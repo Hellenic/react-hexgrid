@@ -5,18 +5,13 @@ export type TextProps = {
   x?: string | number
   y?: string | number
   className?: string
-}
+} & React.SVGProps<SVGTextElement>
 
 // TODO Text is a separate component so that it could wrap the given text inside the surrounding hexagon
 export function Text(props: TextProps) {
-  const { children, x, y, className } = props
+  const { children, x, y, ...rest } = props
   return (
-    <text
-      x={x || 0}
-      y={y ? y : "0.3em"}
-      className={className}
-      textAnchor="middle"
-    >
+    <text x={x || 0} y={y ? y : "0.3em"} textAnchor="middle" {...rest}>
       {children}
     </text>
   )
