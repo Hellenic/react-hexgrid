@@ -3,7 +3,12 @@
 
 name: Publish package
 
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+  push:
+    branches: [add-typescript-and-storybook]
+  pull_request:
+    branches: [add-typescript-and-storybook]
 
 jobs:
   publish-npm:
