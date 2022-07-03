@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 import {
   HexGrid,
@@ -9,11 +9,10 @@ import {
   Text,
   HexUtils,
 } from "../.."
-
-import "./App.css"
+import { css, jsx } from "@emotion/react"
 
 export default {
-  title: "Example/PatternSwap",
+  title: "PatternSwap",
   component: Hexagon,
 } as ComponentMeta<typeof Hexagon>
 
@@ -24,11 +23,25 @@ initialHexagons.forEach((hex) => {
 })
 
 const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
-  const [hexagons, SetHexagons] = React.useState(initialHexagons)
-
+  const [hexagons, setHexagons] = React.useState(initialHexagons)
   return (
-    <div className="App">
-      <h2>Hexagon Pattern Swap</h2>
+    <div
+      css={css`
+        margin: 0;
+        padding: 1em;
+        font-family: sans-serif;
+        background: #133b43;
+        color: white;
+        text-align: center;
+      `}
+    >
+      <h2
+        css={css`
+          font-size: 32px;
+        `}
+      >
+        Hexagon Pattern Swap
+      </h2>
       <p>Click a tile to swap it's pattern</p>
       <HexGrid width={1200} height={800}>
         <Layout
@@ -40,6 +53,20 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
           <>
             {hexagons.map((hex, i) => (
               <Hexagon
+                css={css`
+                  fill: #4499a9;
+                  fill-opacity: 0.6;
+
+                  &:hover {
+                    fill: #7be3f6;
+                    fill-opacity: 0.9;
+                  }
+                  polygon {
+                    stroke: #7be3f6;
+                    stroke-width: 0.2;
+                    transition: fill-opacity 0.5s;
+                  }
+                `}
                 key={i}
                 q={hex.q}
                 r={hex.r}
@@ -63,10 +90,23 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
                     return hex
                   })
 
-                  SetHexagons(hexas)
+                  setHexagons([...hexas])
                 }}
               >
-                <Text>{HexUtils.getID(hex)}</Text>
+                <Text
+                  css={css`
+                    font-size: 0.17em;
+                    fill: white;
+                    fill-opacity: 0.7;
+                    transition: fill-opacity 0.5s;
+                    &:hover {
+                      fill-opacity: 1;
+                    }
+                  `}
+                >
+                  {HexUtils.getID(hex)}
+                </Text>
+                {/* <Text>{hex.pattern}</Text> */}
               </Hexagon>
             ))}
           </>

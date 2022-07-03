@@ -1,5 +1,4 @@
 svg .game {
-
 }
 /*
 Russian blue pattern:
@@ -9,7 +8,7 @@ Russian blue pattern:
 #133b43
 #03090a
 */
-svg .game g {
+/* svg .game g {
   fill: #4499a9;
   fill-opacity: 0.6;
 }
@@ -46,4 +45,4 @@ svg .game g.blocked {
 }
 svg .game g.blocked:hover {
     fill: #53699a;
-}
+} */

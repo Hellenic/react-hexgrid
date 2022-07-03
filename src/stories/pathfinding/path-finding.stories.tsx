@@ -9,13 +9,11 @@ import {
   HexUtils,
   Text,
 } from "../.."
-// import { GameLayout } from "./GameLayout"
-// import { TilesLayout } from "./TilesLayout"
 import "./App.css"
 import Hex from "../../models/Hex"
 
 export default {
-  title: "Example/PathFinding",
+  title: "PathFinding",
   component: Hexagon,
 } as ComponentMeta<typeof Hexagon>
 
@@ -28,7 +26,7 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
   }>({ start: null, end: null })
 
   return (
-    <div className="App">
+    <div className="pathfinding-example">
       <h2>Pathfinding & active highlight</h2>
       <p>
         Click a tile to start drawing a path to your cursor. Click again to

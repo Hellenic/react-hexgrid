@@ -1,20 +1,19 @@
-import React from "react"
+import * as React from "react"
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 import {
   HexGrid,
   Layout,
   Hexagon,
   GridGenerator,
-  Pattern,
   Text,
   HexUtils,
   Hex,
 } from "../.."
 import { configurations } from "./configurations"
-import "./App.css"
+import { css } from "@emotion/react"
 
 export default {
-  title: "Example/Templates",
+  title: "Templates",
   component: Hexagon,
 } as ComponentMeta<typeof Hexagon>
 
@@ -29,7 +28,14 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
   const layout = config.layout
   const size = { x: layout.width, y: layout.height }
   return (
-    <div className="App">
+    <div
+      css={css`
+        margin: 0;
+        padding: 1em;
+        font-family: sans-serif;
+        background: #f0f0f0;
+      `}
+    >
       <h2>Select grid type and configuration from dropdown.</h2>
       <div>
         <strong>Template: </strong>
@@ -49,7 +55,30 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
         </select>
       </div>
       <hr />
-      <HexGrid width={config.width} height={config.height}>
+      <HexGrid
+        width={config.width}
+        height={config.height}
+        css={css`
+          g {
+            fill: #3f51b5;
+            fill-opacity: 0.6;
+            &:hover {
+              fill-opacity: 1;
+            }
+            text {
+              font-size: 0.2em;
+              fill: #000;
+              fill-opacity: 0.9;
+              transition: fill-opacity 0.2s;
+            }
+            polygon {
+              stroke: #3f51b5;
+              stroke-width: 0.2;
+              transition: fill-opacity 0.2s;
+            }
+          }
+        `}
+      >
         <Layout
           size={size}
           flat={layout.flat}

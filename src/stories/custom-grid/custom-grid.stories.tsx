@@ -1,29 +1,56 @@
-import React from "react"
+import * as React from "react"
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 import {
   HexGrid,
   Layout,
-  Hexagon,
+  Hexagon as H,
   GridGenerator,
-  Text,
-  Path,
+  Text as T,
+  Path as P,
   Pattern,
   Hex,
 } from "../.."
-import "./custom-grid.css"
+import { css, jsx } from "@emotion/react"
+import styled from "@emotion/styled"
 
 export default {
-  title: "Example/CustomGrid",
+  title: "CustomGrid",
   component: HexGrid,
   argTypes: {},
-} as ComponentMeta<typeof Hexagon>
+} as ComponentMeta<typeof H>
 
 const hexagonSize = { x: 10, y: 10 }
 const moreHexas = GridGenerator.parallelogram(-2, 2, -2, 2)
 
-const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
+const Hexagon = styled(H)`
+  stroke: #7be3f6;
+  stroke-width: 0.2;
+  transition: fill-opacity 0.5s;
+  &:hover {
+    fill: #7be3f6;
+    fill-opacity: 0.7;
+  }
+`
+
+const Text = styled(T)`
+  font-size: 0.22em;
+  fill: white;
+  fill-opacity: 0.7;
+  transition: fill-opacity 0.5s;
+`
+
+const Path = styled(P)`
+  fill: none;
+  stroke: #7be3f6;
+  stroke-width: 0.2em;
+  stroke-opacity: 0.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+`
+
+const Template: ComponentStory<typeof H> = (args, { argTypes }) => {
   return (
-    <div className="App">
+    <div>
       <h2>React Hexgrid v1</h2>
       <p>
         Constructing Hexgrid with component-based approach with custom SVG
@@ -36,6 +63,10 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
           flat={true}
           spacing={1.1}
           origin={{ x: 0, y: 0 }}
+          css={css`
+            fill: #4499a9;
+            fill-opacity: 0.6;
+          `}
         >
           <Hexagon q={0} r={0} s={0} />
           {/* Using pattern (defined below) to fill the hexagon */}
@@ -56,7 +87,14 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
           <Path start={new Hex(0, 0, 0)} end={new Hex(-2, 0, 1)} />
         </Layout>
         {/* Additional small grid, hexagons generated with generator */}
-        <Layout size={{ x: 2, y: 2 }} origin={{ x: 50, y: -30 }}>
+        <Layout
+          css={css`
+            fill: #4499a9;
+            fill-opacity: 0.6;
+          `}
+          size={{ x: 2, y: 2 }}
+          origin={{ x: 50, y: -30 }}
+        >
           {moreHexas.map((hex, i) => (
             <Hexagon key={i} q={hex.q} r={hex.r} s={hex.s} />
           ))}
@@ -73,7 +111,12 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
           //   link="http://lorempixel.com/400/400/cats/2/"
           size={hexagonSize}
         />
-        <g>
+        <g
+          css={css`
+            fill: #4499a9;
+            fill-opacity: 0.6;
+          `}
+        >
           <circle cx="50" cy="0" r="10" />
           <circle cx="50" cy="10" r="8" />
           <circle cx="45" cy="20" r="6" />
