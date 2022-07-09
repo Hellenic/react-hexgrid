@@ -18,13 +18,7 @@
     "react": "^16.8.0"
   },
   "devDependencies": {
-    "babel-cli": "*",
     "@babel/core": "^7.18.2",
-    "enzyme": "^3.11.0",
-    "jest": "^20.0.3",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "react-test-renderer": "^16.8.0",
     "@storybook/addon-actions": "^6.5.5",
     "@storybook/addon-essentials": "^6.5.5",
     "@storybook/addon-interactions": "^6.5.5",
@@ -33,10 +27,17 @@
     "@storybook/manager-webpack5": "^6.5.5",
     "@storybook/react": "^6.5.5",
     "@storybook/testing-library": "^0.0.11",
+    "babel-cli": "*",
+    "enzyme": "^3.11.0",
+    "jest": "^20.0.3",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-test-renderer": "^16.8.0",
     "react-transition-group": "^1.1.2"
   },
   "dependencies": {
     "@changesets/cli": "^2.23.0",
+    "@emotion/react": "^11.9.3",
     "classnames": "^2.2.5"
   },
   "files": [
