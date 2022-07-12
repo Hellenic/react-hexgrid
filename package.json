@@ -44,7 +44,8 @@
     "react-transition-group": "^4.4.2",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "cheerio": "1.0.0-rc.3"
+    "cheerio": "1.0.0-rc.3",
+    "react-use": "17.4.0"
   },
   "dependencies": {
     "@changesets/cli": "^2.23.0",
