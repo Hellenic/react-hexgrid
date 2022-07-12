@@ -98,7 +98,7 @@ There are examples of drag and drop implementations with native html5 drag and d
 
 ## Examples / Storybook
 
-To run storybook run `npm run storybook`. Other examples are available in the examples (standalone versions based on create react app).
+To run storybook run `npm i` and then `npm run storybook`. Other examples are available in the examples (standalone versions based on create react app).
 
 ### Basics
 
