@@ -50,7 +50,15 @@ const Path = styled(P)`
 
 const Template: ComponentStory<typeof H> = (args, { argTypes }) => {
   return (
-    <div>
+    <div
+      style={{
+        background: "#133b43",
+        color: "white",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <h2>React Hexgrid v1</h2>
       <p>
         Constructing Hexgrid with component-based approach with custom SVG

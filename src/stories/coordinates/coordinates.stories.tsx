@@ -93,7 +93,7 @@ const Template = (args) => {
               q={0}
               r={0}
               s={0}
-              cellStyle={{ fill: COLORS.dark[3], stroke: [COLORS.dark[4]] }}
+              cellStyle={{ fill: COLORS.dark[3], stroke: COLORS.dark[4] }}
             >
               <Coordinates q={"Q"} r={"R"} s={"S"} />
               <Text style={{ fontSize: "0.2rem" }}>0</Text>

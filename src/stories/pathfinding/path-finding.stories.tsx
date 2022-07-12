@@ -26,7 +26,16 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
   }>({ start: null, end: null })
 
   return (
-    <div className="pathfinding-example">
+    <div
+      className="pathfinding-example"
+      style={{
+        background: "#133b43",
+        color: "white",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <h2>Pathfinding & active highlight</h2>
       <p>
         Click a tile to start drawing a path to your cursor. Click again to
