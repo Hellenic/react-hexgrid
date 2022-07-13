@@ -1,14 +1,31 @@
-export class Hex {
-  public q: number
-  public r: number
-  public s: number
+export interface HexCoordinates {
+  q: number
+  r: number
+  s: number
+}
+type HexPropsType = {
+  fill: string
+  className: string
+}
+interface HexAttributes {
+  blocked: boolean
+  text: string
+  image: string
+  props: Partial<HexPropsType>
+  state: any
+  pattern: string
+}
+export class Hex implements HexCoordinates, Partial<HexAttributes> {
+  q: number
+  r: number
+  s: number
 
-  public blocked?: boolean
-  public text?: string | undefined
-  public image?: string | undefined
-  public props?: { fill?: string; className?: string }
-  public state?: any
-  public pattern?: string
+  blocked?: boolean
+  text?: string
+  image?: string
+  props?: Partial<HexPropsType>
+  state?: any
+  pattern?: string
 
   constructor(q: number, r: number, s: number) {
     this.q = q
@@ -16,5 +33,4 @@ export class Hex {
     this.s = s
   }
 }
-
 export default Hex
