@@ -1,6 +1,6 @@
 import { GridGenerator } from "../../src/GridGenerator"
 
-test.only("getGenerator should work when the request exists", () => {
+test("getGenerator should work when the request exists", () => {
   expect(GridGenerator.getGenerator("rectangle")).toBe(GridGenerator.rectangle)
 })
 
