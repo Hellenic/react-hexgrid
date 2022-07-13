@@ -42,7 +42,7 @@ Dead cells
 Each cell with two neighbors revives.`
 
 function getNeighbors(hex: Cell, dict: CellDict) {
-  let neighbors = HexUtils.neighbours(hex)
+  let neighbors = HexUtils.neighbors(hex)
   return neighbors
     .map(({ q, r, s }) => dict[`${q}-${r}-${s}`])
     .filter((v) => Boolean(v))
