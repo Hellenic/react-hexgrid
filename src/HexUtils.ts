@@ -71,7 +71,8 @@ export class HexUtils {
 
     return new Hex(rq, rr, rs)
   }
-  /** I'm not sure what this does */
+  /** Given the q,r,s of a hexagon return the x and y pixel coordinates of the
+   * hexagon center. */
   static hexToPixel(hex: Hex, layout: LayoutDimension): Point {
     const s = layout.spacing
     const M = layout.orientation
@@ -82,7 +83,7 @@ export class HexUtils {
     y = y * s
     return new Point(x + layout.origin.x, y + layout.origin.y)
   }
-  /** I'm not sure what this does */
+  /** Return the q,r,s coordinate of the hexagon given pixel point x and y. */
   static pixelToHex(point: Point, layout: LayoutDimension): Hex {
     const M = layout.orientation
     const pt = new Point(
