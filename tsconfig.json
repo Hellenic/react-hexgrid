@@ -23,10 +23,11 @@
     "jsx": "react-jsx",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
-    "target": "ESNext",
+    "target": "ES6",
     "outDir": "./lib",
 
-    "jsxImportSource": "@emotion/react"
+    "jsxImportSource": "@emotion/react",
+    "types": ["node", "jest"],
   },
   "include": ["src"]
 }
