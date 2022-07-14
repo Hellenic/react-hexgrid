@@ -1,7 +1,8 @@
 import { HexUtils } from "../../src/HexUtils"
+import { HexCoordinates } from "../../src/models/Hex"
 
-const hex1 = { q: 0, r: 0, s: 0 }
-const hex2 = { q: 0, r: -2, s: 2 }
+const hex1: HexCoordinates = { q: 0, r: 0, s: 0 }
+const hex2: HexCoordinates = { q: 0, r: -2, s: 2 }
 
 const layout = {
   spacing: 6.0,
@@ -55,12 +56,12 @@ test("HexUtils.direction should work", () => {
   expect(HexUtils.direction(0)).toEqual({ q: 1, r: 0, s: -1 })
 })
 
-test("HexUtils.neighbour should work", () => {
-  expect(HexUtils.neighbour(hex1, 1)).toEqual({ q: 1, r: -1, s: 0 })
+test("HexUtils.neighbor should work", () => {
+  expect(HexUtils.neighbor(hex1, 1)).toEqual({ q: 1, r: -1, s: 0 })
 })
 
-test("HexUtils.neighbours should work", () => {
-  expect(HexUtils.neighbours(hex1)).toEqual([
+test("HexUtils.neighbors should work", () => {
+  expect(HexUtils.neighbors(hex1)).toEqual([
     { q: 1, r: 0, s: -1 },
     { q: 1, r: -1, s: 0 },
     { q: 0, r: -1, s: 1 },

@@ -1,6 +1,6 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import { render, screen, fireEvent, waitFor } from "@testing-library/react"
+import { render, fireEvent } from "@testing-library/react"
 
 import { Layout } from "../../../src/Layout"
 import { Hexagon } from "../../../src/Hexagon/Hexagon"
