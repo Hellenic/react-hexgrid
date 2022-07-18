@@ -58,17 +58,17 @@ export function useLayoutContext() {
 
 /**
  * Calculates the points for a hexagon given the size, angle, and center
- * @param size Radius of the Hexagon
+ * @param circumradius Radius of the Hexagon
  * @param angle Angle offset for the hexagon in radians
  * @param center Central point for the heaxagon
  * @returns Array of 6 points
  */
-function calculateCoordinates(size: Size, angle: number = 0, center: Point = new Point(0, 0)) {
+function calculateCoordinates(circumradius: Size, angle: number = 0, center: Point = new Point(0, 0)) {
   const corners: Point[] = []
 
   for(let i = 0; i < 6; i++){
-    const x = size.x * Math.cos(2 * Math.PI * i / 6 + angle);
-    const y = size.y * Math.sin(2 * Math.PI * i / 6 + angle);
+    const x = circumradius.x * Math.cos(2 * Math.PI * i / 6 + angle);
+    const y = circumradius.y * Math.sin(2 * Math.PI * i / 6 + angle);
     const point = new Point(center.x + x, center.y + y);
     corners.push(point);
   }
