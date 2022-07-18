@@ -59,7 +59,7 @@ export function useLayoutContext() {
 /**
  * Calculates the points for a hexagon given the size, angle, and center
  * @param size Radius of the Hexagon
- * @param angle Angle offset for the hexagon
+ * @param angle Angle offset for the hexagon in radians
  * @param center Central point for the heaxagon
  * @returns Array of 6 points
  */
