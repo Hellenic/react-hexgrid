@@ -56,21 +56,22 @@ export function useLayoutContext() {
   return ctx
 }
 
-function getPointOffset(corner, orientation: Orientation, size: Size) {
-  let angle = (2.0 * Math.PI * (corner + orientation.startAngle)) / 6
-  return new Point(size.x * Math.cos(angle), size.y * Math.sin(angle))
-}
-
-// TODO Refactor
-function calculateCoordinates(orientation: Orientation, size: Size) {
+/**
+ * Calculates the points for a hexagon given the size, angle, and center
+ * @param circumradius Radius of the Hexagon
+ * @param angle Angle offset for the hexagon in radians
+ * @param center Central point for the heaxagon
+ * @returns Array of 6 points
+ */
+function calculateCoordinates(circumradius: Size, angle: number = 0, center: Point = new Point(0, 0)) {
   const corners: Point[] = []
-  const center = new Point(0, 0)
 
-  Array.from(new Array(6), (x, i) => {
-    const offset = getPointOffset(i, orientation, size)
-    const point = new Point(center.x + offset.x, center.y + offset.y)
-    corners.push(point)
-  })
+  for(let i = 0; i < 6; i++){
+    const x = circumradius.x * Math.cos(2 * Math.PI * i / 6 + angle);
+    const y = circumradius.y * Math.sin(2 * Math.PI * i / 6 + angle);
+    const point = new Point(center.x + x, center.y + y);
+    corners.push(point);
+  }
 
   return corners
 }
@@ -100,7 +101,8 @@ export function Layout({
   ...rest
 }: LayoutProps) {
   const orientation = flat ? LAYOUT_FLAT : LAYOUT_POINTY
-  const cornerCoords = calculateCoordinates(orientation, size)
+  const angle = flat ? 0 : Math.PI / 6
+  const cornerCoords = calculateCoordinates(size, angle)
   const points = cornerCoords.map((point) => `${point.x},${point.y}`).join(" ")
   const childLayout = Object.assign({}, rest, {
     orientation,
