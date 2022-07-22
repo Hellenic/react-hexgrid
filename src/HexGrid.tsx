@@ -3,7 +3,13 @@ import React, { Component } from "react"
 type Props = {} & React.SVGProps<SVGSVGElement>
 
 /**
- * Renders an svg element
+ * Creates an <svg> container element for SVG graphics
+ * This will contain one or more Layouts
+ * @param {Props} SVGProps 
+ * @param {number} SVGProps.width - width of the SVG Container in px
+ * @param {number} SVGProps.height - height of the SVG container in px
+ * @param {string} SVGProps.viewBox - the container's internal coordinate system
+ * @returns
  */
 export function HexGrid({
   width = 800,
