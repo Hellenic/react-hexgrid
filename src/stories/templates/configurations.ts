@@ -55,4 +55,4 @@ export const configurations = {
     map: "spiral",
     mapProps: [{ q: 0, r: 0, s: 0 }, 3],
   },
-}
+} as const
