@@ -12,7 +12,8 @@
     "test:watch": "jest --watch --coverage",
     "test": "jest --coverage",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "format": "prettier --write src/**/*.* package.json"
   },
   "peerDependencies": {
     "react": ">=16.8.0"

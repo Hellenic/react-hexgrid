@@ -63,14 +63,18 @@ export function useLayoutContext() {
  * @param center Central point for the heaxagon
  * @returns Array of 6 points
  */
-function calculateCoordinates(circumradius: Size, angle: number = 0, center: Point = new Point(0, 0)) {
+function calculateCoordinates(
+  circumradius: Size,
+  angle: number = 0,
+  center: Point = new Point(0, 0),
+) {
   const corners: Point[] = []
 
-  for(let i = 0; i < 6; i++){
-    const x = circumradius.x * Math.cos(2 * Math.PI * i / 6 + angle);
-    const y = circumradius.y * Math.sin(2 * Math.PI * i / 6 + angle);
-    const point = new Point(center.x + x, center.y + y);
-    corners.push(point);
+  for (let i = 0; i < 6; i++) {
+    const x = circumradius.x * Math.cos((2 * Math.PI * i) / 6 + angle)
+    const y = circumradius.y * Math.sin((2 * Math.PI * i) / 6 + angle)
+    const point = new Point(center.x + x, center.y + y)
+    corners.push(point)
   }
 
   return corners
