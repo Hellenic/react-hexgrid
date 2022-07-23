@@ -66,6 +66,8 @@ export function Hexagon(
       | "onMouseLeave"
     >,
 ) {
+
+  // destructure props into their values
   const {
     q,
     r,
