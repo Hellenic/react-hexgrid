@@ -1,5 +1,3 @@
-import React, { Component } from "react"
-
 type Props = {} & React.SVGProps<SVGSVGElement>
 
 /**

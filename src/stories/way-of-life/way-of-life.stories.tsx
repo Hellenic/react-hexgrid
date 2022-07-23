@@ -4,6 +4,8 @@ import { HexGrid, Layout, Hexagon, GridGenerator, HexUtils } from "../.."
 import { css } from "@emotion/react"
 import { useInterval } from "react-use"
 import { COLORS } from "../colors"
+import { qrs } from "../../models/Hex"
+import { Qrs } from "../../Hexagon/Hexagon"
 
 export default {
   title: "Way of life",
@@ -19,7 +21,7 @@ type Cell = Coordinates & { state: State }
 type CellDict = { [coords: string]: Cell }
 
 function reset() {
-  const count = 8
+  const count = 15
   const initialHexagons = GridGenerator.hexagon(count)
   const dict: CellDict = {}
   const hexas: Cell[] = initialHexagons.map(({ q, r, s }) => ({
@@ -48,8 +50,26 @@ function countLivingNeighbors(hex: Cell, dict: CellDict) {
   return neighbors.reduce((v1, v2) => v1 + (v2.state === "Living" ? 1 : 0), 0)
 }
 
-const colors = [COLORS.teal]
-const elementSize = 2.7
+const colors = [
+  COLORS.violet,
+  COLORS.blue,
+  COLORS.cyan,
+  COLORS.teal,
+
+  // COLORS.dark,
+  // COLORS.gray,
+
+  COLORS.green,
+  COLORS.lime,
+  COLORS.indigo,
+
+  COLORS.pink,
+  COLORS.red,
+  COLORS.orange,
+
+  COLORS.yellow,
+]
+const elementSize = 2
 const size = { x: elementSize, y: elementSize }
 
 const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
@@ -80,8 +100,8 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
     setI(step + 1)
   }, timing * 1000)
 
-  const dyingAnimationDuration = timing * 1.5
-  const revivingAnimationDuration = timing * 0.8
+  const dyingAnimationDuration = timing * 7.5
+  const revivingAnimationDuration = timing * 2
 
   const timingFunctionDying = `fill ${dyingAnimationDuration}s cubic-bezier(0.7, 0.8, 0.9, 1)`
   const timingFunctionReviving = `fill ${revivingAnimationDuration}s cubic-bezier(0.2, 0.5, 0.9, 1)`
@@ -120,38 +140,66 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
         speed: {speed}
       </div>
       <HexGrid width={800} height={800} viewBox="-40 -40 100 100">
-        <Layout size={size} flat={true} spacing={1}>
-          {Object.keys(hexagons)
-            .map((v) => hexagons[v])
-            .map((hex, i) => (
-              <Hexagon
-                key={i}
-                q={hex.q}
-                r={hex.r}
-                s={hex.s}
-                css={css`
-                  g {
-                    polygon {
-                      fill: ${hex.state === "Dead"
-                        ? COLORS.gray[
-                            HexUtils.distance(hex, { q: 0, r: 0, s: 0 }) % 4
-                          ]
-                        : colors[step % colors.length][
-                            5 +
-                              (HexUtils.distance(hex, { q: 0, r: 0, s: 0 }) % 3)
-                          ]};
-                      stroke: ${COLORS.dark[4]};
-                      stroke-opacity: ${0.6 /
-                      HexUtils.distance(hex, { q: 0, r: 0, s: 0 })};
-                      stroke-width: 0.15;
-                      transition: ${hex.state === "Dead"
-                        ? timingFunctionDying
-                        : timingFunctionReviving};
-                    }
-                  }
-                `}
-              />
-            ))}
+        <Layout size={size} flat={false} spacing={1}>
+          <>
+            {Object.keys(hexagons)
+              .map((v) => hexagons[v])
+              .map((hex, i) => (
+                <Qrs p={hex}>
+                  {({ transform, points }) => (
+                    <polygon
+                      points={points}
+                      transform={transform}
+                      css={css`
+                        fill: ${hex.state === "Dead"
+                          ? COLORS.gray[
+                              HexUtils.distance(hex, { q: 0, r: 0, s: 0 }) % 4
+                            ]
+                          : colors[Math.round(step / 3) % colors.length][
+                              5 +
+                                (HexUtils.distance(hex, { q: 0, r: 0, s: 0 }) %
+                                  3)
+                            ]};
+                        stroke: ${COLORS.dark[4]};
+                        stroke-opacity: ${0.6 /
+                        HexUtils.distance(hex, { q: 0, r: 0, s: 0 })};
+                        /* opacity: ${0.8 +
+                        0.2 / HexUtils.distance(hex, { q: 0, r: 0, s: 0 })}; */
+                        stroke-width: 0.15;
+                        transition: ${hex.state === "Dead"
+                          ? timingFunctionDying
+                          : timingFunctionReviving};
+                      `}
+                    />
+                  )}
+                </Qrs>
+                // <Hexagon
+                //   key={i}
+                //   position={qrs(1, 0, -1)}
+                //   css={css`
+                //     g {
+                //       polygon {
+                //         fill: ${hex.state === "Dead"
+                //           ? COLORS.gray[
+                //               HexUtils.distance(hex, { q: 0, r: 0, s: 0 }) % 4
+                //             ]
+                //           : colors[step % colors.length][
+                //               5 +
+                //                 (HexUtils.distance(hex, { q: 0, r: 0, s: 0 }) % 3)
+                //             ]};
+                //         stroke: ${COLORS.dark[4]};
+                //         stroke-opacity: ${0.6 /
+                //         HexUtils.distance(hex, { q: 0, r: 0, s: 0 })};
+                //         stroke-width: 0.15;
+                //         transition: ${hex.state === "Dead"
+                //           ? timingFunctionDying
+                //           : timingFunctionReviving};
+                //       }
+                //     }
+                //   `}
+                // />
+              ))}
+          </>
         </Layout>
       </HexGrid>
     </div>

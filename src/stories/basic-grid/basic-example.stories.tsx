@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react"
 import { HexGrid, Layout, Hexagon, GridGenerator } from "../.."
 import "./basic-example.css"
 import { css, jsx } from "@emotion/react"
+import { qrs } from "../../models/Hex"
 
 export default {
   title: "Basic",
@@ -26,7 +27,7 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
       <HexGrid width={1200} height={1000}>
         <Layout size={{ x: 7, y: 7 }}>
           {hexagons.map((hex, i) => (
-            <Hexagon key={i} q={hex.q} r={hex.r} s={hex.s} />
+            <Hexagon key={i} position={hex} />
           ))}
         </Layout>
       </HexGrid>

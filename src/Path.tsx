@@ -1,11 +1,11 @@
 import * as React from "react"
 import { HexUtils } from "./HexUtils"
 import { useLayoutContext } from "./Layout"
-import { Hex } from "./models/Hex"
+import { Hex, HexCoordinates } from "./models/Hex"
 
 export type PathProps = {
-  start: any
-  end?: any
+  start?: HexCoordinates
+  end?: HexCoordinates
 } & Omit<React.SVGProps<SVGPathElement>, "start" | "end">
 
 /**

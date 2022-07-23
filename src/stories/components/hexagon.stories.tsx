@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { Hexagon, HexGrid, Layout } from "../.."
+import { qrs } from "../../models/Hex"
 import { COLORS } from "../colors"
 
 export default {
@@ -27,8 +28,6 @@ const Template: ComponentStory<typeof Hexagon> = (args) => (
 
 export const Basic: ComponentStory<typeof Hexagon> = Template.bind({})
 Basic.args = {
-  r: 0,
-  q: 0,
-  s: 0,
+  position: qrs(0, 0, 0),
   style: { fill: COLORS.dark[3] },
 }

@@ -17,13 +17,16 @@ export default {
   component: Hexagon,
 } as ComponentMeta<typeof Hexagon>
 
-const initialHexagons = GridGenerator.hexagon(4)
+const initialHexagons = GridGenerator.hexagon(4).map((v) => ({
+  ...v,
+  className: "",
+}))
 const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
   const [hexagons, setHexagons] = React.useState(initialHexagons)
   const [path, setPath] = React.useState<{
-    start: null | Hex
-    end: null | Hex
-  }>({ start: null, end: null })
+    start: Hex | undefined
+    end: Hex | undefined
+  }>({ start: undefined, end: undefined })
 
   return (
     <div
@@ -56,38 +59,33 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
                 q={hex.q}
                 r={hex.r}
                 s={hex.s}
-                className={hex.props ? hex.props.className : undefined}
+                className={hex.className}
                 onMouseEnter={(event, source) => {
                   // Set the path's end on hover
                   // const { path, hexagons } = this.state;
                   const targetHex = source.state.hex
                   path.end = targetHex
 
-                  // Color some hexagons
-                  const coloredHexas = hexagons.map((hex) => {
-                    hex.props = hex.props || {}
-                    // Highlight tiles that are next to the target (1 distance away)
-                    hex.props.className =
-                      HexUtils.distance(targetHex, hex) < 2 ? "active" : ""
-
-                    // If the tile is on same coordinate, add class specific to the coordinate name
-                    hex.props.className += targetHex.q === hex.q ? " q " : ""
-                    hex.props.className += targetHex.r === hex.r ? " r " : ""
-                    hex.props.className += targetHex.s === hex.s ? " s " : ""
-
-                    return hex
+                  setHexagons((value) => {
+                    // Color some hexagons
+                    const coloredHexas = hexagons.map((hex) => {
+                      let className =
+                        HexUtils.distance(targetHex, hex) < 2 ? "active" : ""
+                      className += targetHex.q === hex.q ? " q " : ""
+                      className += targetHex.r === hex.r ? " r " : ""
+                      className += targetHex.s === hex.s ? " s " : ""
+                      return { ...hex, className }
+                    })
+                    return coloredHexas
                   })
-
                   setPath(path)
-                  setHexagons(coloredHexas)
-                  // this.setState({ path, hexagons: coloredHexas });
                 }}
                 onClick={(e, source) => {
                   if (path.start == null) {
                     path.start = source.state.hex
                   } else {
-                    path.start = null
-                    path.end = null
+                    path.start = undefined
+                    path.end = undefined
                   }
                   setPath(path)
                 }}

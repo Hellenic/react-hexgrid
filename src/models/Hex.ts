@@ -1,31 +1,17 @@
-export interface HexCoordinates {
+export type HexCoordinates = {
   q: number
   r: number
   s: number
 }
-type HexPropsType = {
-  fill: string
-  className: string
-}
-interface HexAttributes {
-  blocked: boolean
-  text: string
-  image: string
-  props: Partial<HexPropsType>
-  state: any
-  pattern: string
-}
-export class Hex implements HexCoordinates, Partial<HexAttributes> {
-  q: number
-  r: number
-  s: number
 
-  blocked?: boolean
-  text?: string
-  image?: string
-  props?: Partial<HexPropsType>
-  state?: any
-  pattern?: string
+export function qrs(q: number, r: number, s: number): HexCoordinates {
+  return { q, r, s }
+}
+
+export class Hex implements HexCoordinates {
+  q: number
+  r: number
+  s: number
 
   constructor(q: number, r: number, s: number) {
     this.q = q

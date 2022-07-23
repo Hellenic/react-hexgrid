@@ -1,9 +1,9 @@
 import * as React from "react"
 import classNames from "classnames"
-import { Hex } from "../models/Hex"
+import { Hex, HexCoordinates, qrs } from "../models/Hex"
 import { HexUtils } from "../HexUtils"
 import { useLayoutContext } from "../Layout"
-import { Point } from "../models/Point"
+import { Coordinates, Point } from "../models/Point"
 
 type H = { data?: any; state: { hex: Hex }; props: HexagonProps }
 
@@ -24,7 +24,12 @@ export type HexagonMouseEventHandler<T = SVGGElement> = (
   h: H,
 ) => void
 
-export type HexagonProps = {
+type NewHexagonProps = {
+  position: HexCoordinates
+  // children?: React.ReactNode | React.ReactNode[]
+} & React.SVGProps<SVGPolygonElement>
+
+export type HexagonLegacyProps = {
   q: number
   r: number
   s: number
@@ -41,7 +46,20 @@ export type HexagonProps = {
   onDrop?: HexagonDragDropEventHandler<any, TargetProps>
   onMouseOver?: HexagonMouseEventHandler
   children?: React.ReactNode | React.ReactNode[]
-}
+} & Omit<
+  React.SVGProps<SVGGElement>,
+  | "transform"
+  | "onDragStart"
+  | "onDragEnd"
+  | "onDrop"
+  | "onDragOver"
+  | "onMouseEnter"
+  | "onClick"
+  | "onMouseOver"
+  | "onMouseLeave"
+>
+
+type HexagonProps = NewHexagonProps | HexagonLegacyProps
 
 type TargetProps = {
   hex: Hex
@@ -51,24 +69,15 @@ type TargetProps = {
   className?: string
 }
 
-/**
- * Renders a Hexagon cell at the given rqs-based coordinates.
- */
-export function Hexagon(
-  props: HexagonProps &
-    Omit<
-      React.SVGProps<SVGGElement>,
-      | "transform"
-      | "onDragStart"
-      | "onDragEnd"
-      | "onDrop"
-      | "onDragOver"
-      | "onMouseEnter"
-      | "onClick"
-      | "onMouseOver"
-      | "onMouseLeave"
-    >,
-) {
+function isLegacyProps(p: HexagonProps): p is HexagonLegacyProps {
+  return Object.hasOwn(p, "q") && Object.hasOwn(p, "r") && Object.hasOwn(p, "s")
+}
+
+function isNewProps(p: HexagonProps): p is NewHexagonProps {
+  return Object.hasOwn(p, "position")
+}
+
+export function LegacyHexagon(props: HexagonLegacyProps) {
   // destructure props into their values
   const {
     q,
@@ -172,6 +181,66 @@ export function Hexagon(
       </g>
     </g>
   )
+}
+
+export function Qrs({
+  p,
+  children,
+}: {
+  p: HexCoordinates
+  children: ({
+    pixel,
+    transform,
+  }: {
+    pixel: Coordinates
+    transform: string
+    points: string
+  }) => JSX.Element
+}): JSX.Element {
+  const { layout, points } = useLayoutContext()
+
+  const pixel = React.useMemo(() => {
+    const pixel = HexUtils.hexToPixel(p, layout)
+    return pixel
+  }, [p, layout])
+
+  const transform = `translate(${pixel.x}, ${pixel.y})`
+  return children({ pixel, transform, points })
+}
+
+export function NewHexagon(props: NewHexagonProps) {
+  // destructure props into their values
+
+  const { layout, points } = useLayoutContext()
+
+  const { hex, pixel } = React.useMemo(() => {
+    const hex = props.position
+    const pixel = HexUtils.hexToPixel(hex, layout)
+    return {
+      hex,
+      pixel,
+    }
+  }, [props.position, layout])
+  const { position, children, className, ...rest } = props
+
+  return (
+    <g transform={`translate(${pixel.x}, ${pixel.y})`}>
+      <polygon points={points} {...rest} />
+      {children}
+    </g>
+  )
+}
+
+/**
+ * Renders a Hexagon cell at the given rqs-based coordinates.
+ */
+export function Hexagon(p: HexagonProps) {
+  if (isLegacyProps(p)) {
+    return <LegacyHexagon {...p} />
+  } else if (isNewProps(p)) {
+    return <NewHexagon {...p} />
+  }
+  return null
 }
 
 export default Hexagon

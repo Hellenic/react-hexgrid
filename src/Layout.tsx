@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Orientation } from "./models/Orientation"
-import { Point } from "./models/Point"
+import { Coordinates as Point } from "./models/Point"
 
 export type Size = { x: number; y: number }
 
@@ -37,8 +37,8 @@ const LAYOUT_POINTY = new Orientation(
   2.0 / 3.0,
   0.5,
 )
-const defaultSize = new Point(10, 10)
-const defaultOrigin = new Point(0, 0)
+const defaultSize: Size = { x: 10, y: 10 }
+const defaultOrigin: Point = { x: 0, y: 0 }
 const defaultSpacing = 1.0
 
 const Context = React.createContext<LayoutContextProps>({
@@ -66,14 +66,14 @@ export function useLayoutContext() {
 function calculateCoordinates(
   circumradius: Size,
   angle: number = 0,
-  center: Point = new Point(0, 0),
+  center: Point = { x: 0, y: 0 },
 ) {
   const corners: Point[] = []
 
   for (let i = 0; i < 6; i++) {
     const x = circumradius.x * Math.cos((2 * Math.PI * i) / 6 + angle)
     const y = circumradius.y * Math.sin((2 * Math.PI * i) / 6 + angle)
-    const point = new Point(center.x + x, center.y + y)
+    const point: Point = { x: center.x + x, y: center.y + y }
     corners.push(point)
   }
 
@@ -86,12 +86,12 @@ export type LayoutProps = {
     | React.ReactElement[]
     | JSX.Element
     | JSX.Element[]
-  className?: string
+  // className?: string
   flat?: boolean
   origin?: any
   /* defines scale */
   size?: Size
-  space?: number
+  // space?: number
   spacing?: number
 }
 
@@ -100,32 +100,29 @@ export type LayoutProps = {
  */
 export function Layout({
   size = defaultSize,
-  flat = true,
+  flat = false,
   spacing = defaultSpacing,
   origin = defaultOrigin,
   children,
-  className,
-  ...rest
 }: LayoutProps) {
   const orientation = flat ? LAYOUT_FLAT : LAYOUT_POINTY
   const angle = flat ? 0 : Math.PI / 6
   const cornerCoords = calculateCoordinates(size, angle)
   const points = cornerCoords.map((point) => `${point.x},${point.y}`).join(" ")
-  const childLayout = Object.assign({}, rest, {
-    orientation,
-    size,
-    origin,
-    spacing,
-  })
 
   return (
     <Context.Provider
       value={{
-        layout: childLayout,
+        layout: {
+          orientation,
+          size,
+          origin,
+          spacing,
+        },
         points,
       }}
     >
-      <g className={className}>{children}</g>
+      {children}
     </Context.Provider>
   )
 }
