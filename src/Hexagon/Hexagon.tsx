@@ -51,6 +51,9 @@ type TargetProps = {
   className?: string
 }
 
+/**
+ * Renders a Hexagon cell at the given rqs-based coordinates.
+ */
 export function Hexagon(
   props: HexagonProps &
     Omit<
@@ -66,7 +69,6 @@ export function Hexagon(
       | "onMouseLeave"
     >,
 ) {
-
   // destructure props into their values
   const {
     q,
