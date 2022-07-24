@@ -8,6 +8,10 @@ on:
     branches: [release/*]
 
 jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.ref }}
   publish-beta-npm:
     if: contains('refs/heads/beta', github.ref)
     runs-on: ubuntu-latest
