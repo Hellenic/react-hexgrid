@@ -110,7 +110,7 @@ export function Layout({
 }: LayoutProps) {
   const orientation = flat ? LAYOUT_FLAT : LAYOUT_POINTY
   const angle = flat ? 0 : Math.PI / 6
-  const cornerCoords = calculateCoordinates(size, angle)
+  const cornerCoords = calculateCoordinates(size.x, angle)
   const points = cornerCoords.map((point) => `${point.x},${point.y}`).join(" ")
   const childLayout = Object.assign({}, rest, {
     orientation,
