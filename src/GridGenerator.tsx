@@ -1,14 +1,26 @@
 import { Hex } from "./models/Hex"
 import { HexUtils } from "./HexUtils"
+
+type Generator = (args: any) => Hex[]
+
 /** This class contains static methods for generating Hex coordinates
  * for specifically-shaped grids, such as rectangle, hexagon, and more. */
 export class GridGenerator {
   /** This method is used to dynamically choose a type of grid to
    * generate.
    */
-  static getGenerator(name: PropertyKey): GridGenerator | null {
-    if (GridGenerator.hasOwnProperty(name)) return GridGenerator[name]
-    return null
+  static getGenerator(
+    name:
+      | "ring"
+      | "spiral"
+      | "parallelogram"
+      | "triangle"
+      | "hexagon"
+      | "rectangle"
+      | "orientedRectangle",
+  ): Generator {
+    const x = GridGenerator[name] as Generator
+    return x
   }
   /** May not be working. There are no tests for it. */
   static ring(center: Hex, mapRadius: number): Hex[] {

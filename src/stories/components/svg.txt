@@ -1,0 +1,16 @@
+<svg> container, can render several grids
+
+<defs>
+ <pattern> for image definitions
+</defs>
+
+<g> (Layout?), renders a single grid
+
+  <g class="hexagon-group"> transform applied for positioning
+    <g class="hexagon"> could be used for styling
+
+    <polygon points="x1,y1 x2,y2 ..."
+    <text>text</text>
+  <circle>
+
+  <path>

@@ -63,14 +63,19 @@ export function useLayoutContext() {
  * @param center Central point for the heaxagon
  * @returns Array of 6 points
  */
-function calculateCoordinates(circumradius: number, angle: number = 0, center: Point = new Point(0, 0)) {
+
+function calculateCoordinates(
+  circumradius: Size,
+  angle: number = 0,
+  center: Point = new Point(0, 0),
+) {
   const corners: Point[] = []
 
-  for(let i = 0; i < 6; i++){
-    const x = circumradius * Math.cos(2 * Math.PI * i / 6 + angle);
-    const y = circumradius * Math.sin(2 * Math.PI * i / 6 + angle);
-    const point = new Point(center.x + x, center.y + y);
-    corners.push(point);
+  for (let i = 0; i < 6; i++) {
+    const x = circumradius.x * Math.cos((2 * Math.PI * i) / 6 + angle)
+    const y = circumradius.y * Math.sin((2 * Math.PI * i) / 6 + angle)
+    const point = new Point(center.x + x, center.y + y)
+    corners.push(point)
   }
 
   return corners
@@ -85,12 +90,15 @@ export type LayoutProps = {
   className?: string
   flat?: boolean
   origin?: any
+  /* defines scale */
   size?: Size
   space?: number
   spacing?: number
 }
 
-// Provides LayoutContext for all descendands and renders child elements inside a <g> (Group) element
+/**
+ * Provides LayoutContext for all descendands and renders child elements inside a <g> (Group) element
+ */
 export function Layout({
   size = defaultSize,
   flat = true,

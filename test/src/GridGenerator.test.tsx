@@ -1,13 +1,11 @@
 import { GridGenerator } from "../../src/GridGenerator"
-// import HexUtils from "../../src/HexUtils"
-// import { HexCoordinates } from "../../src/models/Hex"
 
 test("getGenerator should work when the request exists", () => {
   expect(GridGenerator.getGenerator("rectangle")).toBe(GridGenerator.rectangle)
 })
 
 test("getGenerator should work when the request does not exist", () => {
-  expect(GridGenerator.getGenerator("bogus")).toBeNull()
+  expect(GridGenerator.getGenerator("bogus" as any)).toBeUndefined()
 })
 
 test("parallelogram should work", () => {

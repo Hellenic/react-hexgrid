@@ -93,7 +93,6 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
         margin: 0;
         padding: 1em;
         font-family: sans-serif;
-        // background: #f0f0f0;
       `}
     >
       <div>

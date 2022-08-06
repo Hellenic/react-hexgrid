@@ -19,7 +19,8 @@ export default {
 
 const initialConfig = configurations["hexagon"]
 const generator = GridGenerator.getGenerator(initialConfig.map)
-const initialHexagons: Hex[] = generator.apply(this, initialConfig.mapProps)
+
+const initialHexagons: Hex[] = generator(initialConfig.mapProps)
 
 const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
   const [hexagons, setHexagons] = React.useState(initialHexagons)
