@@ -65,15 +65,15 @@ export function useLayoutContext() {
  */
 
 function calculateCoordinates(
-  circumradius: Size,
+  circumradius: number,
   angle: number = 0,
   center: Point = new Point(0, 0),
 ) {
   const corners: Point[] = []
 
   for (let i = 0; i < 6; i++) {
-    const x = circumradius.x * Math.cos((2 * Math.PI * i) / 6 + angle)
-    const y = circumradius.y * Math.sin((2 * Math.PI * i) / 6 + angle)
+    const x = circumradius * Math.cos((2 * Math.PI * i) / 6 + angle)
+    const y = circumradius * Math.sin((2 * Math.PI * i) / 6 + angle)
     const point = new Point(center.x + x, center.y + y)
     corners.push(point)
   }
