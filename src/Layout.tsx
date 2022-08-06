@@ -65,7 +65,7 @@ export function useLayoutContext() {
  */
 
 function calculateCoordinates(
-  circumradius: Size,
+  circumradius: number,
   angle: number = 0,
   center: Point = new Point(0, 0),
 ) {
