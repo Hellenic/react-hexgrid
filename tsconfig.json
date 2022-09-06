@@ -26,8 +26,9 @@
     "target": "ES6",
     "outDir": "./lib",
 
-    "jsxImportSource": "@emotion/react",
-    "types": ["node", "jest"],
+    // "jsxImportSource": "@emotion/react",
+    "types": ["node", "jest"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["**/*.stories.tsx"]
 }

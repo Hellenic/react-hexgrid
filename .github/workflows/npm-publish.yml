@@ -8,8 +8,12 @@ on:
     branches: [release/*]
 
 jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.ref }}
   publish-beta-npm:
-    if: contains('refs/heads/beta', github.ref)
+    if: startsWith(github.ref, 'refs/heads/beta')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -24,7 +28,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   publish-npm:
-    if: contains('refs/heads/release', github.ref)
+    if: startsWith(github.ref, 'refs/heads/release')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
