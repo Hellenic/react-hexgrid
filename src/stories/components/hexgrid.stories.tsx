@@ -8,17 +8,16 @@ export default {
 } as ComponentMeta<typeof HexGrid>
 
 export const Basic = () => (
+  // the HexGrid is just a wrapper around a normal svg element. The viewBox is defaults to "-50 -50 100 100"
   <HexGrid
     style={{
-      border: `8px solid ${COLORS.red[7]}`,
-      background: COLORS.red[2],
+      border: `2px solid ${COLORS.gray[7]}`,
+      background: COLORS.gray[2],
     }}
     width={"100%"}
     height={"50vh"}
-    viewBox="-10 -10 50 50"
   >
-    {/* this svg element is just here to demonstrate that the outer
-     HexGrid is just an svg element and does not do anything special */}
+    {/* Normal svg elements can be placed as normal */}
     <circle
       cx="0"
       cy="0"
@@ -32,10 +31,9 @@ export const Basic = () => (
 export const WithSeveralSvgComponents = () => (
   <HexGrid
     style={{
-      border: `8px solid ${COLORS.red[7]}`,
-      background: COLORS.red[2],
+      border: `2px solid ${COLORS.gray[7]}`,
+      background: COLORS.gray[2],
     }}
-    viewBox="-50 -50 100 100"
   >
     <circle
       cx="0"
@@ -47,37 +45,28 @@ export const WithSeveralSvgComponents = () => (
     <rect
       x="10"
       y="10"
-      width="50"
+      width="40"
       height="20"
-      style={{ fill: COLORS.gray[3], stroke: COLORS.gray[7] }}
+      style={{ fill: COLORS.blue[3], stroke: COLORS.gray[7] }}
     />
-    <line x1="0" y1="0" x2="200" y2="200" style={{ stroke: COLORS.dark[5] }} />
+    <line x1="0" y1="0" x2="10" y2="10" style={{ stroke: COLORS.dark[5] }} />
     <polygon
-      points="-30,-5 -30,30 0,20"
-      style={{ fill: COLORS.blue[5], stroke: COLORS.blue[8], strokeWidth: 1 }}
+      points="-50,-20 -55,25 -25,5"
+      style={{ fill: COLORS.blue[0], stroke: COLORS.blue[3], strokeWidth: 1 }}
     />
     <polyline
-      points="-50,-50 -30,-25 0,10 -20,30 0,30"
-      style={{ fill: "none", stroke: COLORS.violet[5], strokeWidth: 1 }}
+      points="-50,-25 -40,-25 -10,10 -20,30 -40,30"
+      style={{ fill: "none", stroke: COLORS.dark[2], strokeWidth: 1 }}
     />
 
     <path
-      d="M 10 35 q 15 -30 30 0"
+      d="M 0 -25 q 15 -30 30 0"
       stroke={COLORS.cyan[4]}
       stroke-width="1"
       fill="none"
     />
-    <text x="0" y="15" fill={COLORS.pink[5]} transform="rotate(30 20,40)">
-      Some SVG components
-    </text>
-    <text x="0" y="-20" style={{ fill: COLORS.blue[8], fontSize: "0.5rem" }}>
-      Several lines:
-      <tspan x="0" y="-10">
-        First line.
-      </tspan>
-      <tspan x="0" y="0">
-        Second line.
-      </tspan>
+    <text x="15" y="-10" style={{ fill: COLORS.blue[8], fontSize: "0.5rem" }}>
+      Some text...
     </text>
   </HexGrid>
 )

@@ -8,15 +8,11 @@ export default {
   component: Layout,
 } as ComponentMeta<typeof Layout>
 
-// <HexGrid width={800} height={800} viewBox="-40 -40 100 100">
-//   <Layout size={size} flat={true} spacing={1}></Layout>
-
-// { spacing }: { spacing: number }
 const Template: ComponentStory<typeof Layout> = (args) => (
   <HexGrid
     style={{
-      border: `2px solid ${COLORS.red[7]}`,
-      background: COLORS.red[2],
+      border: `2px solid ${COLORS.gray[7]}`,
+      background: COLORS.gray[2],
     }}
     width="100%"
     height={400}
