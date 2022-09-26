@@ -1,7 +1,5 @@
 # react-hexgrid
 
-> Note, I am not maintaining this library but happy to invite collaborators. Let me know!
-
 ![Downloads](https://img.shields.io/npm/dt/react-hexgrid.svg)
 ![npm version](https://img.shields.io/npm/v/react-hexgrid.svg)
 ![dependencies Status](https://img.shields.io/librariesio/github/hellenic/react-hexgrid)
@@ -18,6 +16,8 @@ You could easily use this library to build a nice portfolio, image library or ev
 > [http://www.redblobgames.com/grids/hexagons](http://www.redblobgames.com/grids/hexagons).
 
 > 🖊️ Codepen to play around with: https://codepen.io/hellenic/project/editor/AYMbMM#
+
+> Discord server: https://discord.gg/TxNb6EZZZE
 
 ## Upcoming Version 2
 
