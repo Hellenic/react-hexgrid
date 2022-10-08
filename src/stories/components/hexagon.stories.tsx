@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof Hexagon> = (args) => (
     width="100%"
     height={400}
   >
-    <Layout>
+    <Layout size={{ x: 10, y: 10 }}>
       {/* the hexagon is rendered at the q,r,s coordinates. In this case in the origin (0,0) in the svg space */}
       <Hexagon r={0} q={0} s={0} style={{ fill: COLORS.dark[3] }} />
     </Layout>

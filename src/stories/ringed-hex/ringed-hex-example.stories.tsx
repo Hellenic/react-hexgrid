@@ -28,7 +28,7 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
           {hexagons.map((hex, i) => (
             <Hexagon key={i} q={hex.q} r={hex.r} s={hex.s} />
           ))}
-          <Hexagon q={-5} r={0} s={0} rings={1} />
+          <Hexagon q={-4} r={0} s={0} rings={1} />
         </Layout>
       </HexGrid>
     </div>

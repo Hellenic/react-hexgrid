@@ -24,7 +24,7 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
     >
       <h1>Basic example of HexGrid usage.</h1>
       <HexGrid width={1200} height={1000}>
-        <Layout size={{ x: 7, y: 7 }}>
+        <Layout size={{ x: 1, y: 1 }}>
           {hexagons.map((hex, i) => (
             <Hexagon key={i} q={hex.q} r={hex.r} s={hex.s} />
           ))}
