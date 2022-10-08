@@ -94,8 +94,8 @@ export function Hexagon(
   } = props
 
   const { layout, points } = useLayoutContext()
-layout.orientation
-  const cornerCoords = calculateCoordinates(layout.size.x, 0, new Point(0, 1), rings)
+
+  const cornerCoords = calculateCoordinates(layout.size.x, 0, new Point(20, 21), rings)
   const ps = cornerCoords.map((point) => `${point.x},${point.y}`).join(" ")
 
   const { hex, pixel } = React.useMemo(() => {
