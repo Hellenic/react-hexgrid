@@ -21,7 +21,6 @@ export function HexGrid({
   return (
     <svg
       className="grid"
-      preserveAspectRatio="xMidYMid slice"
       width={width}
       height={height}
       viewBox={viewBox}
