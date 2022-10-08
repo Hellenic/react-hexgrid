@@ -2,7 +2,7 @@ import * as React from "react"
 import classNames from "classnames"
 import { Hex } from "../models/Hex"
 import { HexUtils } from "../HexUtils"
-import { useLayoutContext } from "../Layout"
+import { useLayoutContext, calculateCoordinates } from "../Layout"
 import { Point } from "../models/Point"
 
 type H = { data?: any; state: { hex: Hex }; props: HexagonProps }
@@ -28,6 +28,7 @@ export type HexagonProps = {
   q: number
   r: number
   s: number
+  rings?: number
   fill?: string
   className?: string
   cellStyle?: React.CSSProperties | undefined
@@ -74,6 +75,7 @@ export function Hexagon(
     q,
     r,
     s,
+    rings,
     fill,
     cellStyle,
     className,
@@ -92,6 +94,9 @@ export function Hexagon(
   } = props
 
   const { layout, points } = useLayoutContext()
+layout.orientation
+  const cornerCoords = calculateCoordinates(layout.size.x, 0, new Point(0, 0), rings)
+  const ps = cornerCoords.map((point) => `${point.x},${point.y}`).join(" ")
 
   const { hex, pixel } = React.useMemo(() => {
     const hex = new Hex(q, r, s)
@@ -167,7 +172,7 @@ export function Hexagon(
       }}
     >
       <g className="hexagon">
-        <polygon points={points} fill={fillId} style={cellStyle} />
+        <polygon points={ps} fill={fillId} style={cellStyle} />
         {children}
       </g>
     </g>

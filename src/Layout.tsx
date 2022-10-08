@@ -64,21 +64,45 @@ export function useLayoutContext() {
  * @returns Array of 6 points
  */
 
-function calculateCoordinates(
+export function calculateCoordinates(
   circumradius: number,
   angle: number = 0,
   center: Point = new Point(0, 0),
+  rings: number = 0,
 ) {
-  const corners: Point[] = []
-
-  for (let i = 0; i < 6; i++) {
-    const x = circumradius * Math.cos((2 * Math.PI * i) / 6 + angle)
-    const y = circumradius * Math.sin((2 * Math.PI * i) / 6 + angle)
-    const point = new Point(center.x + x, center.y + y)
-    corners.push(point)
+  let c: Point[] = []
+  if (rings <= 0) {
+    for (let i = 0; i < 6 ; i++) {
+      const x = circumradius * Math.cos((2 * Math.PI * i) / 6 + angle)
+      const y = circumradius * Math.sin((2 * Math.PI * i) / 6 + angle)
+      const point = new Point(center.x + x, center.y + y)
+      c.push(point)
+    }
+  } else {
+    c = [
+      new Point(3.5, -6.0621779),
+      new Point(7.0, -12.124356),
+      new Point(14.0, -12.124356),
+      new Point(17.5, -6.062177900000001),
+      new Point(24.5, -6.062177800000001),
+      new Point(28.0, 0.0),
+      new Point(24.5, 6.0621775),
+      new Point(28.0, 12.124355),
+      new Point(24.5, 18.186533),
+      new Point(17.5, 18.186533),
+      new Point(14.0, 24.248711),
+      new Point(7.0, 24.248711),
+      new Point(3.5, 18.186533),
+      new Point(-3.5, 18.186533),
+      new Point(-7.0, 12.124355),
+      new Point(-3.5, 6.0621775),
+      new Point(-7.0, 0.0),
+      new Point(-3.5, -6.0621778),
+      new Point(3.5, -6.0621779)
+    ]
   }
 
-  return corners
+  return c
 }
 
 export type LayoutProps = {
