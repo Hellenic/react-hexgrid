@@ -79,7 +79,6 @@ export function calculateCoordinates(
       c.push(point)
     }
   } else if (rings == 1) {
-    center.y -= circumradius;
     c = [
       new Point(center.x +( 0.5 * circumradius) , center.y + (4.3301274 * circumradius)),
       new Point(center.x +( -0.5 * circumradius),center.y +  (4.3301274 * circumradius)),
