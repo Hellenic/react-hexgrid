@@ -94,12 +94,22 @@ export function Hexagon(
   } = props
 
   const { layout, points } = useLayoutContext()
+  let q2 = q ;
+  let r2 = r ;
+  let s2 = s ;
+  if (rings == 1) {
+    r2 -= 1;
+  } else if (rings == 2)
+  {
+    q2 -= 2;
+    r2 += 1;
+  }
 
-  const cornerCoords = calculateCoordinates(layout.size.x, 0, new Point(20, 21), rings)
+  const cornerCoords = calculateCoordinates(layout.size.x, 0, new Point(0, 0), rings)
   const ps = cornerCoords.map((point) => `${point.x},${point.y}`).join(" ")
 
   const { hex, pixel } = React.useMemo(() => {
-    const hex = new Hex(q, r, s)
+    const hex = new Hex(q2, r2, s2)
     const pixel = HexUtils.hexToPixel(hex, layout)
     return {
       hex,

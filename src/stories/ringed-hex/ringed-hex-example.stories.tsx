@@ -9,8 +9,6 @@ export default {
   component: Hexagon,
 } as ComponentMeta<typeof Hexagon>
 
-const hexagons = GridGenerator.parallelogram(-2, 3, -2, 1)
-
 const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
   return (
     <div
@@ -22,13 +20,12 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
         background: #f0f0f0;
       `}
     >
-      <h1>Basic example of HexGrid usage.</h1>
+      <h1>Basic example of a Ringed Hex.</h1>
       <HexGrid width={1200} height={1000}>
         <Layout size={{ x: 7, y: 7 }}>
-          {hexagons.map((hex, i) => (
-            <Hexagon key={i} q={hex.q} r={hex.r} s={hex.s} />
-          ))}
-          <Hexagon q={-4} r={0} s={0} rings={1} />
+          <Hexagon q={args.q} r={args.r} s={args.s} rings={0} />
+          <Hexagon q={args.q} r={args.r} s={args.s} rings={1} />
+          <Hexagon q={args.q} r={args.r} s={args.s} rings={2} />
         </Layout>
       </HexGrid>
     </div>
