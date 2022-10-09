@@ -197,7 +197,7 @@ export function Hexagon(
 
         <Pattern
           id={`${patId}`}
-          link={fillUrl}
+          link={fillUrl!}
           size={new Point((rings+1)*20, (rings+1)*20)}
         />
         ) : null}
