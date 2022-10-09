@@ -4,6 +4,7 @@ import { Hex } from "../models/Hex"
 import { HexUtils } from "../HexUtils"
 import { useLayoutContext, calculateCoordinates } from "../Layout"
 import { Point } from "../models/Point"
+import Pattern from "../Pattern"
 
 type H = { data?: any; state: { hex: Hex }; props: HexagonProps }
 
@@ -30,6 +31,7 @@ export type HexagonProps = {
   s: number
   rings?: number
   fill?: string
+  fillUrl?: string
   className?: string
   cellStyle?: React.CSSProperties | undefined
   data?: any
@@ -49,6 +51,7 @@ type TargetProps = {
   pixel: Point
   data?: any
   fill?: string
+  fillUrl?: string
   className?: string
 }
 
@@ -75,8 +78,10 @@ export function Hexagon(
     q,
     r,
     s,
-    rings,
+    rings = 0,
     fill,
+    fillUrl,
+    fillRule,
     cellStyle,
     className,
     children,
@@ -120,6 +125,7 @@ export function Hexagon(
   // for backwards comapatbility
   const state = { hex }
 
+  const randomId = React.useMemo(() => Math.random().toString(36).substr(2, 9), [])
   const fillId = fill ? `url(#${fill})` : undefined
   const draggable = { draggable: true } as any
   return (
@@ -182,8 +188,16 @@ export function Hexagon(
       }}
     >
       <g className="hexagon">
-        <polygon points={ps} fill={fillId} style={cellStyle} />
+        <polygon points={ps} fill={fillId ? fillId : `url(#${randomId})`} style={cellStyle} />
         {children}
+        {fillUrl ? (
+
+        <Pattern
+          id={`${randomId}`}
+          link={fillUrl}
+          size={new Point((rings+1)*20, (rings+1)*20)}
+        />
+        ) : null}
       </g>
     </g>
   )

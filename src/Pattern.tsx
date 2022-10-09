@@ -20,12 +20,12 @@ export function Pattern({ id, link, size = defaultSize }: PatternProps) {
         patternUnits="objectBoundingBox"
         x={0}
         y={0}
-        width={size.x}
-        height={size.y}
+        width={1}
+        height={1}
       >
         <image
           xlinkHref={link}
-          x={0}
+          x={-size.x/3}
           y={0}
           width={size.x * 2}
           height={size.y * 2}

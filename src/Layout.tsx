@@ -71,7 +71,6 @@ export function calculateCoordinates(
   rings: number = 0,
 ) {
   let c: Point[] = []
-console.log("calculate");
   if (rings <= 0) {
     for (let i = 0; i < 6; i++) {
       const x = circumradius * Math.cos((2 * Math.PI * i) / 6 + angle)

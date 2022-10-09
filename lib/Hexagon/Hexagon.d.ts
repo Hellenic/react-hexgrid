@@ -17,6 +17,7 @@ export declare type HexagonProps = {
     s: number;
     rings?: number;
     fill?: string;
+    fillUrl?: string;
     className?: string;
     cellStyle?: React.CSSProperties | undefined;
     data?: any;
@@ -35,6 +36,7 @@ declare type TargetProps = {
     pixel: Point;
     data?: any;
     fill?: string;
+    fillUrl?: string;
     className?: string;
 };
 /**

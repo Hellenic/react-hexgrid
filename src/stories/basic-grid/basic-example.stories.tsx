@@ -9,7 +9,7 @@ export default {
   component: Hexagon,
 } as ComponentMeta<typeof Hexagon>
 
-const hexagons = GridGenerator.parallelogram(-2, 3, -2, 1)
+const hexagons = GridGenerator.orientedRectangle(125, 55);
 
 const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
   return (
@@ -23,7 +23,7 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
       `}
     >
       <h1>Basic example of HexGrid usage.</h1>
-      <HexGrid width={1200} height={1000}>
+      <HexGrid width={2200} height={2000} viewBox={"0 0 300 300"}>
         <Layout size={{ x: 1, y: 1 }}>
           {hexagons.map((hex, i) => (
             <Hexagon key={i} q={hex.q} r={hex.r} s={hex.s} />
