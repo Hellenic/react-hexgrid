@@ -125,8 +125,11 @@ export function Hexagon(
   // for backwards comapatbility
   const state = { hex }
 
-  const randomId = React.useMemo(() => Math.random().toString(36).substr(2, 9), [])
-  const fillId = fill ? `url(#${fill})` : undefined
+  // Generate id for local pattern
+  const patId = fillUrl ? React.useMemo(() => Math.random().toString(36).substr(2, 9), []) : undefined
+  
+  // if fill point to existing pattern, if fillUrl point to local pattern, otherwise default styling
+  const fillId = fill ? `url(#${fill})` : fillUrl ? `url(#${patId})` : undefined
   const draggable = { draggable: true } as any
   return (
     <g
@@ -188,12 +191,12 @@ export function Hexagon(
       }}
     >
       <g className="hexagon">
-        <polygon points={ps} fill={fillId ? fillId : `url(#${randomId})`} style={cellStyle} />
+        <polygon points={ps} fill={fillId} style={cellStyle} />
         {children}
-        {fillUrl ? (
+        {patId ? (
 
         <Pattern
-          id={`${randomId}`}
+          id={`${patId}`}
           link={fillUrl}
           size={new Point((rings+1)*20, (rings+1)*20)}
         />
