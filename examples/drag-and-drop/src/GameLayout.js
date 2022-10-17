@@ -18,8 +18,8 @@ class GameLayout extends Component {
     const hexas = hexagons.map(hex => {
       // When hexagon is dropped on this hexagon, copy it's image and text
       if (HexUtils.equals(source.state.hex, hex)) {
-        hex.image = targetProps.data.image;
-        hex.text = targetProps.data.text;
+        hex.image = targetProps.data?.image;
+        hex.text = targetProps.data?.text;
       }
       return hex;
     });
@@ -42,7 +42,7 @@ class GameLayout extends Component {
       return HexUtils.equals(source.state.hex, blockedHex);
     });
 
-    const { text } = source.props.data;
+    const text = source?.props?.data?.text;
     // Allow drop, if not blocked and there's no content already
     if (!blocked && !text) {
       // Call preventDefault if you want to allow drop

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { GridGenerator, Layout, Hexagon, Text, Pattern, HexUtils } from 'react-hexgrid';
 import './TilesLayout.css';
 
+// # of cats available according to one user on stack overflow: https://webapps.stackexchange.com/questions/79806/can-we-force-a-new-kitten-with-the-same-dimensions
+const numberOfUniqueKittenImagesAvailable = 16;
+
 class TilesLayout extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +12,7 @@ class TilesLayout extends Component {
     const hexagons = GridGenerator.parallelogram(-1, 1, -1, 2).map((hexagon, index) => {
       return Object.assign({}, hexagon, {
         text: `Cat #${index}`,
-        image: `http://lorempixel.com/400/400/cats/${index%10}/`
+        image: `https://placekitten.com/200/200?image=${index % numberOfUniqueKittenImagesAvailable}`
       });
     })
     this.state = { hexagons };
