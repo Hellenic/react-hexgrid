@@ -44,3 +44,281 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+.landing-page-zoll {
+  background-color: #efefef;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.landing-page-zoll .overlap-wrapper {
+  background-color: #efefef;
+  height: 900px;
+  overflow: hidden;
+  width: 1440px;
+}
+
+.landing-page-zoll .overlap {
+  height: 911px;
+  position: relative;
+  top: -11px;
+  width: 1444px;
+}
+
+.landing-page-zoll .hintergrund {
+  -webkit-backdrop-filter: blur(4px) brightness(100%);
+  backdrop-filter: blur(4px) brightness(100%);
+  background-color: var(--bg-1);
+  height: 900px;
+  left: 0;
+  opacity: 0.5;
+  overflow: hidden;
+  position: absolute;
+  top: 11px;
+  width: 1440px;
+}
+
+.landing-page-zoll .overlap-group {
+  height: 1195px;
+  position: relative;
+  width: 1640px;
+}
+
+.landing-page-zoll .background-color {
+  background-color: var(--bg-3);
+  border-radius: 445.05px;
+  filter: blur(284.38px);
+  height: 890px;
+  left: 750px;
+  position: absolute;
+  top: 305px;
+  transform: rotate(180deg);
+  width: 890px;
+}
+
+.landing-page-zoll .img {
+  height: 900px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1440px;
+}
+
+.landing-page-zoll .buttons {
+  height: 136px;
+  left: 1143px;
+  position: absolute;
+  top: 294px;
+  width: 251px;
+}
+
+.landing-page-zoll .ship-status {
+  height: 270px;
+  left: 45px;
+  position: absolute;
+  top: 160px;
+  width: 221px;
+}
+
+.landing-page-zoll .header {
+  background-color: transparent;
+  height: 88px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1444px;
+}
+
+.landing-page-zoll .div {
+  height: 77px;
+  position: relative;
+  top: 11px;
+  width: 1440px;
+}
+
+.landing-page-zoll .header-2 {
+  background-color: var(--boxes);
+  box-shadow: 0px 4px 4px #00000040;
+  height: 62px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1440px;
+}
+
+.landing-page-zoll .text-wrapper {
+  color: var(--text);
+  font-family: "Post No Bills Colombo ExtraBold-Regular", Helvetica;
+  font-size: 25px;
+  font-weight: 400;
+  height: 37px;
+  left: 1249px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 13px;
+}
+
+.landing-page-zoll .text-wrapper-2 {
+  color: var(--text);
+  font-family: "Nouveau IBM Stretch-Medium", Helvetica;
+  font-size: 25px;
+  font-weight: 500;
+  height: 25px;
+  left: 128px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 19px;
+  white-space: nowrap;
+}
+
+.landing-page-zoll .rectangle {
+  background-color: var(--text);
+  border: 3px solid;
+  border-color: var(--text);
+  height: 18px;
+  left: 51px;
+  position: absolute;
+  top: 22px;
+  width: 18px;
+}
+
+.landing-page-zoll .polygon {
+  height: 22px;
+  left: 59px;
+  position: absolute;
+  top: 20px;
+  width: 19px;
+}
+
+.landing-page-zoll .line {
+  height: 9px;
+  left: 84px;
+  position: absolute;
+  top: 26px;
+  width: 2px;
+}
+
+.landing-page-zoll .line-2 {
+  height: 14px;
+  left: 88px;
+  position: absolute;
+  top: 24px;
+  width: 2px;
+}
+
+.landing-page-zoll .line-3 {
+  height: 19px;
+  left: 92px;
+  position: absolute;
+  top: 22px;
+  width: 2px;
+}
+
+.landing-page-zoll .punkships {
+  height: 77px;
+  left: 617px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 262px;
+}
+
+.landing-page-zoll .PLAYFIELD {
+  height: 692px;
+  left: 316px;
+  object-fit: cover;
+  position: absolute;
+  top: 155px;
+  width: 808px;
+}
+
+.landing-page-zoll .HEXAGON-PLAYFIELD {
+  height: 80px;
+  left: 493px;
+  position: absolute;
+  top: 389px;
+  width: 69px;
+}
+
+.landing-page-zoll .PLAYER-SHIP {
+  height: 98px;
+  left: 477px;
+  object-fit: cover;
+  position: absolute;
+  top: 386px;
+  width: 104px;
+}
+
+.landing-page-zoll .LOG {
+  height: 258px;
+  left: 33px;
+  position: absolute;
+  top: 616px;
+  width: 251px;
+}
+
+.landing-page-zoll .player-ranking-game {
+  height: 282px;
+  left: 1145px;
+  position: absolute;
+  top: 598px;
+  width: 251px;
+}
+
+.landing-page-zoll .timer {
+  height: 110px;
+  left: 1149px;
+  position: absolute;
+  top: 160px;
+  width: 247px;
+}
+
+.landing-page-zoll .overlap-2 {
+  background-color: var(--boxes);
+  border-radius: 45px 45px 30px 30px;
+  height: 110px;
+  position: relative;
+  width: 243px;
+}
+
+.landing-page-zoll .frame-timer {
+  background-color: var(--boxes-input);
+  border-radius: 45px;
+  height: 62px;
+  left: 0;
+  position: absolute;
+  top: 48px;
+  width: 243px;
+}
+
+.landing-page-zoll .text-wrapper-3 {
+  color: var(--text);
+  font-family: "Post No Bills Colombo ExtraBold-Regular", Helvetica;
+  font-size: 25px;
+  font-weight: 400;
+  height: 37px;
+  left: 40px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 12px;
+}
+
+.landing-page-zoll .text-wrapper-4 {
+  color: var(--countdown);
+  font-family: "Nouveau IBM Stretch-Medium", Helvetica;
+  font-size: 40px;
+  font-weight: 500;
+  height: 40px;
+  left: 57px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 65px;
+  white-space: nowrap;
+}
