@@ -1,4 +1,4 @@
-import React from "react"
+/* import React from "react"
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 import {
   HexGrid,
@@ -36,19 +36,19 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
             <img className="img" alt="Background color" src="../img/background-color-1.svg" />
           </div>
         </div>
-        <img className="buttons" alt="Buttons" src="/img/buttons.png" />
-        <img className="ship-status" alt="Ship status" src="/img/ship-status.png" />
+        <img className="buttons" alt="Buttons" src="../img/buttons.png" />
+        <img className="ship-status" alt="Ship status" src="../img/ship-status.png" />
         <header className="header">
           <div className="div">
             <div className="header-2" />
             <div className="text-wrapper">Connect Wallet</div>
             <div className="text-wrapper-2">ON/OFF</div>
             <div className="rectangle" />
-            <img className="polygon" alt="Polygon" src="/img/polygon-2.svg" />
-            <img className="line" alt="Line" src="/img/line-1.svg" />
-            <img className="line-2" alt="Line" src="/img/line-2.svg" />
-            <img className="line-3" alt="Line" src="/img/line-3.svg" />
-            <img className="punkships" alt="Punkships" src="/img/punkships-3.png" />
+            <img className="polygon" alt="Polygon" src="../img/polygon-2.svg" />
+            <img className="line" alt="Line" src="../img/line-1.svg" />
+            <img className="line-2" alt="Line" src="../img/line-2.svg" />
+            <img className="line-3" alt="Line" src="../img/line-3.svg" />
+            <img className="punkships" alt="Punkships" src="../img/punkships-3.png" />
           </div>
         </header>
 
@@ -138,9 +138,9 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
 
 
 
-          <img className="PLAYER-SHIP" alt="Player SHIP" src="/img/player-ship.png" />
-          <img className="LOG" alt="Log" src="/img/log.png" />
-          <img className="player-ranking-game" alt="Player ranking game" src="/img/player-ranking-game-stats.png" />
+          <img className="PLAYER-SHIP" alt="Player SHIP" src="../img/player-ship.png" />
+          <img className="LOG" alt="Log" src="../img/log.png" />
+          <img className="player-ranking-game" alt="Player ranking game" src="../img/player-ranking-game-stats.png" />
           <div className="timer">
             <div className="overlap-2">
               <div className="frame-timer" />
@@ -156,3 +156,4 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
 }
 
 export const Default = Template.bind({})
+*/
