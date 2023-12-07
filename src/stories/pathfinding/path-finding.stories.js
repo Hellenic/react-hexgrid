@@ -5,6 +5,9 @@ import bgimg from '../../img/background-color-1.svg'
 import buttons from '../../img/buttons.png'
 import status from '../../img/ship-status.png'
 import punkshiplogo from '../../img/punkships-3.png'
+import playership from '../../img/player-ship.png'
+import playerlog from '../../img/log.png'
+import playerranking from '../../img/player-ranking-game-stats.png'
 
 export default {
   title: 'PathFinding',
@@ -91,8 +94,8 @@ const Template = (args) => {
             </HexGrid>
           </div>
           <img className="PLAYER-SHIP" alt="Player SHIP" src={playership} />
-          <img className="LOG" alt="Log" src="../img/log.png" />
-          <img className="player-ranking-game" alt="Player ranking game" src="../img/player-ranking-game-stats.png" />
+          <img className="LOG" alt="Log" src={playerlog} />
+          <img className="player-ranking-game" alt="Player ranking game" src={playerranking} />
           <div className="timer">
             <div className="overlap-2">
               <div className="frame-timer" />
