@@ -8,6 +8,9 @@ import punkshiplogo from '../../img/punkships-3.png'
 import playership from '../../img/player-ship.png'
 import playerlog from '../../img/log.png'
 import playerranking from '../../img/player-ranking-game-stats.png'
+import timer from '../../img/Timer.png'
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import Typography from '@mui/material/Typography';
 
 export default {
   title: 'PathFinding',
@@ -34,13 +37,15 @@ const Template = (args) => {
           <header className="header">
             <div className="div">
               <div className="header-2" />
-              <div className="text-wrapper">Connect Wallet</div>
-              <div className="text-wrapper-2">ON/OFF</div>
-              <div className="rectangle" />
-              <img className="polygon" alt="Polygon" src="../img/polygon-2.svg" />
-              <img className="line" alt="Line" src="../img/line-1.svg" />
-              <img className="line-2" alt="Line" src="../img/line-2.svg" />
-              <img className="line-3" alt="Line" src="../img/line-3.svg" />
+              <Typography className="text-wrapper" variant="h4" gutterBottom>
+              Connect Wallet
+      </Typography>
+
+
+
+
+              <VolumeUpIcon className='polygon' alt="Polygon"></VolumeUpIcon>
+
               <img className="punkships" alt="Punkships" src={punkshiplogo} />
             </div>
           </header>
@@ -58,7 +63,7 @@ const Template = (args) => {
             transform: 'translate(-50%, -50%)',
             objectFit: 'cover',
           }}>
-            <HexGrid width={1200} height={800}>
+            <HexGrid width={1200} height={800} className="hexgrid">
               <Layout size={{ x: 6, y: 6 }} flat={false} spacing={1.1} origin={{ x: 0, y: 0 }}>
                 {hexagons.map((hex, i) => (
                   <Hexagon key={i} q={hex.q} r={hex.r} s={hex.s} className={hex.props ? hex.props.className : undefined}
@@ -96,16 +101,12 @@ const Template = (args) => {
           <img className="PLAYER-SHIP" alt="Player SHIP" src={playership} />
           <img className="LOG" alt="Log" src={playerlog} />
           <img className="player-ranking-game" alt="Player ranking game" src={playerranking} />
-          <div className="timer">
-            <div className="overlap-2">
-              <div className="frame-timer" />
-              <div className="text-wrapper-3">Next Move Timer</div>
-              <div className="text-wrapper-4">01:22:54</div>
+          <img className="timer" alt="Timer" src={timer}/>
+
             </div>
           </div>
         </div>
-      </div>
-    </div>
+
   );
 };
 

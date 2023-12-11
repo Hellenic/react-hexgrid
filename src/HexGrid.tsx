@@ -12,6 +12,21 @@ type Props = {} & React.SVGProps<SVGSVGElement>
  * @param {string} SVGProps.viewBox - the container's internal coordinate system
  * @returns
  */
+
+const ShadowFilter = () => (
+  <filter id="hexShadow" height="130%">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="2.5" /> {/* Adjust blur */}
+    <feOffset dx="2" dy="2" result="offsetblur" /> {/* Adjust shadow offset */}
+    <feComponentTransfer>
+      <feFuncA type="linear" slope="0.5"/> {/* Adjust shadow opacity */}
+    </feComponentTransfer>
+    <feMerge> 
+      <feMergeNode />
+      <feMergeNode in="SourceGraphic" /> {/* Combine blur with original graphic */}
+    </feMerge>
+  </filter>
+);
+
 export function HexGrid({
   width = 800,
   height = 600,
@@ -19,15 +34,18 @@ export function HexGrid({
   ...props
 }: Props) {
   return (
-    <svg
+    <svg 
+    
       className="grid"
       width={width}
       height={height}
       viewBox={viewBox}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
+      
       {...props}
     />
+
   )
 }
 export default HexGrid

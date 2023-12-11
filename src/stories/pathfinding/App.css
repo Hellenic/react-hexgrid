@@ -25,11 +25,7 @@
   fill: Coral;
   fill-opacity: 0.9;
 }
-.pathfinding-example svg g polygon {
-  stroke: #7be3f6;
-  stroke-width: 0.2;
-  transition: fill-opacity 0.5s;
-}
+
 .pathfinding-example svg g text {
   font-size: 0.17em;
   fill: white;
@@ -107,7 +103,7 @@
 }
 
 .landing-page-zoll .buttons {
-  height: 136px;
+  height: 60px;
   left: 1143px;
   position: absolute;
   top: 294px;
@@ -150,7 +146,7 @@
 
 .landing-page-zoll .text-wrapper {
   color: var(--text);
-  font-family: "Post No Bills Colombo ExtraBold-Regular", Helvetica;
+  font-family: "Pixelify Sans", sans-serif;
   font-size: 25px;
   font-weight: 400;
   height: 37px;
@@ -163,7 +159,7 @@
 
 .landing-page-zoll .text-wrapper-2 {
   color: var(--text);
-  font-family: "Nouveau IBM Stretch-Medium", Helvetica;
+  font-family: 'Pixelify Sans', sans-serif;
   font-size: 25px;
   font-weight: 500;
   height: 25px;
@@ -187,11 +183,12 @@
 }
 
 .landing-page-zoll .polygon {
-  height: 22px;
+  height: 40px;
   left: 59px;
   position: absolute;
-  top: 20px;
-  width: 19px;
+  top: 10px;
+  width: 40px;
+  
 }
 
 .landing-page-zoll .line {
@@ -219,7 +216,7 @@
 }
 
 .landing-page-zoll .punkships {
-  height: 77px;
+  height: 80px;
   left: 617px;
   object-fit: cover;
   position: absolute;
@@ -249,7 +246,7 @@
   left: 477px;
   object-fit: cover;
   position: absolute;
-  top: 386px;
+  top: 345px;
   width: 104px;
 }
 
@@ -297,7 +294,7 @@
 
 .landing-page-zoll .text-wrapper-3 {
   color: var(--text);
-  font-family: "Post No Bills Colombo ExtraBold-Regular", Helvetica;
+  font-family: 'Pixelify Sans', sans-serif;
   font-size: 25px;
   font-weight: 400;
   height: 37px;
@@ -322,3 +319,4 @@
   top: 65px;
   white-space: nowrap;
 }
+
