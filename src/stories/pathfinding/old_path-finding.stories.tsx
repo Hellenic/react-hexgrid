@@ -1,4 +1,4 @@
-import React from "react"
+/* import React from "react"
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 import {
   HexGrid,
@@ -26,22 +26,56 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
   }>({ start: null, end: null })
 
   return (
+    
+    <div className="landing-page-zoll">
+    <div className="overlap-wrapper">
+      <div className="overlap">
+        <div className="hintergrund">
+          <div className="overlap-group">
+            <div className="background-color" />
+            <img className="img" alt="Background color" src="../img/background-color-1.svg" />
+          </div>
+        </div>
+        <img className="buttons" alt="Buttons" src="../img/buttons.png" />
+        <img className="ship-status" alt="Ship status" src="../img/ship-status.png" />
+        <header className="header">
+          <div className="div">
+            <div className="header-2" />
+            <div className="text-wrapper">Connect Wallet</div>
+            <div className="text-wrapper-2">ON/OFF</div>
+            <div className="rectangle" />
+            <img className="polygon" alt="Polygon" src="../img/polygon-2.svg" />
+            <img className="line" alt="Line" src="../img/line-1.svg" />
+            <img className="line-2" alt="Line" src="../img/line-2.svg" />
+            <img className="line-3" alt="Line" src="../img/line-3.svg" />
+            <img className="punkships" alt="Punkships" src="../img/punkships-3.png" />
+          </div>
+        </header>
+
+        
+    
     <div
       className="pathfinding-example"
       style={{
-        background: "#133b43",
+
         color: "white",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center", // Center content vertically inside the div
+        height: 692,
+        width: 808,
+        position: "absolute",
+        left: "50%", // Set left to 50% of the parent element
+        top: "50%", // Set top to 50% of the parent element
+        transform: "translate(-50%, -50%)", // Shift the div back by half of its own width and height
+        objectFit: "cover",
+        
       }}
     >
-      <h2>Pathfinding & active highlight</h2>
-      <p>
-        Click a tile to start drawing a path to your cursor. Click again to
-        cancel.
-      </p>
-      <p>Hover around the board to see helper lines drawn.</p>
+
+
+
       <HexGrid width={1200} height={800}>
         <Layout
           size={{ x: 6, y: 6 }}
@@ -100,7 +134,26 @@ const Template: ComponentStory<typeof Hexagon> = (args, { argTypes }) => {
         </Layout>
       </HexGrid>
     </div>
+
+
+
+
+          <img className="PLAYER-SHIP" alt="Player SHIP" src="../img/player-ship.png" />
+          <img className="LOG" alt="Log" src="../img/log.png" />
+          <img className="player-ranking-game" alt="Player ranking game" src="../img/player-ranking-game-stats.png" />
+          <div className="timer">
+            <div className="overlap-2">
+              <div className="frame-timer" />
+              <div className="text-wrapper-3">Next Move Timer</div>
+              <div className="text-wrapper-4">01:22:54</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   )
 }
 
 export const Default = Template.bind({})
+*/
