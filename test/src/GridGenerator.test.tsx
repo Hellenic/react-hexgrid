@@ -1,4 +1,6 @@
 import { GridGenerator } from "../../src/GridGenerator"
+import { Hex } from "../../src/models/Hex"
+import { HexUtils } from "../../src/HexUtils"
 
 test("getGenerator should work when the request exists", () => {
   expect(GridGenerator.getGenerator("rectangle")).toBe(GridGenerator.rectangle)
@@ -64,15 +66,32 @@ test("orientedRectangle should work", () => {
     { q: 2, r: 1, s: -3 },
   ])
 })
-// Need to create tests for ring and spiral functions. Not sure how though.
-/*
-it("ring function", () => {
-  const hexTest: HexCoordinates = { q: 0, r: 0, s: 0 }
-  expect(GridGenerator.ring(hexTest, 1)).toEqual(HexUtils.neighbors(hexTest))
+
+test("ring should return all hexes at exactly the given radius", () => {
+  const center = new Hex(0, 0, 0)
+  const radius = 2
+  const ring = GridGenerator.ring(center, radius)
+
+  expect(ring.length).toBe(12)
+  expect(ring.every((hex) => HexUtils.distance(center, hex) === radius)).toBe(
+    true,
+  )
+  expect(new Set(ring.map((hex) => `${hex.q},${hex.r},${hex.s}`)).size).toBe(
+    ring.length,
+  )
 })
 
-it("spiral function", () => {
-  const hexTest: HexCoordinates = { q: 0, r: 0, s: 0 }
-  expect(GridGenerator.spiral(hexTest, 4)).toEqual({})
+test("spiral should include center and all rings up to the given radius", () => {
+  const center = new Hex(0, 0, 0)
+  const radius = 2
+  const spiral = GridGenerator.spiral(center, radius)
+
+  expect(spiral[0]).toEqual(center)
+  expect(spiral.length).toBe(19)
+  expect(
+    spiral.every((hex) => HexUtils.distance(center, hex) <= radius),
+  ).toBe(true)
+  expect(
+    spiral.some((hex) => HexUtils.distance(center, hex) === radius),
+  ).toBe(true)
 })
-*/
