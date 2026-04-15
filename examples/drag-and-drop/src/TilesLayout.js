@@ -9,7 +9,7 @@ class TilesLayout extends Component {
     const hexagons = GridGenerator.parallelogram(-1, 1, -1, 2).map((hexagon, index) => {
       return Object.assign({}, hexagon, {
         text: `Cat #${index}`,
-        image: `http://lorempixel.com/400/400/cats/${index%10}/`
+        image: `https://cataas.com/cat?type=square`
       });
     })
     this.state = { hexagons };
@@ -54,7 +54,7 @@ class TilesLayout extends Component {
               onDragEnd={(e, h, s) => this.onDragEnd(e, h, s)}
             >
               <Text>{hex.text}</Text>
-              { !!hex.image && <Pattern id={HexUtils.getID(hex)} link={hex.image} /> }
+              {!!hex.image && <Pattern id={HexUtils.getID(hex)} link={hex.image} />}
             </Hexagon>
           ))
         }

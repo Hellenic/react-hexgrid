@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hexagon should render correctly with default props 1`] = `
+<svg>
+  <g
+    class="test1"
+  >
+    <g
+      class="hexagon-group"
+      draggable="true"
+      transform="translate(0, 0)"
+    >
+      <g
+        class="hexagon"
+      >
+        <polygon
+          points="5.196152422706632,2.9999999999999996 3.6739403974420594e-16,6 -5.196152422706631,3.0000000000000018 -5.196152422706633,-2.9999999999999982 -1.102182119232618e-15,-6 5.196152422706633,-2.9999999999999982"
+        />
+        <div>
+          child
+        </div>
+      </g>
+    </g>
+  </g>
+</svg>
+`;

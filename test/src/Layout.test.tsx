@@ -1,22 +1,22 @@
 import React from "react"
-import renderer from "react-test-renderer"
+import { render } from "@testing-library/react"
 
 import { Layout } from "../../src/Layout"
 
 test("Layout should render correctly with default props", () => {
-  const tree = renderer
-    .create(
+  const { container } = render(
+    <svg>
       <Layout className={"test1"}>
         <div>child</div>
-      </Layout>,
-    )
-    .toJSON()
-  expect(tree).toMatchSnapshot()
+      </Layout>
+    </svg>,
+  )
+  expect(container.firstChild).toMatchSnapshot()
 })
 
 test("Layout should render correctly with custom props", () => {
-  const tree = renderer
-    .create(
+  const { container } = render(
+    <svg>
       <Layout
         className={"test2"}
         flat={false}
@@ -25,8 +25,8 @@ test("Layout should render correctly with custom props", () => {
         spacing={2.0}
       >
         <div>child</div>
-      </Layout>,
-    )
-    .toJSON()
-  expect(tree).toMatchSnapshot()
+      </Layout>
+    </svg>,
+  )
+  expect(container.firstChild).toMatchSnapshot()
 })

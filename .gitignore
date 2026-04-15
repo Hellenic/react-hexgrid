@@ -22,11 +22,8 @@ coverage/
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
-# Dependency directory
-node_modules/
-
 # Babel compiled sources
-lib/
+# lib/
 
 # UMD distribution
 dist/
@@ -39,3 +36,8 @@ dist/
 nbproject
 .idea
 .node_history
+
+# storybook files
+storybook-static
+
+node_modules

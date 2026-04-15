@@ -13,9 +13,9 @@ export class HexUtils {
     new Hex(0, 1, -1),
   ]
 
-  /** 
+  /**
    * Checks if coordinates are the same.
-   * @param {HexCoordinates} a - first set of coordinates 
+   * @param {HexCoordinates} a - first set of coordinates
    * @param {HexCoordinates} b - second set of coordinates
    * @returns {boolean} - true if all coords are the same, false otherwise
    */
@@ -23,8 +23,8 @@ export class HexUtils {
     return a.q == b.q && a.r == b.r && a.s == b.s
   }
 
-  /** 
-   * Returns a new Hex with the addition of q,r,s values from A and B respectively 
+  /**
+   * Returns a new Hex with the addition of q,r,s values from A and B respectively
    * @param {HexCoordinates} a - first set of coordinates
    * @param {HexCoordinates} b - second set of coordinates
    * @returns {Hex} - new hex at the position of the sum of the coords
@@ -33,8 +33,8 @@ export class HexUtils {
     return new Hex(a.q + b.q, a.r + b.r, a.s + b.s)
   }
 
-  /** 
-   * Returns a new Hex with the subtraction of q,r,s values from A and B respectively 
+  /**
+   * Returns a new Hex with the subtraction of q,r,s values from A and B respectively
    * @param {HexCoordinates} a - first set of coordinates
    * @param {HexCoordinates} b - second set of coordinates
    * @returns {Hex} - new hex at the position of the difference between a and b
@@ -43,7 +43,7 @@ export class HexUtils {
     return new Hex(a.q - b.q, a.r - b.r, a.s - b.s)
   }
 
-  /** 
+  /**
    * @param {HexCoordinates} a - first set of coordinates
    * @param {HexCoordinates} k - second set of coordinates
    * @returns {Hex} new hex at the position of the product between a's coordinates and a constant k
@@ -52,7 +52,7 @@ export class HexUtils {
     return new Hex(a.q * k, a.r * k, a.s * k)
   }
 
-  /** 
+  /**
    * @param {Hex} hex - target hex
    * @returns {number} manhattan distance between hex and origin
    */
@@ -60,8 +60,8 @@ export class HexUtils {
     return (Math.abs(hex.q) + Math.abs(hex.r) + Math.abs(hex.s)) / 2
   }
 
-  /** 
-   * Returns the distance between two hex coordinates 
+  /**
+   * Returns the distance between two hex coordinates
    * @param {HexCoordinates} a - first set of coordinates
    * @param {HexCoordinates} b - second set of coordinates
    * @returns {number} the manhattan distance between a and b
@@ -70,8 +70,8 @@ export class HexUtils {
     return HexUtils.lengths(HexUtils.subtract(a, b))
   }
 
-  /** 
-   * Returns a Hex whos coordinates represent the delta needed to move 
+  /**
+   * Returns a Hex whos coordinates represent the delta needed to move
    * in the given direction
    * @param {number} direction - number representing the direction
    * @returns {Hex}
@@ -80,7 +80,7 @@ export class HexUtils {
     return HexUtils.DIRECTIONS[(6 + (direction % 6)) % 6]
   }
 
-  /** 
+  /**
    * Returns a Hex which is in the given direction.
    * @param {Hex} hex - starting hex
    * @param {number} direction - number representing the direction
@@ -90,7 +90,7 @@ export class HexUtils {
     return HexUtils.add(hex, HexUtils.direction(direction))
   }
 
-  /** Returns an array of all the direct neighbors of a Hex within one Hex away 
+  /** Returns an array of all the direct neighbors of a Hex within one Hex away
    * @param {Hex} hex - starting hex
    * @returns {Hex[]} array containing all adjacent Hexes
    */
@@ -102,8 +102,8 @@ export class HexUtils {
     return array
   }
 
-  /** 
-   * rounds the axial coordinate values of a Hex trying to maintain the 
+  /**
+   * rounds the axial coordinate values of a Hex trying to maintain the
    * smallest difference from the current coordinate values.
    * @param {Hex} hex - the hexagon which needs its coordinates rounded
    * @return {Hex} - a Hex which contains the rounded coordinates
@@ -125,7 +125,7 @@ export class HexUtils {
   }
 
   /** Given the q,r,s of a hexagon return the x and y pixel coordinates of the
-   * hexagon center. 
+   * hexagon center.
    * @param {Hex} hex - target Hex
    * @param {LayoutDimensions} layout - layout which contains the Hex
    * @returns {Point} pixel coordinate of the Hex center
@@ -141,7 +141,7 @@ export class HexUtils {
     return new Point(x + layout.origin.x, y + layout.origin.y)
   }
 
-  /** Return the q,r,s coordinate of the hexagon given pixel point x and y. 
+  /** Return the q,r,s coordinate of the hexagon given pixel point x and y.
    * @param {Point} point - target pixel coordinates
    * @param {LayoutDimension} layout - layout of the desired
    * @returns {Hex} Hex with coordinate position at the
@@ -159,7 +159,7 @@ export class HexUtils {
   }
 
   /** Returns a value that is blended between a and b.
-   * For more Information: 
+   * For more Information:
    * {@link https://en.wikipedia.org/wiki/Linear_interpolation#Programming_language_support Linear Interpolation Wiki}
    * @param {number} a - left hand value
    * @param {number} b - right hand value
@@ -170,13 +170,13 @@ export class HexUtils {
     return a + (b - a) * t
   }
 
-  /** Calculates the linear interpolation of each Hex coordinate and 
+  /** Calculates the linear interpolation of each Hex coordinate and
    * returns a Hex with the linear interpolated coordiantes.
-   * For more Information: 
+   * For more Information:
    * {@link https://en.wikipedia.org/wiki/Linear_interpolation#Programming_language_support Linear Interpolation Wiki}
    * @param {HexCoordinates} a - left hand hex
    * @param {HexCoordinates} b - right hand hex
-   * @param {number} t - alpha blending value 
+   * @param {number} t - alpha blending value
    * @returns {Hex} new Hex which is between the two Hexes
    */
   static hexLerp(a: HexCoordinates, b: HexCoordinates, t: number): Hex {
@@ -190,11 +190,27 @@ export class HexUtils {
   /** Return a string ID from Hex Coordinates.
    * Example: Hex Coordinates of {q: 1, r: 2, s: 3} is returned
    * as string "1,2,3"
-   * @param {HexCoordinates} hex - target Hex 
+   * @param {HexCoordinates} hex - target Hex
    * @returns {string} an ID string in the form `{q},{r},{s}`
    */
   static getID(hex: HexCoordinates): string {
     return `${hex.q},${hex.r},${hex.s}`
+  }
+
+  /** Sort function for Hex Coordinates. Sorts by q, then r, then s.
+   * For use with Array.prototype.sort();
+   * @param {HexCoordinates} a - left hand Hex
+   * @param {HexCoordinates} b - right hand Hex
+   * @returns {number} -1 if a is less than b, 1 if a is greater than b, 0 if equal
+   */
+  static sort(a: HexCoordinates, b: HexCoordinates): number {
+    if (a.q === b.q) {
+      if (a.r === b.r) {
+        return a.s - b.s
+      }
+      return a.r - b.r
+    }
+    return a.q - b.q
   }
 }
 

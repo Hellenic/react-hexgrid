@@ -1,7 +1,20 @@
 import { Hex } from "./models/Hex"
 import { HexUtils } from "./HexUtils"
 
+// this type is an abstraction of ring, triangle, hexagon, etc.
+// it accepts any variation of arguments, and returns Hex[]
+// We need this type to cast the output of getGenerator to something that
+// looks like ring, triangle, etc
 type Generator = (args: any) => Hex[]
+
+export type GeneratorName =
+  | "ring"
+  | "spiral"
+  | "parallelogram"
+  | "triangle"
+  | "hexagon"
+  | "rectangle"
+  | "orientedRectangle"
 
 /** This class contains static methods for generating Hex coordinates
  * for specifically-shaped grids, such as rectangle, hexagon, and more. */
@@ -9,20 +22,10 @@ export class GridGenerator {
   /** This method is used to dynamically choose a type of grid to
    * generate.
    */
-  static getGenerator(
-    name:
-      | "ring"
-      | "spiral"
-      | "parallelogram"
-      | "triangle"
-      | "hexagon"
-      | "rectangle"
-      | "orientedRectangle",
-  ): Generator {
-    const x = GridGenerator[name] as Generator
-    return x
+  static getGenerator(name: GeneratorName): Generator {
+    return GridGenerator[name] as Generator
   }
-  /** May not be working. There are no tests for it. */
+
   static ring(center: Hex, mapRadius: number): Hex[] {
     let hexas: Hex[] = []
     let hex = HexUtils.add(

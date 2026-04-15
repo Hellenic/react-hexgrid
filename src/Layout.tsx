@@ -15,7 +15,7 @@ export type LayoutContextProps = {
   points: string
 }
 
-const LAYOUT_FLAT = new Orientation(
+export const LAYOUT_FLAT = new Orientation(
   3.0 / 2.0,
   0.0,
   Math.sqrt(3.0) / 2.0,
@@ -57,14 +57,14 @@ export function useLayoutContext() {
 }
 
 /**
- * Calculates the points for a hexagon given the size, angle, and center
+ * Calculates the points for a hexagon given the radius, angle, and center
  * @param circumradius Radius of the Hexagon
  * @param angle Angle offset for the hexagon in radians
- * @param center Central point for the heaxagon
+ * @param center Central point for the hexagon
  * @returns Array of 6 points
  */
 
-function calculateCoordinates(
+export function calculateCoordinates(
   circumradius: number,
   angle: number = 0,
   center: Point = new Point(0, 0),
@@ -83,10 +83,11 @@ function calculateCoordinates(
 
 export type LayoutProps = {
   children:
-    | React.ReactElement
-    | React.ReactElement[]
-    | JSX.Element
-    | JSX.Element[]
+  | React.ReactElement
+  | React.ReactElement[]
+  | React.ReactNode
+  | JSX.Element
+  | JSX.Element[]
   className?: string
   flat?: boolean
   origin?: any

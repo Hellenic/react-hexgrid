@@ -1,0 +1,36 @@
+import { Meta, Story } from '@storybook/addon-docs';
+import * as GeneratorStory from "../../src/GridGenerator.stories.tsx"; 
+
+<Meta title="Getting Started/Using Generators"/>
+
+## What's a generator?
+
+One of the most powerful features of `react-hexgrid` is its generator algorithms - helper functions
+that can create patterns of hexagons for you.  
+
+## Usage
+
+Generators return an array of hexagon coordinates (q, r, s coordinates).  You can use them like 
+any other array!  Right now, you can make a ring, a spiral, a rectangle, a parallelogram (oriented rectangle) 
+and a hexagon.
+Here's a basic example, using the hexagon-shaped generator:
+
+```tsx
+import { Hexagon, HexGrid, HexagonGenerator } from '@aaronzshey/react-hexgrid';
+export default function App() {
+    return(
+        <HexGrid width="100%">
+                {GridGenerator.hexagon(2).map((hex, i) => (
+                    <Hexagon key={i} q={hex.q} r={hex.r} s={hex.s} className="tutorial" />
+                ))}
+        </HexGrid>
+    )
+}
+```
+
+(using the same `App.css` file from earlier)
+
+And that's it!  You should see something like this:
+
+<Story of={GeneratorStory.Default}/>
+For more in-depth info about the parameters of these functions, see the API documentation section of this Storybook.

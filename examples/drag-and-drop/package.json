@@ -5,7 +5,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hexgrid": "*",
+    "react-hexgrid": "github:aaronzshey/react-hexgrid#build",
     "react-scripts": "^5.0.1"
   },
   "scripts": {

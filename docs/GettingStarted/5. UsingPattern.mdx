@@ -1,0 +1,31 @@
+import { Meta, Story } from "@storybook/addon-docs";
+import * as PatternStory from "../../src/Pattern.stories.tsx";
+
+<Meta title="Getting Started/Using Pattern" />
+
+# The Pattern component
+The Pattern component is a wrapper around the svg pattern tag,
+which lets you compact assets like gradients and images into 
+a single tag, reachable with a single ID!
+
+# Usage
+
+The Pattern component isn't visible, just like the `<pattern>` svg tag.  It only has three props 
+(one optional): link (the link to your image), id (what you want to call your pattern), and size 
+(which defaults to a square).
+
+Try out this code:
+
+```tsx
+import { HexGrid, Hexagon, Layout, Pattern } from '@aaronzshey/react-hexgrid';
+export default function App() {
+  <HexGrid width="100%">
+      <Pattern id="my-pattern" link="https://picsum.photos/200"/>
+      <Hexagon q={0} r={0} s={0} fill="my-pattern"/>
+  </HexGrid>
+}
+```
+
+<Story of={PatternStory.Default} />
+Since `Pattern`s are just syntactic sugar over svg tags, they must be inside of an SVG or HexGrid tag.
+However, they can either be inside or outside Layout tags - it's up to you!

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'SauceCodePro Nerd Font';
+    src: local("./SauceCodeProNerdFontMono-Black.ttf");
+    format: ('truetype');
+}
+
+* {
+    font-family: "SauceCodePro Nerd Font", serif;
+}

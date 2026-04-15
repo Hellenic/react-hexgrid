@@ -1,0 +1,73 @@
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -moz-user-drag: element;
+    -webkit-user-drag: element;
+    -khtml-user-drag: element;
+    user-drag: element;
+}
+
+@font-face {
+    font-family: 'SauceCodePro Nerd Font';
+    src: local("./SauceCodeProNerdFontMono-Black.ttf");
+    format: ('truetype');
+}
+
+* {
+    font-family: "SauceCodePro Nerd Font", serif;
+}
+
+svg g.tutorial {
+    stroke: black;
+    stroke-width: 0.01em;
+    fill: transparent;
+}
+
+svg g.h:hover {
+    fill: #61dbfb;
+    transition: fill .1s;
+}
+
+svg g:hover text {
+    fill-opacity: 1;
+    transition: fill .1s;
+}
+
+svg g.q .hexagon {
+    fill: #61fbf5;
+    transition: fill .1s;
+}
+
+svg g.r .hexagon {
+    fill: #fb618e;
+    transition: fill .1s;
+}
+
+svg g.s .hexagon {
+    fill: #fbce61;
+    transition: fill .1s;
+}
+
+svg g.active .hexagon {
+    fill: #61dbfb;
+    transition: fill .1s;
+}
+
+
+svg g text {
+    font-size: 0.17em;
+    fill: white;
+    fill-opacity: 0.7;
+    transition: fill-opacity .1s;
+}
+
+svg path {
+    stroke: #fb61db;
+    stroke-width: 0.2em;
+    stroke-opacity: 0.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: .1s;
+}

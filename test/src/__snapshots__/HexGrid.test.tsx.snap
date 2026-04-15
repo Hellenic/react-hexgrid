@@ -2,7 +2,7 @@
 
 exports[`HexGrid should accept percentage in width and height 1`] = `
 <svg
-  className="grid"
+  class="grid"
   height="50%"
   version="1.1"
   viewBox="-50 -50 100 100"
@@ -17,11 +17,11 @@ exports[`HexGrid should accept percentage in width and height 1`] = `
 
 exports[`HexGrid should render correctly with custom props 1`] = `
 <svg
-  className="grid"
-  height={666}
+  class="grid"
+  height="666"
   version="1.1"
   viewBox="-150 -150 1100 1100"
-  width={888}
+  width="888"
   xmlns="http://www.w3.org/2000/svg"
 >
   <div>
@@ -32,11 +32,11 @@ exports[`HexGrid should render correctly with custom props 1`] = `
 
 exports[`HexGrid should render correctly with default props 1`] = `
 <svg
-  className="grid"
-  height={600}
+  class="grid"
+  height="600"
   version="1.1"
   viewBox="-50 -50 100 100"
-  width={800}
+  width="800"
   xmlns="http://www.w3.org/2000/svg"
 >
   <div>

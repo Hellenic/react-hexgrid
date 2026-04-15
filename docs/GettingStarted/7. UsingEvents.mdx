@@ -1,0 +1,112 @@
+import { Meta, Story } from "@storybook/addon-docs";
+import * as HexagonStory from "../../src/Hexagon/Hexagon.stories.tsx";
+
+<Meta title="Getting Started/Using Events" />
+
+# Events
+
+### Before we start, a quick disclaimer:
+
+Don't use events to do simple things such as changing styles - use CSS instead.  Using `:hover` CSS 
+rules are faster and easier to read.  Only use mouse events when you need access to Javascript utils.
+
+Since this is just a simple example, we are going to change the styles of a hexagon, just to understand 
+how events work.  But don't do that!  Do as I say, not as I do :).
+
+Anyway, let's jump in!
+
+Each `Hexagon` component exposes the full suite of React events you are used to: onMouseEnter, 
+onMouseLeave, onClick, etc.  However, using these events is a little tricky! 
+
+Feeling impatient?  Scroll all the way down to see the code all together!
+
+Start with your code from your first app:
+
+```tsx
+import { HexGrid, Layout, Hexagon } from '@aaronzshey/react-hexgrid';
+export default function App() {
+  <HexGrid width="100%">
+      <Hexagon q={0} r={0} s={0} cellStyle={{fill: "red"}}/>
+  </HexGrid>
+}
+```
+
+First, add the `onMouseEnter` and `onMouseLeave` events to the `Hexagon` component:
+
+```tsx
+<Hexagon 
+  q={0} 
+  r={0} 
+  s={0} 
+  cellStyle={{fill: "red"}}
+  onMouseEnter={(e) => ()}
+  onMouseLeave={(e) => ()}
+  />
+```
+
+Next, we need to add some types (we are using typescript after all):
+
+```tsx
+<Hexagon 
+  q={0} 
+  r={0} 
+  s={0} 
+  cellStyle={{fill: "red"}}
+  onMouseEnter={(e: React.MouseEvent<SVGElement, MouseEvent>) => ()}
+  onMouseLeave={(e: React.MouseEvent<SVGElement, MouseEvent>) => ()}
+  />
+```
+
+However, the type needs to be slightly different inside the function body:
+
+```tsx
+<Hexagon 
+  q={0} 
+  r={0} 
+  s={0} 
+  cellStyle={{fill: "red"}}
+  onMouseEnter={(e: React.MouseEvent<SVGElement, MouseEvent>) => ((e.target as SVGElement))}
+  onMouseLeave={(e: React.MouseEvent<SVGElement, MouseEvent>) => ((e.target as SVGElement))}
+  />
+```
+
+By casting the event target to an SVGElement, we expose setters and getters
+for attributes, which we're going to use now:
+
+```tsx
+<Hexagon 
+  q={0} 
+  r={0} 
+  s={0} 
+  cellStyle={{fill: "red"}}
+  onMouseEnter={(e: React.MouseEvent<SVGElement, MouseEvent>) => ( (e.target as SVGElement).style.fill = "blue" )}
+  onMouseLeave={(e: React.MouseEvent<SVGElement, MouseEvent>) => ( (e.target as SVGElement).style.fill = "red" )}
+  />
+```
+
+And that's it!  Putting it all together,
+
+```tsx
+import { HexGrid, Layout, Hexagon } from '@aaronzshey/react-hexgrid';
+export default function App() {
+  <HexGrid width="100%">
+      <Hexagon 
+        q={0} 
+        r={0} 
+        s={0} 
+        cellStyle={{ 
+            fill: "red", 
+            transition: "fill 0.1s" 
+        }} 
+        onMouseEnter={(e: React.MouseEvent<SVGElement, MouseEvent>) => 
+            (e.target as SVGElement).style.fill = "blue"
+        }s
+        onMouseLeave={(e: React.MouseEvent<SVGElement, MouseEvent>) => 
+            (e.target as SVGElement).style.fill = "red"
+        }
+      />
+  </HexGrid>
+}
+```
+
+<Story of={HexagonStory.Event} />

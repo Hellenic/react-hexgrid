@@ -1,0 +1,185 @@
+import { Meta, Story } from "@storybook/addon-docs";
+import * as HexagonStory from "../../src/Hexagon/Hexagon.stories.tsx";
+
+<Meta title="Advanced Tutorials/Dragging and Dropping" />
+
+# Dragging and Dropping
+
+It's common knowledge that drag and drop is not implemented on SVG elements (link to web docs).  
+So how do we implement drag and drop on our hexagons?
+
+A quick internet search reveals that many people "hack" SVGs by using mouse events like mouseOver and mousemove.
+However, this is quite complicated, and ignores the fact that drag and drop is implemented on an SVG element:
+the g tag.
+
+By default, Hexagon components create g tags, so this is a convenient way to implement drag and drop.
+
+# Styles
+
+For the hexagons to be draggable, you MUST create a CSS file and include the following code:
+
+```css
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -moz-user-drag: element;
+    -webkit-user-drag: element;
+    -khtml-user-drag: element;
+    user-drag: element;
+}
+```
+
+To do so, create a file in the same directory as your App.tsx file named App.css.  If you used Vite to 
+start up your project, it should already be there.  Copy and paste the above code, and put it into App.css. 
+Make sure to reference App.css in your App.tsx file:
+
+```tsx
+import { HexGrid, Hexagon, Layout } from "react-hexgrid";
+import "./App.css";
+
+export default function App() {
+    //...
+```
+
+# Code
+
+To use drag and drop, we need to use the onDragStart, onDragOver, and onDrop events.
+We also need two hexagons: one to drag from, and one to drop onto.  
+
+We'll make a simple color drag and drop demo: you will drag the red out of the red hexagon, and 
+drop it into the blue hexagon, turning it red.
+ 
+We will start with two hexagons:
+
+```tsx
+import { HexGrid, Layout, Hexagon } from '@aaronzshey/react-hexgrid';
+import "./App.css";
+
+export default function App() {
+  <HexGrid width="100%" height="100%">
+    <Layout>
+      <Hexagon q={0} r={0} s={0} cellStyle={{fill: "red"}}/>
+      <Hexagon q={0} r={0} s={0} cellStyle={{fill: "blue"}}/>
+    </Layout>
+  </HexGrid>
+}
+```
+
+The red hexagon will be our drag source, and the blue hexagon will be the drop target.  
+
+Start by adding the following function to your code:
+
+
+```tsx
+<Hexagon q={0} r={0} s={0} style={{ fill: "red" }}
+  onDragStart={() => { }}
+/>
+```
+
+While you can choose to add some code inside of these function blocks, you don't need to.  They just need to be 
+set to a value so the hexagon becomes draggable.
+
+The real magic happens in drop target - the blue hexagon.  Since the code is a little bit more complicated, we'll start 
+with just the functions:
+
+```tsx
+<Hexagon q={1} r={0} s={0} style={{ fill: "blue" }}
+  onDragStart={}
+  onDragOver={}
+  onDrop={}
+/>
+```
+
+First, we need to make sure we can't drag the blue hexagon, to avoid confusing users.  Add the following code to the 
+onDragStart function:
+
+```tsx
+<Hexagon q={1} r={0} s={0} style={{ fill: "blue" }}
+  onDragStart={(e) => { e.preventDefault(); }} 
+  onDragOver={} 
+  onDrop={}
+/>
+```
+
+While I'm not too sure why, we also need to prevent default on the dragOver function:
+
+```tsx
+<Hexagon q={1} r={0} s={0} style={{ fill: "blue" }}
+  onDragStart={(e) => { e.preventDefault(); }} 
+  onDragOver={(e) => { e.preventDefault(); }} 
+  onDrop={}
+/>
+```
+
+While you're at it, add parameters to the other functions:
+
+```tsx
+<Hexagon q={1} r={0} s={0} style={{ fill: "blue" }}
+  onDragStart={(e) => { e.preventDefault(); }} 
+  onDragOver={(e) => { e.preventDefault(); }} 
+  onDrop={(e) => {}}
+/>
+```
+
+Next, let's add some type annotations:
+
+```tsx
+<Hexagon q={1} r={0} s={0} style={{ fill: "blue" }}
+  onDragStart={(e) => { e.preventDefault(); }}
+  onDragOver={(e) => { e.preventDefault(); }} 
+  onDrop={(event: React.DragEvent<SVGElement>) => {}}
+/>
+```
+
+Note that we don't add a type annotation to onDragStart.  While you could, it's not required.
+
+Now, time to add the color-changing code!  Add this to the ondrop function:
+
+```tsx
+<Hexagon q={1} r={0} s={0} style={{ fill: "blue" }}
+  onDragStart={(e) => { e.preventDefault(); }}
+  onDragOver={(e) => { e.preventDefault(); }} 
+  onDrop={(event: React.DragEvent<SVGElement>) => {
+      (event.target as SVGElement).style.fill = "red"; 
+    }}
+/>
+```
+
+Here's the completed code:
+
+```tsx
+import { HexGrid, Hexagon, Layout } from "react-hexgrid";
+import "./App.css";
+
+export default function App() {
+  return (
+    <HexGrid width="100%" height="100%" >
+      <Layout>
+        {/* drag and drop the colors! }
+        {/* the drag source */}
+
+        <Hexagon q={0} r={0} s={0} style={{ fill: "red" }}
+          onDragStart={() => { }}
+        />
+
+        {/* the drop target */}
+
+        <Hexagon q={1} r={0} s={0} style={{ fill: "blue" }}
+          onDragStart={(e) => { e.preventDefault(); }}
+          onDragOver={(e) => { e.preventDefault(); }} 
+          onDrop={(event: React.DragEvent<SVGElement>) => {
+            (event.target as SVGElement).style.fill = "red";
+          }}
+        />
+      </Layout>
+    </HexGrid>
+  );
+}
+```
+
+Don't forget your App.css file!
+
+
+<Story of={HexagonStory.DragAndDrop} />

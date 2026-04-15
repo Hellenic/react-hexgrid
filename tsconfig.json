@@ -3,7 +3,6 @@
     "composite": true,
     "declaration": true,
     "declarationDir": "lib",
-    "emitDeclarationOnly": false,
     "rootDir": "src",
     "declarationMap": true,
     "esModuleInterop": true,
@@ -16,19 +15,26 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "noImplicitAny": false,
-    "allowJs": true,
+    "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "module": "ESNext",
     "target": "ES6",
     "outDir": "./lib",
-
-    // "jsxImportSource": "@emotion/react",
-    "types": ["node", "jest"]
   },
-  "include": ["src"],
-  "exclude": ["**/*.stories.tsx"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "src/stories",
+    "src/**/*.stories.tsx",
+    "src/**/*.stories.ts",
+    "src/PathFinding.disabledstories.tsx"
+  ]
 }

@@ -1,0 +1,44 @@
+import { Meta, Story } from "@storybook/addon-docs";
+import * as LayoutStory from "../../src/Layout.stories.tsx";
+
+<Meta title="Getting Started/Using Layout"/>
+
+# The Layout component
+
+The Layout component controls the spacing and rotation of your hexagon grid.  Internally, it contains
+two settings for your hexagon orientations - "flat" and "pointy".  The default setting is flat, 
+as seen in the previous examples.
+
+To use the "pointy" orientation, set the `flat` prop to false:
+
+```tsx
+import { HexGrid, Hexagon } from '@aaronzshey/react-hexgrid';
+export default function App() {
+  <HexGrid width="100%">
+    <Layout flat={false}>
+      <Hexagon q={0} r={0} s={0} className="tutorial"/>
+    </Layout>
+  </HexGrid>
+}
+```
+
+<Story of={LayoutStory.Pointy} />
+
+To change the space between each hexagon, change the "spacing" prop:
+
+
+```tsx
+import { HexGrid, Hexagon } from '@aaronzshey/react-hexgrid';
+export default function App() {
+  <HexGrid width="100%">
+    <Layout spacing={1.1}>
+      <Hexagon q={0} r={0} s={0} className="tutorial"/>
+    </Layout>
+  </HexGrid>
+}
+```
+
+<Story of={LayoutStory.Spacing} />
+
+That's pretty much it for the Layout component!  For more info, check out its 
+page in the API Documentation section.

@@ -1,0 +1,148 @@
+import { Meta, Story } from "@storybook/addon-docs";
+import * as HexagonStory from "../../src/Hexagon/Hexagon.stories.tsx";
+
+<Meta title="Advanced Tutorials/Using Hooks" />
+
+# Hooks
+Ah, hooks.  The quintessential React feature that every React developer worth their salt knows how to use -
+or at the very least, google how to use.  
+
+Hooks are useful in react-hexgrid because they give us a way to manipulate a hexagon after it's been rendered.
+
+An array of Hexes:
+
+```js
+const hexes: Hex[] = [new Hex(0,0,0), new Hex(0,1,0)];
+```
+
+is useless to us once it's been rendered.  It'll turn into some HTML like:
+
+```HTML
+<svg>
+<g class="tutorial" transform="translate(randomnumbers)" draggable="true">
+    <g class="hexagon">
+        <polygon points="randomnumbers"></polygon>
+    </g>
+</g>
+<g class="tutorial" transform="translate(randomnumbers)" draggable="true">
+    <g class="hexagon">
+        <polygon points="randomnumbers"></polygon>
+    </g>
+</g>
+<g class="tutorial" transform="translate(randomnumbers)" draggable="true">
+    <g class="hexagon">
+        <polygon points="randomnumbers"></polygon>
+    </g>
+</g>
+</svg>
+```
+
+Which is patently useless.  Sure, you could use CSS or HTML DOM selectors to pick and choose 
+which hexagons you want to change, but then you wouldn't be able to use our useful HexUtils
+to do cool things.  Which is why you need hooks!
+
+From a 10,000 ft view, we use hooks to manipulate our array of hexagons, then render them again.
+
+We're going to build something cool like this:
+
+<Story of={HexagonStory.Hooks} />
+
+Let's dive right in!
+
+## Setting up
+
+Import all the variables we're going to need, and set up the hooks:
+
+```tsx
+
+import {useState} from 'react';
+import { HexGrid, GridGenerator, Hex, Layout, HexUtils } from "../"
+
+const allHexagons: Hex[] = GridGenerator.hexagon(4);
+const [hexagons, setHexagons] = useState<Hex[]>(allHexagons);
+
+export default App () {
+
+}
+```
+
+Note that we generate some hexagons using GridGenerator, and then make a state variable.  This'll be useful later.
+
+Then, add this Layout tag inside of a HexGrid:
+
+```tsx
+import {useState} from 'react';
+import { HexGrid, GridGenerator, Hex, Layout, HexUtils } from "../"
+
+const allHexagons: Hex[] = GridGenerator.hexagon(4);
+const [hexagons, setHexagons] = useState<Hex[]>(allHexagons);
+
+export default App () {
+      <HexGrid width="95vw" height="95vh">
+            <Layout
+                size={{ x: 6, y: 6 }}
+                flat={false}
+                spacing={1.1}
+                origin={{ x: 0, y: 0 }}
+            >
+            </Layout>
+      </HexGrid>
+}
+```
+
+By making the `HexGrid` 95 vw and vh, it'll fill up most of the user's screen, without having scroll bars appear.
+We can't use 100vw and vh, because when we do ugly scroll bars show up.
+
+Next, inside the Layout tag, we set the size attribute 6 by 6, meaning that we can comfortably show up 
+to 6 hexagons on the screen, effectively scaling our hexagons.  We also set the origin and spacing, because why not.
+
+We're all set for the next part!
+
+## Adding hexagons
+
+Now, it's time to draw some hexagons!  Using the same App.css file we've been using this entire tutorial (I'll paste it here):
+
+App.css:
+
+```css
+svg g.tutorial {
+    stroke: black;
+    stroke-width: 0.01em;
+    fill: transparent;
+}
+```
+
+We add this code to draw the hexagons:
+
+```tsx
+import {useState} from 'react';
+import { HexGrid, GridGenerator, Hex, Layout, HexUtils } from "../"
+
+const allHexagons: Hex[] = GridGenerator.hexagon(4);
+const [hexagons, setHexagons] = useState<Hex[]>(allHexagons);
+
+export default App () {
+      <HexGrid width="95vw" height="95vh">
+            <Layout
+                size={{ x: 6, y: 6 }}
+                flat={false}
+                spacing={1.1}
+                origin={{ x: 0, y: 0 }}
+            >
+                {hexagons.map((hex: Hex, i: number) => (
+                    <Hexagon
+                        key={i}
+                        q={hex.q}
+                        r={hex.r}
+                        s={hex.s}
+                        className={"tutorial"}
+                    />
+                ))}
+            </Layout>
+      </HexGrid>
+}
+```
+
+You should see a good ol' familiar hexagon made out of other hexagons.
+
+

@@ -2,9 +2,13 @@
 
 ![Downloads](https://img.shields.io/npm/dt/react-hexgrid.svg)
 ![npm version](https://img.shields.io/npm/v/react-hexgrid.svg)
-![dependencies Status](https://img.shields.io/librariesio/github/hellenic/react-hexgrid)
-[![Live demo](https://img.shields.io/badge/live-demo-brightgreen.svg?style=flat-square)](https://hellenic.github.io/react-hexgrid/examples/)
+![Dependencies Status](https://img.shields.io/librariesio/github/hellenic/react-hexgrid)
+[![Live demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://hellenic.github.io/react-hexgrid/examples/)
 ![License](https://img.shields.io/npm/l/react-hexgrid.svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/aaronzshey/react-hexgrid/badge)](https://www.codefactor.io/repository/github/aaronzshey/react-hexgrid)
+[![Jest Status](https://img.shields.io/github/actions/workflow/status/aaronzshey/react-hexgrid/node.js.yml?style=flat&logo=jest&label=%20&labelColor=%2398435c)](https://github.com/aaronzshey/react-hexgrid/actions/workflows/node.js.yml)[![Chromatic UI Tests Status](https://img.shields.io/github/actions/workflow/status/aaronzshey/react-hexgrid/chromatic.yml?style=flat&logo=chromatic&label=%20&labelColor=white)](https://github.com/aaronzshey/react-hexgrid/actions/workflows/chromatic.yml)
+
+[![Storybook Permalink](https://raw.githubusercontent.com/storybookjs/brand/master/badge/badge-storybook.svg)](https://main--66a5393443e58f4dc4f0ca6b.chromatic.com/?path=/story/pathfinding--default)
 
 React components to build interactive hexagon grids. This library uses SVG and allows you to create fully customizable and scalable interactive hexagon grids with a simple api.
 
