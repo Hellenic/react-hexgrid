@@ -32,5 +32,9 @@ export class Hex implements HexCoordinates, Partial<HexAttributes> {
     this.r = r
     this.s = s
   }
+
+  toString(): string {
+    return `${this.q},${this.r},${this.s}`
+  }
 }
 export default Hex
