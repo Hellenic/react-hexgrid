@@ -54,7 +54,8 @@
   },
   "files": [
     "lib/",
-    "dist/"
+    "dist/",
+    "src/"
   ],
   "optionalDependencies": {
     "fsevents": "^1.2.13"
